@@ -8,6 +8,15 @@
 
 **Stack:** <!-- e.g. React 18, TypeScript 5, Vite, Tailwind CSS 4 -->
 
+## Precedence
+
+1. User chat
+2. This repo's code, linters, tokens, and helpers (`repo:`) — including when they are **stricter or more specific** than a common default
+3. Golden defaults in helpers (`golden:`) — only where this repo is silent and the rule applies to this stack
+4. Safety / a11y floors in **Boundaries** — not overridden by local habit
+
+Do not invent a second style guide. Do not average conflicting rules.
+
 ## Layout
 
 <!-- Tree of dirs that matter. One line each: what it is + why it lives there. Include seams. -->
@@ -51,7 +60,7 @@ src/
 
 ## Git / PRs
 
-<!-- Only if the repo already has a convention. -->
+<!-- Repo convention if present. If fully silent: one-line Conventional Commits as golden default. -->
 
 ## Pointers
 
@@ -66,4 +75,4 @@ Load the relevant helper before editing that area:
 
 ## Gotchas
 
-<!-- Footguns tied to a path. -->
+<!-- Footguns tied to a path. Include golden-vs-repo conflicts (habit vs floor). -->

@@ -9,9 +9,11 @@
     CODING AGENT — this HTML is the entry, not the runbook.
     1. Kit root = directory that contains this file.
     2. Next file (mandatory): skills/prepare-project-for-agents/SKILL.md
-    3. Then: skills/prepare-project-for-agents/references/instruction-prompt.md
+    3. Then: references/instruction-prompt.md and references/golden-rules.md
     4. Host project = git toplevel. If this kit sits in a subfolder, write AGENTS.md into the host, not into the kit.
-    5. Execute the skill. Do not ask the user to paste SKILL.md. Do not commit unless asked.
+    5. Execute the skill. Gap-fill with named golden defaults only where the project is silent.
+       Project standards win when they are more correct or specific.
+    6. Do not ask the user to paste SKILL.md. Do not commit unless asked.
   -->
   <style>
     :root {
@@ -296,6 +298,8 @@
       <p class="lede">
         Open this file in a browser to see what to do. Copy the bootstrap prompt into a coding agent
         (Cursor, Codex, Claude Code, Copilot, Gemini CLI). The agent reads this page, then runs the skill.
+        Written rules default to globally accepted golden standards only where this project is silent;
+        the project's own standards win when they are more correct or specific.
       </p>
       <p class="cta-row">
         <a class="btn" href="skills/prepare-project-for-agents/SKILL.md">Open skill (raw SKILL.md)</a>
@@ -338,9 +342,9 @@
 
 1. Find and read `START_HERE.html` from the workspace (repo root, or a copied folder such as `agent-prep/` / `_AI_Coding/`).
 2. Follow the section **For coding agents** in that file.
-3. Read and execute the skill at `&lt;kit-root&gt;/skills/prepare-project-for-agents/SKILL.md` (mandatory: then `references/instruction-prompt.md`).
+3. Read and execute the skill at `&lt;kit-root&gt;/skills/prepare-project-for-agents/SKILL.md` (mandatory: then `references/instruction-prompt.md` and `references/golden-rules.md`).
 4. The **host project** is the git root being prepared. If this kit was copied into a subfolder, write `AGENTS.md` and helpers into the host, not into the kit.
-5. Produce a lean `AGENTS.md` spine, on-demand helpers, and vendor shims. Do not invent conventions. Do not commit unless asked.
+5. Produce a lean `AGENTS.md` spine, on-demand helpers, and vendor shims. Do not invent conventions. Fill gaps with globally accepted golden rules only when they do not conflict with this project's standards (project wins when more correct or specific). Do not commit unless asked.
 
 Do not ask me to paste the skill. Load it from disk and run it.</pre>
           <p class="status" id="copy-status" role="status" aria-live="polite"></p>
@@ -354,9 +358,9 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre>
         <ol>
           <li><strong>Kit root</strong> is the directory that contains this HTML file.</li>
           <li>Read <a href="skills/prepare-project-for-agents/SKILL.md"><code>skills/prepare-project-for-agents/SKILL.md</code></a> next. Mandatory.</li>
-          <li>Then read <a href="skills/prepare-project-for-agents/references/instruction-prompt.md"><code>references/instruction-prompt.md</code></a> before writing files.</li>
+          <li>Then read <a href="skills/prepare-project-for-agents/references/instruction-prompt.md"><code>references/instruction-prompt.md</code></a> and <a href="skills/prepare-project-for-agents/references/golden-rules.md"><code>references/golden-rules.md</code></a> before writing files.</li>
           <li><strong>Host project</strong> is the git toplevel of the workspace being prepared. If the kit is a subfolder, write <code>AGENTS.md</code> and helpers into the host, not into the kit.</li>
-          <li>Run the skill: discover from evidence, backup existing agent files to <code>*.bak</code>, write a lean <code>AGENTS.md</code> spine plus on-demand helpers and vendor shims. Do not invent conventions. Do not commit unless asked.</li>
+          <li>Run the skill: discover from evidence, backup existing agent files to <code>*.bak</code>, write a lean <code>AGENTS.md</code> spine plus on-demand helpers and vendor shims. Do not invent conventions. Gap-fill with named golden defaults only where the project is silent; project standards win when they are more correct or specific. Do not commit unless asked.</li>
           <li>Finish with the report shape in <a href="skills/prepare-project-for-agents/templates/report.md"><code>templates/report.md</code></a>.</li>
         </ol>
         <p>
@@ -375,11 +379,11 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre>
           <tbody>
             <tr>
               <td><code>AGENTS.md</code></td>
-              <td>Always-on spine. Open format (<a href="https://agents.md">agents.md</a>). Commands, map, seams, boundaries.</td>
+              <td>Always-on spine. Open format (<a href="https://agents.md">agents.md</a>). Commands, map, seams, boundaries, precedence (chat → repo → golden → floors).</td>
             </tr>
             <tr>
               <td><code>docs/agents/*</code></td>
-              <td>On-demand: stack, conventions, Excluded/Canonical/Language, UI/UX, theming, testing.</td>
+              <td>On-demand: stack, conventions, Excluded/Canonical/Language, UI/UX, theming, testing. Bullets tagged <code>repo:</code> / <code>golden:</code> / <code>overridden:</code>.</td>
             </tr>
             <tr>
               <td><code>CLAUDE.md</code></td>
@@ -392,6 +396,40 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre>
             <tr>
               <td><code>.cursor/rules/*.mdc</code></td>
               <td>Globbed local rules, not a second bible.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 id="precedence">How rules are chosen</h2>
+        <p>
+          Agents must not invent a second style guide, and must not average conflicts.
+          Named golden defaults (WCAG 2.2 AA, design tokens, official language guides, OWASP, AGENTS.md spec)
+          apply only where this project is silent. Details live in
+          <a href="skills/prepare-project-for-agents/references/golden-rules.md"><code>golden-rules.md</code></a>.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Wins when</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>User chat</td>
+              <td>Always</td>
+            </tr>
+            <tr>
+              <td>This project's code, linters, tokens, existing agent files</td>
+              <td>Taste, architecture, naming, formatting — including when stricter or more specific than a common default</td>
+            </tr>
+            <tr>
+              <td>Golden default</td>
+              <td>The project is silent and the rule applies to this stack</td>
+            </tr>
+            <tr>
+              <td>Safety / accessibility floor</td>
+              <td>Never copy a dangerous or inaccessible habit as the canonical way</td>
             </tr>
           </tbody>
         </table>
@@ -410,8 +448,12 @@ skills/</pre>
           <li><a href="skills/prepare-project-for-agents/references/instruction-prompt.md">instruction-prompt.md</a></li>
           <li><a href="skills/prepare-project-for-agents/references/discovery.md">discovery.md</a></li>
           <li><a href="skills/prepare-project-for-agents/references/writing-rules.md">writing-rules.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/references/golden-rules.md">golden-rules.md</a></li>
           <li><a href="skills/prepare-project-for-agents/templates/AGENTS.md">template AGENTS.md</a></li>
           <li><a href="skills/prepare-project-for-agents/templates/best-practices.md">template best-practices.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/templates/conventions.md">template conventions.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/templates/ui-ux.md">template ui-ux.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/templates/theming.md">template theming.md</a></li>
           <li><a href="skills/prepare-project-for-agents/templates/report.md">template report.md</a></li>
           <li><a href="prompts/bootstrap.md">bootstrap.md</a></li>
           <li><a href="README.md">README.md</a></li>

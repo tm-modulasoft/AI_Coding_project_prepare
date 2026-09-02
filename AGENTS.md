@@ -27,6 +27,7 @@ None. Open `START_HERE.html` in a browser, or point a coding agent at it.
 - One source of truth for the runbook: `skills/prepare-project-for-agents/`. Do not fork it into `.cursor/skills/` in this repo.
 - HTML links are relative so the kit stays portable when copied.
 - Do not invent a product stack here.
+- Host-project output: project standards (`repo:`) win when more correct or specific; named golden defaults fill silence; do not copy `references/golden-rules.md` into a host.
 
 ## Boundaries
 
@@ -38,3 +39,4 @@ None. Open `START_HERE.html` in a browser, or point a coding agent at it.
 
 - Skill spine — `skills/prepare-project-for-agents/SKILL.md`
 - Full runbook — `skills/prepare-project-for-agents/references/instruction-prompt.md`
+- Golden defaults — `skills/prepare-project-for-agents/references/golden-rules.md`

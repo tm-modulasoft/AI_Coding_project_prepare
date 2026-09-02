@@ -7,3 +7,4 @@ alwaysApply: false
 Follow `docs/agents/ui-ux.md` and `docs/agents/theming.md` when they exist.
 
 Use design tokens. Do not hardcode colors, type, or spacing.
+Match this project's kit. WCAG 2.2 AA is the default a11y floor unless those helpers say the project is stricter.

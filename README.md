@@ -16,6 +16,8 @@ A copyable kit:
 
 It writes a lean [`AGENTS.md`](https://agents.md) spine, on-demand helpers (stack, conventions, Excluded / Canonical / Language, UI/UX, theming), and thin vendor shims.
 
+Written rules **default to globally accepted golden standards** (WCAG 2.2 AA, DTCG tokens, official language guides, OWASP floors, AGENTS.md spec) only where the host is silent. The project's own code, linters, and tokens win when they are more correct or specific. Safety and accessibility floors are not encoded as "the project does it wrong, so copy that."
+
 ## Use on another project
 
 Copy these three together (relative links must stay intact):
@@ -31,5 +33,6 @@ Place them at the target repo root, or in a subfolder (`agent-prep/`, `_AI_Codin
 ## Maintainers
 
 - Skill spine: `skills/prepare-project-for-agents/SKILL.md`
+- Golden defaults + precedence: `skills/prepare-project-for-agents/references/golden-rules.md`
 - Keep the prompt block in `START_HERE.html` identical to `prompts/bootstrap.md`
 - This repo has no build step. The HTML must work as `file://`

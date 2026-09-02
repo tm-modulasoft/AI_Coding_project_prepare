@@ -16,32 +16,36 @@ Success = an agent that has never seen the setup conversation can clone the host
 ## Non-goals
 
 - Do not rewrite the product README into an agent bible.
-- Do not dump the PRD, changelog, or full architecture doc into `AGENTS.md`.
+- Do not dump the PRD, changelog, full architecture doc, or `golden-rules.md` into `AGENTS.md`.
 - Do not add generic slogans ("write clean code", "follow SOLID", "be helpful").
 - Do not add dependencies, CI, or refactors "to help agents" unless a file cannot be accurate without it.
 - Do not overwrite existing agent files without backing them up first.
 - Do not commit unless the user asks.
+- Do not invent a stack, a design system, or dark mode the host does not have.
 
 ## Source of truth (strict)
 
 | Lane | When | Truth is |
 |---|---|---|
-| **Brownfield** | Existing code | *What is* — every rule must point at a file/path that proves it. If you cannot point, omit it. |
+| **Brownfield** | Existing code | *What is* for project choices — every `repo:` rule points at a proving path. If you cannot point, omit that *project* rule. |
 | **Greenfield** | Empty/scaffold | *What should be* — only from an architecture spec the user provides, or ask. Never guess a stack. |
+| **Golden gap-fill** | Host silent on an applicable domain | Checkable default from `references/golden-rules.md`, tagged `golden:`. Skip if the stack cannot hit that domain. |
 
 If both an existing `AGENTS.md`/`CLAUDE.md` and the codebase exist, **merge**: keep human-written steering that is still true; replace anything the code contradicts.
+
+**Precedence** (do not average): user chat > host project standard when it is more correct/specific (including stricter) > golden default for silence > safety/a11y floors that are never Canonical-ized from a bad habit. Full test: `references/golden-rules.md`.
 
 Working principles (plan-first, ask-don't-guess, scope discipline) **cannot** be derived from code. Ask the user once, briefly, if they are not already stated. Do not stall the rest of the work on that answer — use a conservative default and mark it `elicited: default`.
 
 ## Files to produce
 
-Create only what the host needs. Skip sections that have no evidence.
+Create only what the host needs. Skip sections that have no evidence **and** no applicable golden default.
 
 ### 1. `AGENTS.md` (root, always-on spine)
 
-Follow `templates/AGENTS.md`. Cover the six areas that empirically matter: **commands, testing, structure, code style, git workflow, boundaries**.
+Follow `templates/AGENTS.md`. Cover the six areas that empirically matter: **commands, testing, structure, code style, git workflow, boundaries**. Include the **Precedence** stanza from the template.
 
-Suggested sections (drop empties): Project, Layout (including **seams**), Commands (near the top), Conventions, Boundaries, Testing, Git / PRs, Pointers, Gotchas.
+Suggested sections (drop empties): Project, Precedence, Layout (including **seams**), Commands (near the top), Conventions, Boundaries, Testing, Git / PRs, Pointers, Gotchas.
 
 ### 2. Helper files (on-demand)
 
@@ -49,16 +53,16 @@ Prefer a **tool-agnostic** folder: `docs/agents/`. If the host already uses `.ag
 
 Create as needed:
 
-| File | Contents |
-|---|---|
-| `docs/agents/stack.md` | Languages, runtimes, frameworks, DB, ORM, styling, test runners, deploy — **with versions**. |
-| `docs/agents/best-practices.md` | **Excluded / Canonical / Language** tables. Follow `templates/best-practices.md`. |
-| `docs/agents/conventions.md` | Naming, file layout, imports, errors, logging, API shape, where new code goes. |
-| `docs/agents/ui-ux.md` | Component anatomy, composition, states (loading/empty/error/disabled), a11y, breakpoints, motion — from *this* UI kit. |
-| `docs/agents/theming.md` | Token source of truth, how to add a token, never hardcode color/type/space, light/dark. Point at the token file. |
-| `docs/agents/testing.md` | Unit vs integration vs e2e, file naming, fixtures vs mocks, what not to test. |
-| `docs/agents/security.md` | Authz, secrets, PII, stack-specific footguns. |
-| `docs/agents/git-workflow.md` | Only if non-obvious. |
+| File | Contents | Template |
+|---|---|---|
+| `docs/agents/stack.md` | Languages, runtimes, frameworks, DB, ORM, styling, test runners, deploy — **with versions**. | — |
+| `docs/agents/best-practices.md` | **Excluded / Canonical / Language** tables. Source tags required. | `templates/best-practices.md` |
+| `docs/agents/conventions.md` | Naming, file layout, imports, errors, logging, API shape, where new code goes. | `templates/conventions.md` |
+| `docs/agents/ui-ux.md` | Component anatomy, composition, states, a11y floor, breakpoints, motion — from *this* UI kit, plus WCAG 2.2 AA if not overridden. | `templates/ui-ux.md` |
+| `docs/agents/theming.md` | Token source of truth, how to add a token, never hardcode color/type/space, light/dark only if present. | `templates/theming.md` |
+| `docs/agents/testing.md` | Unit vs integration vs e2e, file naming, fixtures vs mocks, what not to test. | — |
+| `docs/agents/security.md` | Authz, secrets, PII, stack-specific footguns. OWASP as floor, not a lecture. | — |
+| `docs/agents/git-workflow.md` | Only if non-obvious. | — |
 
 **`best-practices.md` required shape** — for each topic that actually exists:
 
@@ -66,15 +70,16 @@ Create as needed:
 ## <Topic>
 
 ### Canonical
-- The project's chosen way, with a path to an example file.
+- `repo:` The project's chosen way, with a path to an example file.
 - One short snippet copied from the repo (not invented).
+- `golden:` Only if the host is silent; name the standard.
 
 ### Excluded
 - Patterns this repo rejects (even if popular).
-- Why in half a sentence, or "not used here".
+- `overridden:` A golden rule this repo deliberately does not follow, with why.
 
 ### Language
-- Language/framework-specific rules — **only if true here**.
+- Language/framework-specific rules — **only if true here**. Tag `repo:` or `golden:`.
 ```
 
 Topics to consider (include only if evidenced): architecture boundaries, data fetching, state, errors, forms, styling, tokens, testing, concurrency, observability, i18n, package management.

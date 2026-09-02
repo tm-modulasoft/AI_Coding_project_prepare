@@ -12,6 +12,12 @@
 
 - helper → when to load
 
+## Golden fills vs repo
+
+- `golden:` rules written (standard + why the host was silent)
+- `overridden:` golden rules the host rejected (why the project is more correct)
+- safety/a11y floors kept despite a local habit (Gotchas)
+
 ## Vendor shims
 
 -
