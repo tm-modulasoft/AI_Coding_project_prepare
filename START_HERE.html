@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prepare this project for AI agentic coding</title>
+  <meta name="description" content="Portable field manual: copy the bootstrap prompt, then let a coding agent read this page and run the prepare-project-for-agents skill.">
+  <!--
+    CODING AGENT — this HTML is the entry, not the runbook.
+    1. Kit root = directory that contains this file.
+    2. Next file (mandatory): skills/prepare-project-for-agents/SKILL.md
+    3. Then: skills/prepare-project-for-agents/references/instruction-prompt.md
+    4. Host project = git toplevel. If this kit sits in a subfolder, write AGENTS.md into the host, not into the kit.
+    5. Execute the skill. Do not ask the user to paste SKILL.md. Do not commit unless asked.
+  -->
+  <style>
+    :root {
+      --paper: #f2eee6;
+      --paper-2: #e8e1d4;
+      --ink: #1a1714;
+      --ink-soft: #4a453e;
+      --rule: #c9bfae;
+      --forest: #1f3d32;
+      --forest-2: #2d5a49;
+      --danger: #7a2e24;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.5rem;
+      --space-6: 2rem;
+      --space-7: 3rem;
+      --measure: 40rem;
+      --sans: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
+      --radius: 2px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .skip {
+      position: absolute;
+      left: var(--space-4);
+      top: -3rem;
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--space-2) var(--space-3);
+    }
+    .skip:focus { top: var(--space-4); }
+
+    .wrap {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-5) var(--space-7);
+    }
+
+    header {
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: var(--space-5);
+      margin-bottom: var(--space-6);
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--space-3);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      font-weight: 500;
+      line-height: 1.2;
+      margin: 0 0 var(--space-4);
+      max-width: 22ch;
+    }
+
+    .lede {
+      margin: 0 0 var(--space-5);
+      max-width: var(--measure);
+      color: var(--ink-soft);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin: 0;
+    }
+
+    a {
+      color: var(--forest);
+    }
+    a:hover { color: var(--forest-2); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.55rem 0.9rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-radius: var(--radius);
+    }
+    .btn:hover { background: var(--forest); border-color: var(--forest); color: var(--paper); }
+    .btn:active { transform: scale(0.98); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+    }
+    .btn-ghost:hover { background: var(--paper-2); color: var(--ink); }
+
+    button.btn {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 16rem;
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    @media (max-width: 52rem) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: var(--space-7) 0 var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--rule);
+    }
+    main h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+
+    h3 {
+      font-size: 0.95rem;
+      margin: var(--space-5) 0 var(--space-3);
+    }
+
+    p, li { max-width: var(--measure); }
+    ol, ul { padding-left: 1.2rem; }
+    li + li { margin-top: var(--space-2); }
+
+    .steps {
+      list-style: none;
+      padding: 0;
+      counter-reset: step;
+    }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 2.25rem;
+      margin-bottom: var(--space-4);
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.05rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 1px solid var(--ink);
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .slip {
+      background: var(--paper-2);
+      border: 1px solid var(--ink);
+      padding: var(--space-4);
+      margin: var(--space-4) 0;
+    }
+    .slip-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    .slip-head p {
+      margin: 0;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .callout {
+      border-left: 2px solid var(--forest);
+      padding: var(--space-3) var(--space-4);
+      margin: var(--space-4) 0;
+      background: rgba(31, 61, 50, 0.06);
+    }
+
+    table {
+      width: 100%;
+      max-width: 44rem;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--rule);
+      padding: var(--space-3) var(--space-3) var(--space-3) 0;
+    }
+    th { font-weight: 600; }
+
+    .rail {
+      position: sticky;
+      top: var(--space-4);
+      border: 1px solid var(--rule);
+      padding: var(--space-4);
+      background: var(--paper);
+    }
+    .rail h2 {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 0 var(--space-3);
+      padding: 0;
+      border: 0;
+    }
+    .rail ul { list-style: none; padding: 0; margin: 0; }
+    .rail li { margin: 0 0 var(--space-2); font-size: 0.85rem; }
+    .rail a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+
+    #bootstrap-prompt {
+      -webkit-user-select: all;
+      user-select: all;
+    }
+
+    .status {
+      min-height: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--forest);
+    }
+
+    footer {
+      margin-top: var(--space-7);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--ink);
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn:active { transform: none; }
+    }
+
+    @media print {
+      .cta-row, button, .skip { display: none !important; }
+      .rail { position: static; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#for-agents">Skip to agent instructions</a>
+
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Portable kit · AGENTS.md format</p>
+      <h1>Prepare this project for AI agentic coding</h1>
+      <p class="lede">
+        Open this file in a browser to see what to do. Copy the bootstrap prompt into a coding agent
+        (Cursor, Codex, Claude Code, Copilot, Gemini CLI). The agent reads this page, then runs the skill.
+      </p>
+      <p class="cta-row">
+        <a class="btn" href="skills/prepare-project-for-agents/SKILL.md">Open skill (raw SKILL.md)</a>
+        <a class="btn btn-ghost" href="skills/prepare-project-for-agents/references/instruction-prompt.md">Open full runbook (raw)</a>
+        <a class="btn btn-ghost" href="#bootstrap">Jump to copy-paste prompt</a>
+      </p>
+    </header>
+
+    <div class="layout">
+      <main>
+        <h2 id="humans">For humans</h2>
+        <ol class="steps">
+          <li>
+            <strong>Port the kit</strong> if it is not already in the target repo.
+            Copy <code>START_HERE.html</code>, <code>prompts/</code>, and <code>skills/</code> together
+            (keep the relative folders). Put them at the project root or in a subfolder such as <code>agent-prep/</code>.
+          </li>
+          <li>
+            <strong>Open this HTML</strong> from that copy (double-click, or drag into a browser).
+            Click <a href="skills/prepare-project-for-agents/SKILL.md">Open skill (raw SKILL.md)</a> if you want to read the agent instructions as plain text.
+          </li>
+          <li>
+            <strong>Copy the bootstrap prompt</strong> in the slip below. Paste it into the coding agent
+            <em>opened on the target project</em>.
+          </li>
+          <li>
+            Review what the agent writes: root <code>AGENTS.md</code>, helpers under <code>docs/agents/</code>,
+            and thin shims (<code>CLAUDE.md</code>, Copilot, Cursor rules). It should not commit unless you ask.
+          </li>
+        </ol>
+
+        <h2 id="bootstrap">Bootstrap prompt</h2>
+        <p>Paste this as the first message to the agent on the project you want prepared.</p>
+        <div class="slip">
+          <div class="slip-head">
+            <p>Copy into the coding agent</p>
+            <button type="button" class="btn" id="copy-btn">Copy prompt</button>
+          </div>
+          <pre id="bootstrap-prompt">Prepare this project for AI agentic coding.
+
+1. Find and read `START_HERE.html` from the workspace (repo root, or a copied folder such as `agent-prep/` / `_AI_Coding/`).
+2. Follow the section **For coding agents** in that file.
+3. Read and execute the skill at `&lt;kit-root&gt;/skills/prepare-project-for-agents/SKILL.md` (mandatory: then `references/instruction-prompt.md`).
+4. The **host project** is the git root being prepared. If this kit was copied into a subfolder, write `AGENTS.md` and helpers into the host, not into the kit.
+5. Produce a lean `AGENTS.md` spine, on-demand helpers, and vendor shims. Do not invent conventions. Do not commit unless asked.
+
+Do not ask me to paste the skill. Load it from disk and run it.</pre>
+          <p class="status" id="copy-status" role="status" aria-live="polite"></p>
+        </div>
+        <p>Same text lives at <a href="prompts/bootstrap.md">prompts/bootstrap.md</a>. Keep the two identical if you edit either.</p>
+
+        <h2 id="for-agents">For coding agents</h2>
+        <div class="callout">
+          This section is the operating contract. Execute it; do not summarize and stop.
+        </div>
+        <ol>
+          <li><strong>Kit root</strong> is the directory that contains this HTML file.</li>
+          <li>Read <a href="skills/prepare-project-for-agents/SKILL.md"><code>skills/prepare-project-for-agents/SKILL.md</code></a> next. Mandatory.</li>
+          <li>Then read <a href="skills/prepare-project-for-agents/references/instruction-prompt.md"><code>references/instruction-prompt.md</code></a> before writing files.</li>
+          <li><strong>Host project</strong> is the git toplevel of the workspace being prepared. If the kit is a subfolder, write <code>AGENTS.md</code> and helpers into the host, not into the kit.</li>
+          <li>Run the skill: discover from evidence, backup existing agent files to <code>*.bak</code>, write a lean <code>AGENTS.md</code> spine plus on-demand helpers and vendor shims. Do not invent conventions. Do not commit unless asked.</li>
+          <li>Finish with the report shape in <a href="skills/prepare-project-for-agents/templates/report.md"><code>templates/report.md</code></a>.</li>
+        </ol>
+        <p>
+          Opening this page in a browser does not load sibling Markdown (<code>file://</code> cannot fetch it).
+          Use the Read tool on disk. Clicking the raw links only helps humans view those files in the browser.
+        </p>
+
+        <h2 id="produces">What the skill writes</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>AGENTS.md</code></td>
+              <td>Always-on spine. Open format (<a href="https://agents.md">agents.md</a>). Commands, map, seams, boundaries.</td>
+            </tr>
+            <tr>
+              <td><code>docs/agents/*</code></td>
+              <td>On-demand: stack, conventions, Excluded/Canonical/Language, UI/UX, theming, testing.</td>
+            </tr>
+            <tr>
+              <td><code>CLAUDE.md</code></td>
+              <td>One-line import: <code>@AGENTS.md</code>.</td>
+            </tr>
+            <tr>
+              <td><code>.github/copilot-instructions.md</code></td>
+              <td>Thin pointer at <code>AGENTS.md</code>.</td>
+            </tr>
+            <tr>
+              <td><code>.cursor/rules/*.mdc</code></td>
+              <td>Globbed local rules, not a second bible.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 id="copy-kit">Copying this kit</h2>
+        <p>Required set (relative links break if you copy the HTML alone):</p>
+        <pre>START_HERE.html
+prompts/
+skills/</pre>
+      </main>
+
+      <aside class="rail" aria-label="Raw files">
+        <h2>Raw files</h2>
+        <ul>
+          <li><a href="skills/prepare-project-for-agents/SKILL.md">SKILL.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/references/instruction-prompt.md">instruction-prompt.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/references/discovery.md">discovery.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/references/writing-rules.md">writing-rules.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/templates/AGENTS.md">template AGENTS.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/templates/best-practices.md">template best-practices.md</a></li>
+          <li><a href="skills/prepare-project-for-agents/templates/report.md">template report.md</a></li>
+          <li><a href="prompts/bootstrap.md">bootstrap.md</a></li>
+          <li><a href="README.md">README.md</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <footer>
+      Kit root is this folder. Spec for the output format: <a href="https://agents.md">https://agents.md</a>.
+      This page has no build step and must work when opened as a local file.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var btn = document.getElementById("copy-btn");
+      var source = document.getElementById("bootstrap-prompt");
+      var status = document.getElementById("copy-status");
+      if (!btn || !source) return;
+
+      btn.addEventListener("click", function () {
+        var text = source.textContent.replace(/^\s+|\s+$/g, "");
+        function ok() {
+          status.textContent = "Copied. Paste it into the agent on the target project.";
+        }
+        function fail() {
+          status.textContent = "Copy failed. Select the prompt text and copy it manually.";
+        }
+        function selectPrompt() {
+          var range = document.createRange();
+          range.selectNodeContents(source);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+        function viaExecCommand() {
+          selectPrompt();
+          var succeeded = false;
+          try {
+            succeeded = document.execCommand("copy");
+          } catch (e) {
+            succeeded = false;
+          }
+          if (succeeded) ok();
+          else {
+            selectPrompt();
+            fail();
+          }
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(ok).catch(viaExecCommand);
+        } else {
+          viaExecCommand();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+---
+description: Load the matching docs/agents helper when editing this glob
+globs: "**/*.{tsx,jsx,css}"
+alwaysApply: false
+---
+
+Follow `docs/agents/ui-ux.md` and `docs/agents/theming.md` when they exist.
+
+Use design tokens. Do not hardcode colors, type, or spacing.
