@@ -13,14 +13,14 @@ Open **[START_HERE.html](START_HERE.html)** in a browser (double-click the file)
 
 A copyable kit:
 
-| Piece | Role |
-|---|---|
-| `START_HERE.html` | Open in a browser. **For humans** is the visual start. Copy the bootstrap prompt into a coding agent. |
-| `pages/` | Step detail pages (harness, project rules) plus shared `kit.css`. |
-| `prompts/bootstrap.md` | The same bootstrap prompt, as plain Markdown. |
-| `skills/prepare-project-for-agents/` | The skill the agent must Read and execute. |
-| `one_offs/skills-lock.json` | Default general + agentic-coding skills lock (copied to the host as `skills-lock.json`). |
-| `one_offs/native-rules.md` | Body for Cursor always-on `native-rules.mdc`. |
+| Piece                                | Role                                                                                                  |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| `START_HERE.html`                    | Open in a browser. **For humans** is the visual start. Copy the bootstrap prompt into a coding agent. |
+| `pages/`                             | Step detail pages (harness, project rules) plus shared `kit.css`.                                     |
+| `prompts/bootstrap.md`               | The same bootstrap prompt, as plain Markdown.                                                         |
+| `skills/prepare-project-for-agents/` | The skill the agent must Read and execute.                                                            |
+| `one_offs/skills-lock.json`          | Default general + agentic-coding skills lock (copied to the host as `skills-lock.json`).              |
+| `one_offs/native-rules.md`           | Body for Cursor always-on `native-rules.mdc`.                                                         |
 
 Step 2 writes a lean [`AGENTS.md`](https://agents.md) spine, on-demand helpers, and thin vendor shims.
 
