@@ -135,6 +135,16 @@ Always (if the stack can hit the risk): validate at the trust boundary; paramete
 
 Never Canonical a vulnerability "because the code does it". Gotchas + Never instead.
 
+## Tools (MCP)
+
+Portable stanza for host `AGENTS.md` when the host is silent (also encoded in kit native rules for Cursor). Do not copy this catalog; write the short Tools bullets.
+
+- Library / framework docs and API examples: **Context7 MCP** over client web search, Exa, or training memory.
+- Package version selection and vulnerability/license checks: **Sonatype MCP** before adding or pinning dependencies.
+- GitHub: **`gh` CLI only** — no GitHub MCP.
+
+If Context7 or Sonatype is not installed yet, say so in the prepare report; still write the preference so the next session uses them once plugins are connected.
+
 ## Git / services
 
 - Git workflow: only document what the host already uses (CONTRIBUTING, commitlint, PR template). If **fully silent**, Conventional Commits is the golden default — one line, not a tutorial.

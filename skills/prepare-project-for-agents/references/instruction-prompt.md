@@ -1,5 +1,7 @@
 # Instruction prompt (runbook)
 
+This is **step 2** (project instruction layer). Complete **step 1** first: `references/harness.md`.
+
 Execute this runbook against the **host project** after `SKILL.md` path resolution. This is the detailed instruction set; do not duplicate it into `AGENTS.md`.
 
 ## Goal
@@ -45,7 +47,9 @@ Create only what the host needs. Skip sections that have no evidence **and** no 
 
 Follow `templates/AGENTS.md`. Cover the six areas that empirically matter: **commands, testing, structure, code style, git workflow, boundaries**. Include the **Precedence** stanza from the template.
 
-Suggested sections (drop empties): Project, Precedence, Layout (including **seams**), Commands (near the top), Conventions, Boundaries, Testing, Git / PRs, Pointers, Gotchas.
+Suggested sections (drop empties): Project, Precedence, Layout (including **seams**), Commands (near the top), Tools, Conventions, Boundaries, Testing, Git / PRs, Pointers, Gotchas.
+
+**Tools** (always include a short stanza, even when `.cursor/rules/native-rules.mdc` exists): prefer **Context7 MCP** over client web search / training memory for library and framework docs; prefer **Sonatype MCP** for package version selection and security; GitHub via `gh` CLI only. Do not paste the full native-rules workflow here — that file is step 1.
 
 ### 2. Helper files (on-demand)
 
@@ -96,6 +100,8 @@ Topics to consider (include only if evidenced): architecture boundaries, data fe
 Optional: `GEMINI.md` / Aider config **only** if those tools are already in the host.
 
 Do **not** revive `.cursorrules` if `.cursor/rules/` or `AGENTS.md` exists.
+
+Do **not** rewrite step 1’s `.cursor/rules/native-rules.mdc` here. Globbed `.mdc` shims stay `alwaysApply: false`.
 
 ### 4. README touch (minimal)
 

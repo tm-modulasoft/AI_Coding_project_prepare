@@ -15,6 +15,18 @@ Look for and read:
 
 If replacing, copy to `*.bak` in the same directory.
 
+## Existing harness (merge, do not wipe)
+
+Look for and read:
+
+- `.cursor/settings.json` (especially `plugins`)
+- `.cursor/cli.json`
+- `skills-lock.json`
+- `.gitignore` (whether `.agents/skills/` is ignored)
+- `.cursor/rules/native-rules.mdc`
+
+If the host already has a richer plugin list or lockfile, keep extras. Step 1 is `references/harness.md`.
+
 ## Stack (from manifests, with versions)
 
 `package.json`, `pnpm-workspace.yaml`, `Cargo.toml`, `pyproject.toml`, `go.mod`, Gradle / `.csproj`, lockfiles, Docker, IaC.

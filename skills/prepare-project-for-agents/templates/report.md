@@ -1,6 +1,17 @@
 # AI layer ready
 
-## Created / updated
+## Harness (step 1)
+
+- Files created / merged:
+- `npx skills experimental_install`: ran / failed / skipped (why)
+- Human still needs to run (first install):
+  - `/add-plugin cursor-team-kit`
+  - `/add-plugin context7-plugin`
+  - `/add-plugin sonatype-cursor-plugin`
+  - `/add-plugin modern-web-guidance`
+- Plugin keys to connect in Customize (do not commit): Context7, Sonatype
+
+## Created / updated (step 2)
 
 - `path` — why
 

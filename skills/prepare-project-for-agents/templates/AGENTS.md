@@ -44,6 +44,12 @@ src/
 - Lint: ``
 - Build: ``
 
+## Tools
+
+- Docs/APIs: Context7 MCP — prefer over client web search and training memory for library and framework docs.
+- Dependencies: Sonatype MCP — prefer for version selection and security before adding or upgrading packages.
+- GitHub: `gh` CLI only (no GitHub MCP).
+
 ## Conventions
 
 <!-- Only project-specific choices. Pointers to helpers for depth. One canonical example or path. -->
