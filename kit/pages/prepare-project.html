@@ -24,7 +24,16 @@
     </div>
 
     <div class="wrap">
-      <p class="crumb"><a href="../START_HERE.html">Overview</a> · Step 2</p>
+      <header class="site-header">
+        <a class="site-mark" href="../START_HERE.html">AI Coding kit</a>
+        <nav class="site-nav" aria-label="Kit pages">
+          <a href="../START_HERE.html">Overview</a>
+          <a href="harness.html">1 · Harness</a>
+          <a href="prepare-project.html" aria-current="page"
+            >2 · Project rules</a
+          >
+        </nav>
+      </header>
 
       <section class="human-hero" id="humans" aria-labelledby="human-kicker">
         <p class="human-kicker" id="human-kicker">For humans · Step 2 of 2</p>
@@ -36,51 +45,46 @@
           this project is silent; the project's own standards win when they are
           more correct or specific.
         </p>
-        <nav class="kit-nav" aria-label="Kit steps">
-          <label>
-            Jump to step
-            <select id="step-jump">
-              <option value="../START_HERE.html">Overview</option>
-              <option value="harness.html">1 · Prepare the harness</option>
-              <option value="prepare-project.html" selected>
-                2 · Prepare project rules
-              </option>
-            </select>
-          </label>
-        </nav>
       </section>
 
       <div class="layout">
         <main class="page-main">
-          <h2 id="humans-how">What you do</h2>
-          <ol class="steps">
-            <li>
-              <strong>Port the kit</strong> if it is not already in the target
-              repo — paste the prompt from the
-              <a
-                href="https://github.com/tm-modulasoft/AI_Coding_project_prepare"
-                >GitHub README</a
-              >
-              into an agent opened on that local project.
-            </li>
-            <li>
-              Finish <a href="harness.html">step 1</a> (or let the agent do both
-              steps from the bootstrap prompt).
-            </li>
-            <li>
-              Review what the agent writes: root <code>AGENTS.md</code>, helpers
-              under <code>docs/agents/</code>, and thin shims
-              (<code>CLAUDE.md</code>, Copilot, Cursor rules). It should not
-              commit unless you ask.
-            </li>
-            <li>
-              When you are done,
-              <strong>delete the fetched <code>kit/</code> folder</strong> from
-              the host (recommended). Keep the harness files and
-              <code>AGENTS.md</code>. Do not delete <code>kit/</code> in this
-              GitHub repo.
-            </li>
-          </ol>
+          <section
+            class="get-started"
+            id="humans-how"
+            aria-labelledby="humans-how-heading"
+          >
+            <p class="section-label">What you do</p>
+            <h2 id="humans-how-heading">Your checklist</h2>
+            <ol class="steps">
+              <li>
+                <strong>Port the kit</strong> if it is not already in the target
+                repo — paste the prompt from the
+                <a
+                  href="https://github.com/tm-modulasoft/AI_Coding_project_prepare"
+                  >GitHub README</a
+                >
+                into an agent opened on that local project.
+              </li>
+              <li>
+                Finish <a href="harness.html">step 1</a> (or let the agent do
+                both steps from the bootstrap prompt).
+              </li>
+              <li>
+                Review what the agent writes: root <code>AGENTS.md</code>,
+                helpers under <code>docs/agents/</code>, and thin shims
+                (<code>CLAUDE.md</code>, Copilot, Cursor rules). It should not
+                commit unless you ask.
+              </li>
+              <li>
+                When you are done,
+                <strong>delete the fetched <code>kit/</code> folder</strong>
+                from the host (recommended). Keep the harness files and
+                <code>AGENTS.md</code>. Do not delete <code>kit/</code> in this
+                GitHub repo.
+              </li>
+            </ol>
+          </section>
 
           <h2 id="produces">What the skill writes</h2>
           <table>
@@ -191,7 +195,14 @@
             </tbody>
           </table>
 
-          <p><a href="harness.html">Back to step 1 · Harness</a></p>
+          <div class="prev-step" aria-labelledby="prev-step-heading">
+            <p class="section-label">Step 2 of 2</p>
+            <h2 id="prev-step-heading">Previous step</h2>
+            <p>Prepare the harness — plugins, skills lock, and native rules.</p>
+            <a class="btn" href="harness.html"
+              >Go to step 1 · Prepare the harness</a
+            >
+          </div>
         </main>
 
         <aside class="rail" aria-label="Raw files">
@@ -267,16 +278,5 @@
         as a local file.
       </footer>
     </div>
-
-    <script>
-      (function () {
-        var jump = document.getElementById("step-jump");
-        if (jump) {
-          jump.addEventListener("change", function () {
-            if (jump.value) location.href = jump.value;
-          });
-        }
-      })();
-    </script>
   </body>
 </html>

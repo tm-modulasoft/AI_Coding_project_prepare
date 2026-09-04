@@ -41,6 +41,15 @@
     </div>
 
     <div class="wrap">
+      <header class="site-header">
+        <a class="site-mark" href="START_HERE.html">AI Coding kit</a>
+        <nav class="site-nav" aria-label="Kit pages">
+          <a href="START_HERE.html" aria-current="page">Overview</a>
+          <a href="pages/harness.html">1 · Harness</a>
+          <a href="pages/prepare-project.html">2 · Project rules</a>
+        </nav>
+      </header>
+
       <section class="human-hero" id="humans" aria-labelledby="human-kicker">
         <p class="human-kicker" id="human-kicker">For humans</p>
         <h1>Prepare this project for AI agentic coding</h1>
@@ -55,20 +64,6 @@
           <a class="btn" href="#get-started">Get started</a>
           <a class="btn btn-ghost" href="#bootstrap">Copy bootstrap prompt</a>
         </p>
-        <nav class="kit-nav" aria-label="Kit steps">
-          <label>
-            Jump to step
-            <select id="step-jump">
-              <option value="" selected>Overview (this page)</option>
-              <option value="pages/harness.html">
-                1 · Prepare the harness
-              </option>
-              <option value="pages/prepare-project.html">
-                2 · Prepare project rules
-              </option>
-            </select>
-          </label>
-        </nav>
       </section>
 
       <section
@@ -241,13 +236,6 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre
 
     <script>
       (function () {
-        var jump = document.getElementById("step-jump");
-        if (jump) {
-          jump.addEventListener("change", function () {
-            if (jump.value) location.href = jump.value;
-          });
-        }
-
         function wireCopy(btn, source, status, okText) {
           if (!btn || !source) return;
           btn.addEventListener("click", function () {

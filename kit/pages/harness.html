@@ -24,7 +24,14 @@
     </div>
 
     <div class="wrap">
-      <p class="crumb"><a href="../START_HERE.html">Overview</a> · Step 1</p>
+      <header class="site-header">
+        <a class="site-mark" href="../START_HERE.html">AI Coding kit</a>
+        <nav class="site-nav" aria-label="Kit pages">
+          <a href="../START_HERE.html">Overview</a>
+          <a href="harness.html" aria-current="page">1 · Harness</a>
+          <a href="prepare-project.html">2 · Project rules</a>
+        </nav>
+      </header>
 
       <section class="human-hero" id="humans" aria-labelledby="human-kicker">
         <p class="human-kicker" id="human-kicker">For humans · Step 1 of 2</p>
@@ -37,20 +44,6 @@
           >
           — there is no CLI).
         </p>
-        <nav class="kit-nav" aria-label="Kit steps">
-          <label>
-            Jump to step
-            <select id="step-jump">
-              <option value="../START_HERE.html">Overview</option>
-              <option value="harness.html" selected>
-                1 · Prepare the harness
-              </option>
-              <option value="prepare-project.html">
-                2 · Prepare project rules
-              </option>
-            </select>
-          </label>
-        </nav>
       </section>
 
       <div class="layout">
@@ -221,18 +214,24 @@ npx skills experimental_install --yes</pre
             </li>
           </ul>
 
+          <div class="next-step" aria-labelledby="next-step-heading">
+            <p class="section-label">Step 1 of 2</p>
+            <h2 id="next-step-heading">Next step</h2>
+            <p>
+              When the harness files are in place, write the project rules
+              (<code>AGENTS.md</code>, helpers, shims).
+            </p>
+            <a class="btn" href="prepare-project.html"
+              >Go to step 2 · Prepare project rules</a
+            >
+          </div>
+
           <h2 id="teardown">After both steps</h2>
           <p>
             If <code>kit/</code> was fetched from GitHub into the host only to
             run prepare, delete that folder when you are happy with the harness
             + <code>AGENTS.md</code>. It is not needed at runtime. Do not delete
             <code>kit/</code> in this GitHub repo.
-          </p>
-
-          <p>
-            <a href="prepare-project.html"
-              >Continue to step 2 · Prepare project rules</a
-            >
           </p>
         </main>
 
@@ -299,12 +298,6 @@ npx skills experimental_install --yes</pre
 
     <script>
       (function () {
-        var jump = document.getElementById("step-jump");
-        if (jump) {
-          jump.addEventListener("change", function () {
-            if (jump.value) location.href = jump.value;
-          });
-        }
         function wire(id) {
           var btn = document.querySelector('[data-copy="' + id + '"]');
           var source = document.getElementById(id);

@@ -19,7 +19,8 @@
   --sans: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --serif: Georgia, "Times New Roman", serif;
   --mono: "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
-  --radius: 2px;
+  --radius: 4px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 * {
@@ -72,8 +73,7 @@ a:hover {
   color: var(--forest-2);
 }
 a:focus-visible,
-button:focus-visible,
-select:focus-visible {
+button:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
@@ -89,6 +89,11 @@ select:focus-visible {
   text-decoration: none;
   font-size: 0.9rem;
   border-radius: var(--radius);
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
 }
 .btn:hover {
   background: var(--forest);
@@ -96,7 +101,7 @@ select:focus-visible {
   color: var(--paper);
 }
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 .btn-ghost {
   background: transparent;
@@ -124,7 +129,7 @@ button.btn {
   color: var(--forest-ink);
   padding: var(--space-6) var(--space-5);
   margin: 0 0 var(--space-6);
-  border: 1px solid var(--ink);
+  border-radius: var(--radius);
 }
 .human-hero a {
   color: #d7efe0;
@@ -149,13 +154,16 @@ button.btn {
   font-weight: 500;
   line-height: 1.2;
   margin: 0 0 var(--space-4);
-  max-width: 22ch;
+  max-width: 28ch;
   color: #fff;
 }
 .human-hero .lede {
   margin: 0 0 var(--space-5);
   max-width: var(--measure);
   color: var(--forest-ink);
+}
+.human-hero .lede:last-child {
+  margin-bottom: 0;
 }
 .human-hero .btn {
   background: #fff;
@@ -177,33 +185,47 @@ button.btn {
   color: #fff;
 }
 
-.kit-nav {
+.site-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: var(--space-3);
-  margin: var(--space-5) 0 0;
+  margin: 0 0 var(--space-5);
 }
-.kit-nav label {
+.site-mark {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.site-mark:hover {
+  color: var(--forest);
+}
+.site-nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-2);
-  font-size: 0.85rem;
+  gap: var(--space-1);
 }
-.kit-nav select {
-  font: inherit;
-  font-size: 0.9rem;
-  padding: 0.4rem 0.55rem;
-  border: 1px solid currentColor;
-  background: #fff;
-  color: var(--ink);
-  border-radius: var(--radius);
-  min-width: 14rem;
+.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms var(--ease-out);
 }
-
-.human-hero .kit-nav label {
-  color: var(--forest-ink);
+.site-nav a[aria-current="page"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.site-nav a:active {
+  transform: scale(0.97);
 }
 
 .tiles {
@@ -222,10 +244,20 @@ button.btn {
   background: var(--paper);
   padding: var(--space-5);
   min-height: 11rem;
+  border-radius: var(--radius);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
 }
-.tile:hover {
-  background: var(--paper-2);
-  color: var(--ink);
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover {
+    background: var(--paper-2);
+    color: var(--ink);
+  }
+  .site-nav a:hover:not([aria-current="page"]) {
+    background: var(--paper-2);
+    color: var(--ink);
+  }
 }
 .tile-num {
   display: grid;
@@ -233,6 +265,7 @@ button.btn {
   width: 1.75rem;
   height: 1.75rem;
   border: 1px solid var(--ink);
+  border-radius: var(--radius);
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
   margin-bottom: var(--space-3);
@@ -258,13 +291,18 @@ button.btn {
   color: var(--forest);
 }
 
-.get-started {
-  border: 2px solid var(--ink);
+.get-started,
+.next-step,
+.prev-step {
+  border: 1px solid var(--ink);
   padding: var(--space-5);
   margin: 0 0 var(--space-6);
   background: var(--paper-2);
+  border-radius: var(--radius);
 }
-.get-started h2 {
+.get-started h2,
+.next-step h2,
+.prev-step h2 {
   margin-top: 0;
   padding-top: 0;
   border-top: 0;
@@ -272,13 +310,27 @@ button.btn {
 .get-started .steps {
   margin-bottom: 0;
 }
+.next-step,
+.prev-step {
+  margin-top: var(--space-7);
+  border-color: var(--forest);
+}
+.next-step h2,
+.prev-step h2 {
+  font-size: 1.5rem;
+}
+.next-step h2 + p,
+.prev-step h2 + p {
+  margin: 0 0 var(--space-4);
+}
 
 .section-label {
   margin: 0 0 var(--space-3);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--forest);
 }
 
 h2 {
@@ -333,6 +385,7 @@ li + li {
   width: 1.5rem;
   height: 1.5rem;
   border: 1px solid var(--ink);
+  border-radius: var(--radius);
   display: grid;
   place-items: center;
   font-size: 0.75rem;
@@ -344,6 +397,7 @@ li + li {
   border: 1px solid var(--ink);
   padding: var(--space-4);
   margin: var(--space-4) 0;
+  border-radius: var(--radius);
 }
 .slip-head {
   display: flex;
@@ -410,6 +464,7 @@ th {
   border: 1px solid var(--rule);
   padding: var(--space-4);
   background: var(--paper);
+  border-radius: var(--radius);
 }
 .rail h2 {
   font-family: var(--sans);
@@ -442,6 +497,7 @@ th {
   background: var(--paper);
   color: var(--ink-soft);
   font-size: 0.9rem;
+  border-radius: var(--radius);
 }
 .agent-hint h2 {
   font-family: var(--sans);
@@ -458,25 +514,6 @@ th {
 }
 .agent-hint li {
   max-width: none;
-}
-
-.page-stamp {
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin: 0 0 var(--space-2);
-}
-.page-title {
-  font-family: var(--serif);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 500;
-  margin: 0 0 var(--space-4);
-}
-
-.crumb {
-  font-size: 0.85rem;
-  margin: 0 0 var(--space-4);
 }
 
 #bootstrap-prompt,
@@ -503,7 +540,8 @@ footer {
   html {
     scroll-behavior: auto;
   }
-  .btn:active {
+  .btn:active,
+  .site-nav a:active {
     transform: none;
   }
 }
@@ -512,7 +550,7 @@ footer {
   .cta-row,
   button,
   .skip-group,
-  .kit-nav {
+  .site-nav {
     display: none !important;
   }
   .rail {
