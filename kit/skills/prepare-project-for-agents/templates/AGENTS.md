@@ -22,6 +22,8 @@ Do not invent a second style guide. Do not average conflicting rules.
 <!-- Tree of dirs that matter. One line each: what it is + why it lives there. Include seams. -->
 
 ```
+AI_CODING_README.md                     Human cheat sheet (workflow, skill cmds)
+AI_CODING_LEARN.md                      Mandatory intros and tutorials
 src/
   <!-- … -->
 ```

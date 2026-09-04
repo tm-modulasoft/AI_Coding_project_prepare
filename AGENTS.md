@@ -16,7 +16,7 @@ kit/                                    Payload the agent fetches onto a host
   START_HERE.html                       Human-first hub + compact agent hint
   pages/                                Step detail (harness, project rules) + kit.css
   prompts/bootstrap.md                  Same prompt as README (keep in sync with the HTML)
-  harness-defaults/                     Payloads merged into the host (lock, ai-coding-native-rules, IDE/CLI)
+  harness-defaults/                     Payloads merged into the host (lock, AI_CODING_README, AI_CODING_LEARN, ai-coding-native-rules, IDE/CLI)
   skills/prepare-project-for-agents/    The skill. SKILL.md is the spine; references/ and templates/ load on demand
 ```
 
@@ -58,3 +58,5 @@ kit/                                    Payload the agent fetches onto a host
 - Harness (step 1) — `kit/skills/prepare-project-for-agents/references/harness.md`
 - Full instruction runbook (step 2) — `kit/skills/prepare-project-for-agents/references/instruction-prompt.md`
 - Golden defaults — `kit/skills/prepare-project-for-agents/references/golden-rules.md`
+- Host human cheat sheet — `kit/harness-defaults/AI_CODING_README.md`
+- Host intros and tutorials — `kit/harness-defaults/AI_CODING_LEARN.md`

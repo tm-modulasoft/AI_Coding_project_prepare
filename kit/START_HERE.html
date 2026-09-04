@@ -19,14 +19,16 @@
          harness-defaults/skills-lock.json → skills-lock.json,
          YOU run npx skills experimental_install --yes from the host root
          (GitHub skill sources in the lockfile),
-         gitignore .agents/skills/, harness-defaults/ai-coding-native-rules.md → alwaysApply ai-coding-native-rules.mdc.
+         gitignore .agents/skills/, harness-defaults/AI_CODING_README.md → host AI_CODING_README.md,
+         harness-defaults/AI_CODING_LEARN.md → host AI_CODING_LEARN.md,
+         harness-defaults/ai-coding-native-rules.md → alwaysApply ai-coding-native-rules.mdc.
          Human: /add-plugin … only if those plugins are not already installed (no CLI).
        Step 2 Project rules: SKILL.md then references/instruction-prompt.md and golden-rules.md
          AGENTS.md, helpers, vendor shims.
     4. Next file (mandatory): skills/prepare-project-for-agents/SKILL.md
     5. Host project = git toplevel. If this kit sits in a subfolder, write into the host, not the kit.
     6. After both steps: if you fetched this folder from GitHub in this run, ask to delete it
-       (recommended: yes). Keep .cursor/, skills-lock.json, AGENTS.md, helpers, shims.
+       (recommended: yes). Keep .cursor/, skills-lock.json, AI_CODING_README.md, AI_CODING_LEARN.md, AGENTS.md, helpers, shims.
        Do not delete kit/ if git remote is tm-modulasoft/AI_Coding_project_prepare.
     7. Humans use the visible page. Step detail: pages/harness.html and pages/prepare-project.html.
     8. Do not ask the user to paste SKILL.md. Do not commit unless asked.
@@ -92,8 +94,9 @@
           <li>
             <strong>Then delete this fetched folder</strong> from the host
             (recommended). It is the installer. Keep <code>.cursor/</code>,
-            <code>skills-lock.json</code>, <code>AGENTS.md</code>, helpers, and
-            shims. Do not delete <code>kit/</code> inside this GitHub repo.
+            <code>skills-lock.json</code>, <code>AI_CODING_README.md</code>,
+            <code>AI_CODING_LEARN.md</code>, <code>AGENTS.md</code>, helpers,
+            and shims. Do not delete <code>kit/</code> inside this GitHub repo.
           </li>
         </ol>
       </section>

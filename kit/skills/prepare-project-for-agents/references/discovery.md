@@ -8,7 +8,7 @@ After this pass, merge with `references/golden-rules.md`: project standard if mo
 
 Look for and read:
 
-- `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `AGENT.md`
+- `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `AGENT.md`, `AI_CODING_README.md`, `AI_CODING_LEARN.md`
 - `.cursorrules`, `.cursor/rules/**`
 - `.github/copilot-instructions.md`, `.github/instructions/**`
 - `.claude/`, `.agents/`, `.windsurfrules`
@@ -22,6 +22,8 @@ Look for and read:
 - `.cursor/settings.json` (especially `plugins`)
 - `.cursor/cli.json`
 - `skills-lock.json`
+- `AI_CODING_README.md`
+- `AI_CODING_LEARN.md`
 - `.gitignore` (whether `.agents/skills/` is ignored)
 - `.cursor/rules/ai-coding-native-rules.mdc`
 

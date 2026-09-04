@@ -49,6 +49,8 @@ Follow `templates/AGENTS.md`. Cover the six areas that empirically matter: **com
 
 Suggested sections (drop empties): Project, Precedence, Layout (including **seams**), Commands (near the top), Tools, Conventions, Boundaries, Testing, Git / PRs, Pointers, Gotchas.
 
+Do not copy `AI_CODING_README.md` or `AI_CODING_LEARN.md` into this file. Those are step 1 (human). Point at them from Layout if useful.
+
 **Tools** (always include a short stanza, even when `.cursor/rules/ai-coding-native-rules.mdc` exists): prefer **Context7 MCP** over client web search / training memory for library and framework docs; prefer **Sonatype MCP** for package version selection and security; GitHub via `gh` CLI only. Do not paste the full native-rules workflow here — that file is step 1.
 
 ### 2. Helper files (on-demand)
@@ -108,11 +110,15 @@ Do **not** rewrite step 1’s `.cursor/rules/ai-coding-native-rules.mdc` here. G
 
 ### 4. README touch (minimal)
 
-If README has no pointer, add one line under Contributing/Development:
+If README has no pointer, add one or two lines under Contributing/Development:
 
 `Coding agents: read AGENTS.md.`
 
+`Humans: AI_CODING_README.md (cmds). Intros: AI_CODING_LEARN.md.`
+
 Do not otherwise rewrite README.
+
+If step 1 was skipped (`--instructions-only`) and the host is missing `AI_CODING_README.md` or `AI_CODING_LEARN.md`, copy the missing files from `harness-defaults/`.
 
 ## Defaults if working principles were not elicited
 

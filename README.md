@@ -28,7 +28,7 @@ Same prompt: [`kit/prompts/bootstrap.md`](kit/prompts/bootstrap.md).
 
 ## After setup, delete the copy?
 
-**Yes**, if the agent fetched `kit/` into another project only to run prepare. It is an installer. Keep `.cursor/`, `skills-lock.json`, `AGENTS.md`, helpers, and shims.
+**Yes**, if the agent fetched `kit/` into another project only to run prepare. It is an installer. Keep `.cursor/`, `skills-lock.json`, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `AGENTS.md`, helpers, and shims.
 
 **No**, do not delete `kit/` inside _this_ repository.
 
@@ -41,14 +41,14 @@ Working in _this_ clone: open [kit/START_HERE.html](kit/START_HERE.html).
 
 ## What this is
 
-| Piece                                    | Role                                                                                                                     |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `kit/`                                   | Payload the agent fetches onto a host                                                                                    |
-| `kit/START_HERE.html`                    | Local hub after fetch. **For humans** plus a compact agent hint.                                                         |
-| `kit/pages/`                             | Step detail (harness, project rules) plus `kit.css`.                                                                     |
-| `kit/prompts/bootstrap.md`               | Same prompt as this README. Keep them identical.                                                                         |
-| `kit/skills/prepare-project-for-agents/` | The skill the agent must Read and execute.                                                                               |
-| `kit/harness-defaults/`                  | Host payloads: skills lock (GitHub skill sources), `ai-coding-native-rules.md`, Cursor plugin settings, CLI permissions. |
+| Piece                                    | Role                                                                                                                                                                  |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `kit/`                                   | Payload the agent fetches onto a host                                                                                                                                 |
+| `kit/START_HERE.html`                    | Local hub after fetch. **For humans** plus a compact agent hint.                                                                                                      |
+| `kit/pages/`                             | Step detail (harness, project rules) plus `kit.css`.                                                                                                                  |
+| `kit/prompts/bootstrap.md`               | Same prompt as this README. Keep them identical.                                                                                                                      |
+| `kit/skills/prepare-project-for-agents/` | The skill the agent must Read and execute.                                                                                                                            |
+| `kit/harness-defaults/`                  | Host payloads: skills lock (GitHub skill sources), `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `ai-coding-native-rules.md`, Cursor plugin settings, CLI permissions. |
 
 Step 2 writes a lean [`AGENTS.md`](https://agents.md) spine, on-demand helpers, and thin vendor shims.
 

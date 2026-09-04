@@ -13,7 +13,8 @@ A teammate who clones the host can:
 1. Restore skills from GitHub via `skills-lock.json` (`npx skills experimental_install --yes` — agent already ran this once during prepare).
 2. Install the default Cursor plugins (`/add-plugin …`) if this machine does not already have them.
 3. Get house workflow + tool defaults injected every chat (native rule).
-4. Then run step 2 (or find `AGENTS.md` already written in the same prepare run).
+4. Read `AI_CODING_README.md` for human notes (workflow, skill cmds, plugins). Intros and tutorials: `AI_CODING_LEARN.md`.
+5. Then run step 2 (or find `AGENTS.md` already written in the same prepare run).
 
 ## Non-goals
 
@@ -26,6 +27,8 @@ A teammate who clones the host can:
 | Kit path                                     | Host destination                                                 |
 | -------------------------------------------- | ---------------------------------------------------------------- |
 | `harness-defaults/skills-lock.json`          | `skills-lock.json` (git root)                                    |
+| `harness-defaults/AI_CODING_README.md`       | `AI_CODING_README.md` (git root, human cheat sheet)              |
+| `harness-defaults/AI_CODING_LEARN.md`        | `AI_CODING_LEARN.md` (git root, intros and tutorials)            |
 | `harness-defaults/ai-coding-native-rules.md` | `.cursor/rules/ai-coding-native-rules.mdc` (`alwaysApply: true`) |
 | `harness-defaults/cursor-settings.json`      | merge into `.cursor/settings.json`                               |
 | `harness-defaults/cli.json`                  | `.cursor/cli.json` if missing or empty of `permissions`          |
@@ -100,7 +103,18 @@ Ensure this block exists (create the file if needed; otherwise append if missing
 
 Do not gitignore `skills-lock.json`.
 
-### 5. Native rules (pre-prompt / always-on)
+### 5. Human notes (`AI_CODING_README.md`, `AI_CODING_LEARN.md`)
+
+Copy from kit `harness-defaults/` to the host git root **verbatim**:
+
+- `AI_CODING_README.md` — cheat sheet (cmds, loop, plugins)
+- `AI_CODING_LEARN.md` — mandatory intros and tutorials
+
+If either path already exists, backup to `*.bak` and merge: keep human notes that are still true; replace kit-owned sections that drifted.
+
+These files are for developers. Do not paste them into `AGENTS.md`.
+
+### 6. Native rules (pre-prompt / always-on)
 
 Cursor injects `.cursor/rules/*.mdc` with `alwaysApply: true` into every chat — that is the project-level equivalent of a pre-prompt. User Rules in Customize are global and cannot be set from the repo.
 
@@ -130,4 +144,4 @@ Optional human: paste `harness-defaults/ai-coding-native-rules.md` into Cursor C
 
 ## After harness files
 
-List in the report: created/merged paths, whether `experimental_install` succeeded, missing `/add-plugin` lines (or “already installed”), and plugin keys to connect. Then continue to step 2 unless the user asked for harness only.
+List in the report: created/merged paths (including `AI_CODING_README.md` and `AI_CODING_LEARN.md`), whether `experimental_install` succeeded, missing `/add-plugin` lines (or “already installed”), and plugin keys to connect. Then continue to step 2 unless the user asked for harness only.

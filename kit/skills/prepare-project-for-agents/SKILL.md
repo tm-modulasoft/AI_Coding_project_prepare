@@ -31,7 +31,7 @@ Then continue.
 2. **Host project** — git toplevel of the workspace being prepared.
    - Kit root is the git root → host is this repo.
    - Kit root is a subdirectory → host is the parent git root. Write agent files into the host, not into the kit.
-3. If `AGENTS.md` / `CLAUDE.md` / `.cursor/rules/ai-coding-native-rules.mdc` already exist, copy to `*.bak` first, then merge (keep human steering that is still true; replace anything the code or kit defaults contradict).
+3. If `AGENTS.md` / `CLAUDE.md` / `AI_CODING_README.md` / `AI_CODING_LEARN.md` / `.cursor/rules/ai-coding-native-rules.mdc` already exist, copy to `*.bak` first, then merge (keep human steering that is still true; replace anything the code or kit defaults contradict).
 
 ## Mandatory reads
 
@@ -46,7 +46,7 @@ Two steps. Do not skip the harness unless the user passed `--instructions-only`.
 
 ### 1. Harness first
 
-IDE/CLI defaults, plugin enablement, `skills-lock.json`, `.agents/skills/` gitignore, always-on native rules.
+IDE/CLI defaults, plugin enablement, `skills-lock.json`, `.agents/skills/` gitignore, `AI_CODING_README.md` + `AI_CODING_LEARN.md`, always-on native rules.
 
 **You** run `npx skills experimental_install --yes` from the host git root (needs network). That restores skills from **GitHub** sources listed in `skills-lock.json`. Do not leave it for the human.
 
@@ -65,7 +65,7 @@ Marketplace plugins have **no CLI**. After merging `.cursor/settings.json`, chec
 
 ### After both steps — copied kit folder
 
-The kit is an **installer**, not runtime. Durable host files: `.cursor/`, `skills-lock.json`, `.gitignore` skills block, `AGENTS.md`, helpers, shims.
+The kit is an **installer**, not runtime. Durable host files: `.cursor/`, `skills-lock.json`, `.gitignore` skills block, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `AGENTS.md`, helpers, shims.
 
 If you **fetched** `kit/` from GitHub in this run:
 
@@ -78,6 +78,7 @@ Do **not** offer to delete `kit/` if this git remote is `tm-modulasoft/AI_Coding
 
 - Root `AGENTS.md` is always-on context. Aim <250 lines, hard cap ~400.
 - Filename is exactly `AGENTS.md` (uppercase, plural). Plain Markdown. No required headings.
+- `AI_CODING_README.md` is the human cheat sheet (copied from `harness-defaults/`). `AI_CODING_LEARN.md` is intros and tutorials. Do not fork either into `AGENTS.md`.
 - Closest nested `AGENTS.md` wins; do not copy the root stack into every package.
 - Cursor `.mdc` rules are globbed pointers, not a second copy of `AGENTS.md` — **except** `.cursor/rules/ai-coding-native-rules.mdc` (`alwaysApply: true`) from step 1.
 - `CLAUDE.md` is `@AGENTS.md`, not a fork.
@@ -102,4 +103,4 @@ Do **not** offer to delete `kit/` if this git remote is `tm-modulasoft/AI_Coding
 - `templates/theming.md` — tokens, layers, no one-off values
 - `templates/cursor-rule.mdc` — globbed Cursor rule stub
 - `templates/report.md` — end-of-run report
-- Kit `harness-defaults/` — skills lock, `ai-coding-native-rules.md`, `cursor-settings.json`, `cli.json`
+- Kit `harness-defaults/` — skills lock, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `ai-coding-native-rules.md`, `cursor-settings.json`, `cli.json`
