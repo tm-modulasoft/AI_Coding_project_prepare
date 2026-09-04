@@ -58,26 +58,40 @@ Run from the **repo root**. Installs land in `.agents/skills/` (gitignored). Com
 | Apply updates                                                | `npx skills update --yes`               |
 | List what is installed                                       | `npx skills list`                       |
 
-**This kit uses only three Matt Pocock skills** (not the whole catalog):
+**Default sources** (already in `skills-lock.json`). Day-to-day restore is the lockfile. Use `add` when those GitHub repos gained skills this lock does not have yet:
 
 ```bash
-npx skills add mattpocock/skills --skill improve-codebase-architecture research codebase-design --yes
-```
-
-**New skills from a whole collection** (not day-to-day restore — use when those repos added skills you do not have yet):
-
-```bash
-npx skills add emilkowalski/skills --yes
 npx skills add coleam00/skills --yes
+npx skills add forrestchang/andrej-karpathy-skills --yes
+npx skills add emilkowalski/skills --yes
+npx skills add mattpocock/skills --skill improve-codebase-architecture research codebase-design --yes
+npx skills add addyosmani/agent-skills --yes \
+  -s frontend-ui-engineering \
+  -s api-and-interface-design \
+  -s security-and-hardening \
+  -s performance-optimization \
+  -s code-simplification \
+  -s source-driven-development \
+  -s browser-testing-with-devtools \
+  -s debugging-and-error-recovery \
+  -s observability-and-instrumentation \
+  -s ci-cd-and-automation \
+  -s documentation-and-adrs \
+  -s shipping-and-launch \
+  -s constraint-driven-development \
+  -s deprecation-and-migration
+npx skills add addyosmani/agent-skills --yes \
+  -s idea-refine \
+  -s code-review-and-quality
 ```
 
-Then commit the updated `skills-lock.json`.
+Matt Pocock: **only those three** skills, not the whole catalog. Then commit the updated `skills-lock.json`.
 
 Browse more: [skills.sh](https://skills.sh/). Search: `npx skills find [query]`.
 
 ## Cursor plugins (once per machine)
 
-No install CLI. If a plugin is missing, paste in Cursor chat and reload:
+Default MCPs / marketplace plugins. No install CLI. If a plugin is missing, paste in Cursor chat and reload:
 
 ```
 /add-plugin cursor-team-kit
@@ -85,6 +99,11 @@ No install CLI. If a plugin is missing, paste in Cursor chat and reload:
 /add-plugin sonatype-cursor-plugin
 /add-plugin modern-web-guidance
 ```
+
+- Cursor Team Kit — `cursor-team-kit`
+- Context7 — `context7-plugin`
+- Sonatype — `sonatype-cursor-plugin`
+- Modern Web Guidance — `modern-web-guidance`
 
 Connect Context7 and Sonatype in Customize. `"key": true` in settings means “connect in the UI,” not “put the secret in git.”
 

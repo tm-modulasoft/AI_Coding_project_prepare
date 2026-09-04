@@ -90,7 +90,7 @@ npx skills experimental_install --yes
 
 If the command fails, retry once. If it still fails, do not mark this harness item complete — print the exact command for the human.
 
-`harness-defaults/ai-coding-native-rules.md` may name extra **global** workflow skills (for example coleam00 / PIV). Those are not in the project lock. Do not add them to `skills-lock.json` unless the user asks.
+The default lock already includes coleam00 (PIV / house loop), Karpathy guidelines, Emil Kowalski, three Matt Pocock skills, and selected Addy Osmani skills. Do not add extra GitHub sources to `skills-lock.json` unless the user asks.
 
 ### 4. `.gitignore`
 
