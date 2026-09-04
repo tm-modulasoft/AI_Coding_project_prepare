@@ -23,7 +23,7 @@ Look for and read:
 - `.cursor/cli.json`
 - `skills-lock.json`
 - `.gitignore` (whether `.agents/skills/` is ignored)
-- `.cursor/rules/native-rules.mdc`
+- `.cursor/rules/ai-coding-native-rules.mdc`
 
 If the host already has a richer plugin list or lockfile, keep extras. Step 1 is `references/harness.md`.
 

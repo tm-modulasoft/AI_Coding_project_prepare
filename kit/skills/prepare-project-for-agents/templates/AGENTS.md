@@ -43,6 +43,7 @@ src/
 - Typecheck: ``
 - Lint: ``
 - Build: ``
+- Restore agent skills: `npx skills experimental_install --yes`
 
 ## Tools
 

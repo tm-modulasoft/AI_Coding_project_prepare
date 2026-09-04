@@ -1,0 +1,10 @@
+Prepare this project for AI agentic coding.
+
+1. If this workspace has no `kit/skills/prepare-project-for-agents/SKILL.md`, fetch `kit/` from https://github.com/tm-modulasoft/AI_Coding_project_prepare into this repo as `kit/`. Shallow-clone into a temp dir (`gh repo clone tm-modulasoft/AI_Coding_project_prepare .ai-coding-kit-src -- --depth 1` or `git clone --depth 1 https://github.com/tm-modulasoft/AI_Coding_project_prepare.git .ai-coding-kit-src`), copy only `.ai-coding-kit-src/kit` → `kit/`, delete the temp dir. Do not copy the kit repo's README, AGENTS.md, or .git.
+2. Read `kit/START_HERE.html`, then execute `kit/skills/prepare-project-for-agents/SKILL.md`. Two steps, in order — do not skip the harness.
+3. Host = this repo's git root. Write harness files and `AGENTS.md` into the host, not into `kit/`.
+4. Harness: copy `kit/harness-defaults/skills-lock.json` to the host if missing. You MUST restore skills from that lock (GitHub sources) with `npx skills experimental_install --yes` at the host root. Marketplace plugins have no CLI — after writing `.cursor/settings.json`, tell me to paste `/add-plugin …` for any plugin not already installed on this machine, then reload.
+5. Then write AGENTS.md / helpers / shims from `instruction-prompt.md` + `golden-rules.md`. Do not invent conventions. Project standards win when more correct or specific. Do not commit unless asked.
+6. After both steps: if you fetched `kit/` in this run, ask before deleting it (recommended: yes — installer). Keep harness files + AGENTS.md. Do not delete `kit/` if this git remote is `tm-modulasoft/AI_Coding_project_prepare`.
+
+Do not ask me to paste the skill. Load it from disk and run it.

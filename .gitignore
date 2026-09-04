@@ -5,5 +5,5 @@ Thumbs.db
 .idea/
 *.log
 
-# Installed agent skills (restore with: npx skills experimental_install)
+# Installed agent skills (restore with: npx skills experimental_install --yes)
 .agents/skills/
