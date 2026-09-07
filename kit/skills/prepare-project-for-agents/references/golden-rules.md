@@ -8,12 +8,12 @@ A golden rule is a **checkable default** from a named standard (W3C, OWASP, lang
 
 Golden rules are the **default floor** when the host is silent. They are **not a ceiling** and **not a second style guide**.
 
-| Rank | Wins when | Examples |
-|---|---|---|
-| 1. User chat | Always | "use tabs", "skip dark mode" |
-| 2. Host project standard | Taste, architecture, stack, naming, formatting, tokens, and any choice already made in code, linters, architecture spec, or existing `AGENTS.md` — **if it is more correct for this codebase** (matches what the code does, is internally consistent, or is *stricter* than the golden floor) | Prettier config, `tsconfig`, token file, existing button anatomy, AAA contrast if they already require it |
-| 3. Golden default | Host is silent **and** the rule applies to this stack | WCAG 2.2 AA on a UI; PEP 8 on Python with no formatter; Conventional Commits when no commitlint |
-| 4. Model habit | Never write this | Purple gradients, invented hex, generic "best practices" |
+| Rank                     | Wins when                                                                                                                                                                                                                                                                                     | Examples                                                                                                  |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| 1. User chat             | Always                                                                                                                                                                                                                                                                                        | "use tabs", "skip dark mode"                                                                              |
+| 2. Host project standard | Taste, architecture, stack, naming, formatting, tokens, and any choice already made in code, linters, architecture spec, or existing `AGENTS.md` — **if it is more correct for this codebase** (matches what the code does, is internally consistent, or is _stricter_ than the golden floor) | Prettier config, `tsconfig`, token file, existing button anatomy, AAA contrast if they already require it |
+| 3. Golden default        | Host is silent **and** the rule applies to this stack                                                                                                                                                                                                                                         | WCAG 2.2 AA on a UI; PEP 8 on Python with no formatter; Conventional Commits when no commitlint           |
+| 4. Model habit           | Never write this                                                                                                                                                                                                                                                                              | Purple gradients, invented hex, generic "best practices"                                                  |
 
 **More correct (keep the project):** stricter a11y than AA; a real token pipeline; a documented rejection of a popular pattern; formatter/compiler as the style spec.
 
@@ -21,7 +21,7 @@ Golden rules are the **default floor** when the host is silent. They are **not a
 
 **Conflict test (do not average):**
 
-1. Project *explicitly* rejects a golden rule (linter, repeated pattern, documented Excluded) and it is a taste/architecture choice → Canonical = project; Excluded = the golden rule + why.
+1. Project _explicitly_ rejects a golden rule (linter, repeated pattern, documented Excluded) and it is a taste/architecture choice → Canonical = project; Excluded = the golden rule + why.
 2. Project is silent and the rule applies → Canonical = golden, mark `golden:`.
 3. Following the golden rule would fight the formatter, compiler, or token file → drop the golden rule.
 4. Project practice is a safety/a11y defect → golden floor stays; Gotchas names the defect; do not encode it as Canonical.
@@ -43,9 +43,12 @@ Source: [AGENTS.md](https://agents.md) (AAIF / Linux Foundation), [Claude Code m
 - Filename `AGENTS.md` (uppercase, plural). Plain Markdown; no required headings.
 - Cover what empirically matters: **commands, testing, structure, code style, git, boundaries**.
 - Commands are copy-paste runnable (or marked placeholder). Prefer what CI runs.
-- Closest nested `AGENTS.md` wins; user chat overrides files. Nested files are **deltas**.
+- Closest nested `AGENTS.md` wins; user chat overrides files. Nested files are **deltas** for real monorepo packages, not for language/glob scoping.
+- Keep the spine lean; **Pointers** tell every agent which helper to Read before editing an area (portable when-to-load). Do not encode that as Cursor `.mdc` globs or Claude path-scoped rules — those are vendor-only and invisible to other harnesses.
+- Do not `@import` on-demand helpers into `AGENTS.md`. Claude Code inlines `@path` at launch; wrap paths in backticks and instruct Read.
 - README = humans. Agent ops = `AGENTS.md` + helpers. If both list a command, they must match.
-- Keep the spine lean; link out. Do not dump PRDs or this catalog.
+- Tools that cannot read `AGENTS.md` get a thin shim (`CLAUDE.md` `@AGENTS.md`; Copilot pointer). Aider/Gemini: only if already in the host, point them at `AGENTS.md` per the [agents.md](https://agents.md) FAQ (`read: AGENTS.md` / `context.fileName`).
+- Do not dump PRDs or this catalog.
 
 ## README (human)
 
@@ -53,16 +56,16 @@ There is no ISO README format. The globally accepted **jobs** (not required head
 
 The README stays human-facing. Do not copy this catalog or `AGENTS.md` into it.
 
-| Job | Common headings (synonyms count) | Skip when |
-| --- | -------------------------------- | --------- |
-| What | Title + short description | Never when creating; keep an existing title |
-| Why | Description, Features, Background | Already obvious from What; do not invent marketing |
-| Start | Quick start, Install, Getting started, Setup | Docs-only / not runnable |
-| Use | Usage, Commands, Examples | No public usage surface |
-| Help | Support, FAQ, Issues, Docs link | No real help channel — omit rather than invent |
-| Contribute | Contributing — link `CONTRIBUTING.md` if present | No contributing path; do not invent an OSS policy |
-| License | License — SPDX name + link to `LICENSE` | No license file; **never invent a license** |
-| Agents (kit) | Pointer to `AGENTS.md` / `AI_CODING_README.md` / `AI_CODING_LEARN.md` | Never skip on a prepared host |
+| Job          | Common headings (synonyms count)                                      | Skip when                                          |
+| ------------ | --------------------------------------------------------------------- | -------------------------------------------------- |
+| What         | Title + short description                                             | Never when creating; keep an existing title        |
+| Why          | Description, Features, Background                                     | Already obvious from What; do not invent marketing |
+| Start        | Quick start, Install, Getting started, Setup                          | Docs-only / not runnable                           |
+| Use          | Usage, Commands, Examples                                             | No public usage surface                            |
+| Help         | Support, FAQ, Issues, Docs link                                       | No real help channel — omit rather than invent     |
+| Contribute   | Contributing — link `CONTRIBUTING.md` if present                      | No contributing path; do not invent an OSS policy  |
+| License      | License — SPDX name + link to `LICENSE`                               | No license file; **never invent a license**        |
+| Agents (kit) | Pointer to `AGENTS.md` / `AI_CODING_README.md` / `AI_CODING_LEARN.md` | Never skip on a prepared host                      |
 
 **Precedence (do not confront structure):**
 
@@ -79,17 +82,17 @@ Same rank as the rest of this catalog. Existing heading names, order, extra sect
 
 When the host is silent, consult the **official** guide for the detected language/framework (verify current docs; do not invent a second dialect). Overlay the project's formatter/linter — that overlay is rank 2.
 
-| Detected | Official / de facto (gap fill) |
-|---|---|
-| TypeScript / JavaScript | TypeScript Handbook + this repo's `tsconfig` / ESLint; MDN for web APIs |
-| Python | PEP 8, PEP 484; Ruff/Black config if present **is** the standard |
-| Go | Effective Go, Go Code Review Comments; `gofmt` is non-negotiable |
-| Rust | rustfmt + Rust API Guidelines |
-| C# | Microsoft C# coding conventions |
-| Java | This repo's Checkstyle/Spotless, else Google Java Format as a last resort |
-| HTML / CSS | HTML Living Standard, CSS spec; semantic HTML before ARIA |
-| SQL | Parameterized queries (OWASP); never concatenate untrusted input |
-| React / Vue / Angular / etc. | That framework's **current official** style guide and docs only |
+| Detected                     | Official / de facto (gap fill)                                            |
+| ---------------------------- | ------------------------------------------------------------------------- |
+| TypeScript / JavaScript      | TypeScript Handbook + this repo's `tsconfig` / ESLint; MDN for web APIs   |
+| Python                       | PEP 8, PEP 484; Ruff/Black config if present **is** the standard          |
+| Go                           | Effective Go, Go Code Review Comments; `gofmt` is non-negotiable          |
+| Rust                         | rustfmt + Rust API Guidelines                                             |
+| C#                           | Microsoft C# coding conventions                                           |
+| Java                         | This repo's Checkstyle/Spotless, else Google Java Format as a last resort |
+| HTML / CSS                   | HTML Living Standard, CSS spec; semantic HTML before ARIA                 |
+| SQL                          | Parameterized queries (OWASP); never concatenate untrusted input          |
+| React / Vue / Angular / etc. | That framework's **current official** style guide and docs only           |
 
 Do not write Language bullets for languages that are not in the stack.
 
@@ -119,20 +122,20 @@ Apply **only if a UI exists**. Default target: **WCAG 2.2 Level AA** ([W3C](http
 
 Translate Nielsen's [10 heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/) into states and behavior — do not paste the essay.
 
-| Floor | Checkable default |
-|---|---|
-| Semantics | Native HTML for controls (`button`, `a`, `input`, `label`, `dialog`). First rule of ARIA: no ARIA if a native element works ([APG](https://www.w3.org/WAI/ARIA/apg/)). |
-| Keyboard | All function available from the keyboard (2.1.1). Tab order = reading order. No positive `tabindex`. |
-| Focus | Visible indicator (2.4.7). Do not `outline: none` without an equal replacement. Focus not entirely hidden by sticky chrome (2.4.11). Move focus into dialogs; restore on close. |
-| Name | Every control has an accessible name; every input a programmatic label (placeholder is not a label). Informative images have `alt`; decorative `alt=""`. |
-| Contrast | Text 4.5:1 (3:1 large). UI/focus 3:1 (1.4.3, 1.4.11). Meaning is never color alone. |
-| Target | Pointer targets ≥ 24×24 CSS px (2.5.8) unless an existing kit documents otherwise. |
-| Motion | Honor `prefers-reduced-motion`. Do not animate high-frequency / keyboard-driven actions. |
-| States | Loading, empty, error, disabled — each has UI (heuristic 1, 9). Destructive actions have a way out (heuristic 3). |
-| Consistency | Use the host UI kit. Do not invent a second button, radius, or type scale (heuristic 4). |
-| Content | Real copy, not lorem. User language, not internal jargon (heuristic 2). |
-| Layout | Follow the host breakpoints. If silent: mobile-first, don't skip heading levels. |
-| Anti-slop | No generic "AI look": purple/indigo-by-default, oversized rounding, gradient soup, stock card grids, shadow stacks — unless the host design actually uses them (`repo:`). |
+| Floor       | Checkable default                                                                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Semantics   | Native HTML for controls (`button`, `a`, `input`, `label`, `dialog`). First rule of ARIA: no ARIA if a native element works ([APG](https://www.w3.org/WAI/ARIA/apg/)).          |
+| Keyboard    | All function available from the keyboard (2.1.1). Tab order = reading order. No positive `tabindex`.                                                                            |
+| Focus       | Visible indicator (2.4.7). Do not `outline: none` without an equal replacement. Focus not entirely hidden by sticky chrome (2.4.11). Move focus into dialogs; restore on close. |
+| Name        | Every control has an accessible name; every input a programmatic label (placeholder is not a label). Informative images have `alt`; decorative `alt=""`.                        |
+| Contrast    | Text 4.5:1 (3:1 large). UI/focus 3:1 (1.4.3, 1.4.11). Meaning is never color alone.                                                                                             |
+| Target      | Pointer targets ≥ 24×24 CSS px (2.5.8) unless an existing kit documents otherwise.                                                                                              |
+| Motion      | Honor `prefers-reduced-motion`. Do not animate high-frequency / keyboard-driven actions.                                                                                        |
+| States      | Loading, empty, error, disabled — each has UI (heuristic 1, 9). Destructive actions have a way out (heuristic 3).                                                               |
+| Consistency | Use the host UI kit. Do not invent a second button, radius, or type scale (heuristic 4).                                                                                        |
+| Content     | Real copy, not lorem. User language, not internal jargon (heuristic 2).                                                                                                         |
+| Layout      | Follow the host breakpoints. If silent: mobile-first, don't skip heading levels.                                                                                                |
+| Anti-slop   | No generic "AI look": purple/indigo-by-default, oversized rounding, gradient soup, stock card grids, shadow stacks — unless the host design actually uses them (`repo:`).       |
 
 If the host UI kit contradicts a taste heuristic (e.g. dense admin tables, terminal aesthetic), the kit wins. WCAG floors still apply.
 

@@ -130,11 +130,11 @@ Connect Context7 and Sonatype in Customize. `"key": true` in settings means “c
 
 ## Map
 
-| Path                                       | Role                                            |
-| ------------------------------------------ | ----------------------------------------------- |
-| `AGENTS.md`                                | Always-on spine for agents                      |
-| `docs/agents/`                             | On-demand depth (stack, conventions, UI, tests) |
-| `skills-lock.json`                         | Pinned skill sources — commit this              |
-| `.cursor/rules/ai-coding-native-rules.mdc` | Cursor house workflow + tools, every chat       |
-| `AI_CODING_LEARN.md`                       | Mandatory intros and tutorials                  |
-| This file                                  | Human cheat sheet                               |
+| Path                                       | Role                                                          |
+| ------------------------------------------ | ------------------------------------------------------------- |
+| `AGENTS.md`                                | Always-on spine for agents; Pointers say when to Read helpers |
+| `docs/agents/`                             | On-demand depth (stack, conventions, UI, tests)               |
+| `skills-lock.json`                         | Pinned skill sources — commit this                            |
+| `.cursor/rules/ai-coding-native-rules.mdc` | Cursor house workflow + tools, every chat (not project globs) |
+| `AI_CODING_LEARN.md`                       | Mandatory intros and tutorials                                |
+| This file                                  | Human cheat sheet                                             |

@@ -9,9 +9,9 @@ After this pass, merge with `references/golden-rules.md`: project standard if mo
 Look for and read:
 
 - `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `AGENT.md`, `AI_CODING_README.md`, `AI_CODING_LEARN.md`
-- `.cursorrules`, `.cursor/rules/**`
+- `.cursorrules`, `.cursor/rules/**` (fold globbed _project_ rules into helpers + Pointers; do not recreate them. Leave step 1 `ai-coding-native-rules.mdc` to harness merge)
 - `.github/copilot-instructions.md`, `.github/instructions/**`
-- `.claude/`, `.agents/`, `.windsurfrules`
+- `.claude/`, `.claude/rules/`, `.agents/`, `.windsurfrules`
 
 If replacing, copy to `*.bak` in the same directory.
 

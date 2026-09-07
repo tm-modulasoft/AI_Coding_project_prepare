@@ -74,14 +74,19 @@ src/
 
 ## Pointers
 
-Load the relevant helper before editing that area:
+This file is the index. Helpers are not always-on. Before you edit an area, **Read** the matching helper. Do not skip this because a vendor glob or path-scoped rule is missing. Wrap paths in backticks (do not `@import` helpers — that would load them every session).
 
-- Stack — `docs/agents/stack.md`
-- Best practices (Excluded / Canonical / Language) — `docs/agents/best-practices.md`
-- Conventions — `docs/agents/conventions.md`
-- UI/UX — `docs/agents/ui-ux.md`
-- Theming — `docs/agents/theming.md`
-- Testing — `docs/agents/testing.md`
+| When you are editing                                              | Read first                      |
+| ----------------------------------------------------------------- | ------------------------------- |
+| Stack / versions / toolchain                                      | `docs/agents/stack.md`          |
+| Naming, seams, errors, where new code goes                        | `docs/agents/conventions.md`    |
+| Excluded / Canonical / Language                                   | `docs/agents/best-practices.md` |
+| UI files (replace with host paths, e.g. `src/**/*.{tsx,html}`)    | `docs/agents/ui-ux.md`          |
+| Style files (replace with host paths, e.g. `src/**/*.{scss,css}`) | `docs/agents/theming.md`        |
+| Tests (replace with host test globs)                              | `docs/agents/testing.md`        |
+| Authz, secrets, PII                                               | `docs/agents/security.md`       |
+
+Drop rows whose helpers were not written. Fill the when-column with this repo's real paths.
 
 ## Gotchas
 

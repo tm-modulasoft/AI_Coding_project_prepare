@@ -8,11 +8,12 @@ Execute this runbook against the **host project** after `SKILL.md` path resoluti
 
 Produce a portable, lean, living agent context pack:
 
-1. Root **`AGENTS.md`** as the single source of truth (open format: https://agents.md).
+1. Root **`AGENTS.md`** as the single source of truth (open format: https://agents.md). Any AGENTS.md-compatible harness (Cursor, Codex, Copilot coding agent, Gemini CLI, Aider, goose, Amp, and others listed on that site) loads this file.
 2. **Helper files** for detail that should not sit always-on.
-3. **Thin compatibility shims** so vendor tools load the same truth without duplicating it.
-4. Nested `AGENTS.md` only if this is a real monorepo with meaningfully different packages.
-5. Host **README** that covers the golden human jobs (or already does, under this project's own headings).
+3. **Pointers** in `AGENTS.md` that tell _every_ agent which helper to **Read** before editing an area (portable when-to-load — not vendor globs).
+4. **Thin compatibility shims** only for tools that cannot read `AGENTS.md` (Claude Code `CLAUDE.md`, optional Copilot pointer). Do not invent a second instruction layer per IDE.
+5. Nested `AGENTS.md` only if this is a real monorepo with meaningfully different packages (closest file wins).
+6. Host **README** that covers the golden human jobs (or already does, under this project's own headings).
 
 Success = an agent that has never seen the setup conversation can clone the host, read `AGENTS.md`, follow pointers, run the real commands, place new code in the right seams, match UI/theming, and know what is forbidden. A human can open the README and learn what the project is, how to run it, and where agent notes live.
 
@@ -25,6 +26,7 @@ Success = an agent that has never seen the setup conversation can clone the host
 - Do not overwrite existing agent files without backing them up first.
 - Do not commit unless the user asks.
 - Do not invent a stack, a design system, or dark mode the host does not have.
+- Do not write globbed project Cursor `.mdc` rules or Claude `.claude/rules/` copies of helpers. When-to-load is Pointers in `AGENTS.md`.
 
 ## Source of truth (strict)
 
@@ -46,13 +48,17 @@ Create only what the host needs. Skip sections that have no evidence **and** no 
 
 ### 1. `AGENTS.md` (root, always-on spine)
 
-Follow `templates/AGENTS.md`. Cover the six areas that empirically matter: **commands, testing, structure, code style, git workflow, boundaries**. Include the **Precedence** stanza from the template.
+Follow `templates/AGENTS.md`. Cover the six areas that empirically matter: **commands, testing, structure, code style, git workflow, boundaries**. Include the **Precedence** stanza and a when-to-load **Pointers** table from the template.
 
 Suggested sections (drop empties): Project, Precedence, Layout (including **seams**), Commands (near the top), Tools, Conventions, Boundaries, Testing, Git / PRs, Pointers, Gotchas.
 
 Do not copy `AI_CODING_README.md` or `AI_CODING_LEARN.md` into this file. Those are step 1 (human). Point at them from Layout if useful.
 
-**Tools** (always include a short stanza, even when `.cursor/rules/ai-coding-native-rules.mdc` exists): prefer **Context7 MCP** over client web search / training memory for library and framework docs; prefer **Sonatype MCP** for package version selection and security; GitHub via `gh` CLI only. Do not paste the full native-rules workflow here — that file is step 1.
+**Tools** (always include a short stanza, even when `.cursor/rules/ai-coding-native-rules.mdc` exists): prefer **Context7 MCP** over client web search / training memory for library and framework docs; prefer **Sonatype MCP** for package version selection and security; GitHub via `gh` CLI only. Do not paste the full native-rules workflow here — that file is step 1 Cursor-only.
+
+**Pointers** (required): a table (or short list) of _when you are editing_ → _Read first_. Fill the when-column with **this host's paths** (for example `**/*.cs`, `ClientApp/src/**/*.{ts,html}`), not vendor frontmatter. One row per helper that exists. Instruct the agent to Read the helper before editing that area; do not wait for a Cursor glob or a Claude path-scoped rule.
+
+Wrap helper paths in **backticks**. Never write `@docs/agents/…` in `AGENTS.md` — Claude Code's `@path` import inlines the file at launch and would dump helpers into always-on context.
 
 ### 2. Helper files (on-demand)
 
@@ -94,20 +100,31 @@ Create as needed:
 
 Topics to consider (include only if evidenced): architecture boundaries, data fetching, state, errors, forms, styling, tokens, testing, concurrency, observability, i18n, package management.
 
-### 3. Compatibility shims (thin)
+### 3. Compatibility shims (thin — only if the tool cannot read `AGENTS.md`)
 
-| File                               | Content                                                                                                           |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `CLAUDE.md`                        | First line: `@AGENTS.md`. Add Claude-only hooks/skills **only if they already exist**. See `templates/CLAUDE.md`. |
-| `.github/copilot-instructions.md`  | 5–15 lines pointing at `AGENTS.md` and `docs/agents/*`. See `templates/copilot-instructions.md`.                  |
-| `.cursor/rules/*.mdc`              | Path-scoped, `alwaysApply: false`. Local must-dos + pointer to the helper. No always-on duplicate of `AGENTS.md`. |
-| Nested `packages/<name>/AGENTS.md` | Package commands, extra Never/Ask, local seams. Do not repeat root stack.                                         |
+[agents.md](https://agents.md) is the portable file. Cursor, Codex, Copilot coding agent, Gemini CLI, Aider, and others load it. Do **not** duplicate Pointers into vendor glob/rule files.
 
-Optional: `GEMINI.md` / Aider config **only** if those tools are already in the host.
+| File                               | Content                                                                                                                                                                                                                   |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CLAUDE.md`                        | First line: `@AGENTS.md`. Add Claude-only hooks/skills **only if they already exist**. See `templates/CLAUDE.md`. Claude Code reads `CLAUDE.md`, not `AGENTS.md` ([memory docs](https://code.claude.com/docs/en/memory)). |
+| `.github/copilot-instructions.md`  | 5–15 lines pointing at `AGENTS.md` and `docs/agents/*`. See `templates/copilot-instructions.md`.                                                                                                                          |
+| Nested `packages/<name>/AGENTS.md` | Package commands, extra Never/Ask, local seams. Do not repeat root stack. This is the spec's scoping mechanism (closest file wins) — not a substitute for Pointers.                                                       |
+
+Optional, **only** if that tool is already in the host ([agents.md](https://agents.md) FAQ):
+
+- Aider: `.aider.conf.yml` with `read: AGENTS.md`
+- Gemini CLI: `.gemini/settings.json` with `"context": { "fileName": "AGENTS.md" }`
 
 Do **not** revive `.cursorrules` if `.cursor/rules/` or `AGENTS.md` exists.
 
-Do **not** rewrite step 1’s `.cursor/rules/ai-coding-native-rules.mdc` here. Globbed `.mdc` shims stay `alwaysApply: false`.
+Do **not** rewrite step 1’s `.cursor/rules/ai-coding-native-rules.mdc` here.
+
+Do **not** write globbed project rules as when-to-load:
+
+- No `.cursor/rules/*.mdc` with `alwaysApply: false` / `globs:` that point at helpers
+- No `.claude/rules/` path-scoped copies of the same content
+
+If discovery finds leftover globbed project `.mdc` or `.claude/rules/` from an older prepare: fold unique must-dos into helpers and Pointers; do not recreate those files; **ask before deleting** leftovers.
 
 ### 4. Host README (gap-fill)
 
@@ -128,6 +145,7 @@ Human-facing. Follow `references/golden-rules.md` → **README (human)**. Create
    `Coding agents: AGENTS.md.`
 
    `Humans (AI workflow): AI_CODING_README.md. Intros: AI_CODING_LEARN.md.`
+
 6. Special-purpose README (paste-prompt landing, generated-only, legal-only): keep the structure; add only those pointer lines if missing; report `overridden: README structure`.
 7. Do not rename sections to match Standard Readme. Do not reorder a coherent README. Do not invent a license, badges, screenshots, roadmap, or maintainers. Do not copy this kit repo’s GitHub paste-prompt README onto a host.
 

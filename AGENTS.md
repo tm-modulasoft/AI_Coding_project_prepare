@@ -4,7 +4,7 @@
 
 ## Project
 
-Field manual + skill for preparing any host repo for AI agentic coding: harness first (plugins, skills, native rules), then `AGENTS.md` + helpers + shims + host README gap-fill.
+Field manual + skill for preparing any host repo for AI agentic coding: harness first (plugins, skills, native rules), then `AGENTS.md` with Pointers + helpers + shims only for tools that cannot read `AGENTS.md` + host README gap-fill.
 
 **Stack:** static HTML, Markdown skill files. No build, no runtime dependencies.
 
@@ -44,7 +44,7 @@ kit/                                    Payload the agent fetches onto a host
 - Do not invent a product stack here.
 - Host-project output: project standards (`repo:`) win when more correct or specific; named golden defaults fill silence; do not copy `references/golden-rules.md` into a host.
 - Host README: gap-fill golden human jobs; keep existing structure when it already covers them. Do not copy this repo’s paste-prompt README onto a host.
-- Two-step prepare: harness (`references/harness.md`) then instruction layer (`references/instruction-prompt.md`).
+- Two-step prepare: harness (`references/harness.md`) then instruction layer (`references/instruction-prompt.md`). When-to-load is Pointers in host `AGENTS.md`, not globbed project `.cursor/rules/*.mdc`.
 - Copied `kit/` on a host is an installer. After a successful prepare, recommend deleting it (ask first). Do not delete `kit/` in _this_ repo.
 
 ## Boundaries
@@ -58,6 +58,7 @@ kit/                                    Payload the agent fetches onto a host
 - Skill spine — `kit/skills/prepare-project-for-agents/SKILL.md`
 - Harness (step 1) — `kit/skills/prepare-project-for-agents/references/harness.md`
 - Full instruction runbook (step 2) — `kit/skills/prepare-project-for-agents/references/instruction-prompt.md`
+- Writing rules (lean vs on-demand, Pointers not globs) — `kit/skills/prepare-project-for-agents/references/writing-rules.md`
 - Golden defaults — `kit/skills/prepare-project-for-agents/references/golden-rules.md`
 - Host README scaffold (only if the host has none) — `kit/skills/prepare-project-for-agents/templates/README.md`
 - Host human cheat sheet — `kit/harness-defaults/AI_CODING_README.md`

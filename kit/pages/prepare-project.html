@@ -6,13 +6,14 @@
     <title>Step 2 · Prepare project rules</title>
     <meta
       name="description"
-      content="Step 2: lean AGENTS.md, helpers, vendor shims, host README gap-fill, golden defaults only where the project is silent."
+      content="Step 2: lean AGENTS.md with Pointers, helpers, shims only for tools that cannot read AGENTS.md, host README gap-fill, golden defaults only where the project is silent."
     />
     <!--
     CODING AGENT — step 2 detail page (humans). Execute from disk:
     Kit root = parent of this pages/ folder.
     Finish step 1 (references/harness.md) first.
     Then SKILL.md, instruction-prompt.md, golden-rules.md.
+    Pointers in AGENTS.md = when-to-load. Do not write globbed project .mdc.
     Host README: gap-fill or create; keep existing structure when it already covers the jobs.
     Host = git toplevel. Do not commit unless asked.
   -->
@@ -41,12 +42,14 @@
         <h1>Prepare project rules</h1>
         <p class="lede">
           After the harness exists, the agent writes a lean
-          <code>AGENTS.md</code> spine, on-demand helpers, thin vendor shims,
-          and a gap-fill of this project's human <code>README.md</code> (creates
-          it if missing). It does not invent a stack. Golden defaults apply only
-          where this project is silent; the project's own standards win when
-          they are more correct or specific — including an existing README
-          structure that already covers the usual jobs.
+          <code>AGENTS.md</code> spine (including when-to-load Pointers),
+          on-demand helpers, thin shims only for tools that cannot read
+          <code>AGENTS.md</code>, and a gap-fill of this project's human
+          <code>README.md</code> (creates it if missing). It does not invent a
+          stack. Golden defaults apply only where this project is silent; the
+          project's own standards win when they are more correct or specific —
+          including an existing README structure that already covers the usual
+          jobs.
         </p>
       </section>
 
@@ -74,13 +77,15 @@
                 both steps from the bootstrap prompt).
               </li>
               <li>
-                Review what the agent writes: root <code>AGENTS.md</code>, host
-                <code>README.md</code> (created or gap-filled, not reshaped if
-                it already covers the jobs), <code>AI_CODING_README.md</code>,
+                Review what the agent writes: root <code>AGENTS.md</code> (with
+                Pointers to helpers), host <code>README.md</code> (created or
+                gap-filled, not reshaped if it already covers the jobs),
+                <code>AI_CODING_README.md</code>,
                 <code>AI_CODING_LEARN.md</code>, helpers under
-                <code>docs/agents/</code>, and thin shims
-                (<code>CLAUDE.md</code>, Copilot, Cursor rules). It should not
-                commit unless you ask.
+                <code>docs/agents/</code>, and thin shims only where a tool
+                cannot read <code>AGENTS.md</code>
+                (<code>CLAUDE.md</code>, Copilot). It should not write globbed
+                project Cursor rules, and should not commit unless you ask.
               </li>
               <li>
                 When you are done,
@@ -109,7 +114,8 @@
                   Always-on spine. Open format (<a href="https://agents.md"
                     >agents.md</a
                   >). Commands, map, seams, boundaries, Tools, precedence (chat
-                  → repo → golden → floors).
+                  → repo → golden → floors), and Pointers (when-editing → helper
+                  to Read). Any AGENTS.md-compatible harness loads this file.
                 </td>
               </tr>
               <tr>
@@ -151,10 +157,11 @@
                 <td>Thin pointer at <code>AGENTS.md</code>.</td>
               </tr>
               <tr>
-                <td><code>.cursor/rules/*.mdc</code></td>
+                <td>Do not write</td>
                 <td>
-                  Globbed local rules, not a second bible. (Native always-on
-                  rules are step 1.)
+                  Globbed project <code>.cursor/rules/*.mdc</code>. When-to-load
+                  is Pointers in <code>AGENTS.md</code>. (Native always-on house
+                  rules stay in step 1.)
                 </td>
               </tr>
             </tbody>
@@ -298,9 +305,10 @@
             and gap-filling the host README.
           </li>
           <li>
-            Include the Tools stanza. Do not copy
-            <code>golden-rules.md</code> or the full native-rules body into
-            <code>AGENTS.md</code>.
+            Include the Tools stanza and a Pointers table (when-editing →
+            helper). Do not write globbed project Cursor
+            <code>.mdc</code> rules. Do not copy <code>golden-rules.md</code> or
+            the full native-rules body into <code>AGENTS.md</code>.
           </li>
           <li>
             If this <code>kit/</code> folder was fetched from GitHub for setup,

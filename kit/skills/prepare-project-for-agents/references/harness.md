@@ -134,7 +134,9 @@ If that path already exists, backup to `ai-coding-native-rules.mdc.bak` and merg
 
 If the host still has `.cursor/rules/native-rules.mdc` from an older prepare, treat that as the same rule: merge into `ai-coding-native-rules.mdc`, then remove the old file so Cursor does not inject two always-on copies.
 
-This file is **not** a second `AGENTS.md`. It is house process + tool routing. Project map, commands, and seams stay in step 2.
+This file is **not** a second `AGENTS.md`. It is house process + tool routing. Project map, commands, seams, and when-to-load Pointers stay in step 2.
+
+Step 2 must **not** add further `.cursor/rules/*.mdc` files. Globbed project rules are Cursor-only; other harnesses never see them. When-to-load belongs in `AGENTS.md` Pointers.
 
 ## Other clients
 

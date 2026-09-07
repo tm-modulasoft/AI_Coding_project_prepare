@@ -1,13 +1,13 @@
 ---
 name: prepare-project-for-agents
-description: Prepares a repository for AI agentic coding in two steps — (1) harness first (IDE/CLI defaults, Cursor plugins/MCPs, skills-lock + npx skills experimental_install from GitHub sources, always-on native rules), then (2) a lean AGENTS.md spine, on-demand helpers, vendor shims, and a gap-fill of the host README (create if missing; keep existing structure when it already covers the jobs). Defaults to globally accepted golden rules only where the host is silent; project standards win when they are more correct or specific. Use when the user wants to prepare a project for AI agents, add AGENTS.md, bootstrap agent context, set up the agent harness, follow START_HERE.html, fetch the kit from GitHub onto another project, or invokes /prepare-project-for-agents.
+description: Prepares a repository for AI agentic coding in two steps — (1) harness first (IDE/CLI defaults, Cursor plugins/MCPs, skills-lock + npx skills experimental_install from GitHub sources, always-on native rules), then (2) a lean AGENTS.md spine with when-to-load Pointers, on-demand helpers, thin shims only for tools that cannot read AGENTS.md, and a gap-fill of the host README (create if missing; keep existing structure when it already covers the jobs). Defaults to globally accepted golden rules only where the host is silent; project standards win when they are more correct or specific. Use when the user wants to prepare a project for AI agents, add AGENTS.md, bootstrap agent context, set up the agent harness, follow START_HERE.html, fetch the kit from GitHub onto another project, or invokes /prepare-project-for-agents.
 argument-hint: "[target-git-root] [--brownfield|--greenfield] [--harness-only|--instructions-only]"
 disable-model-invocation: true
 ---
 
 # Prepare project for AI agents
 
-Write a portable AI instruction layer for the **host project**, and put the **harness** in place first so agents have plugins, skills, and always-on tool routing before they rely on `AGENTS.md`. Also gap-fill the host’s human `README.md` (create if missing) without fighting a more correct existing structure.
+Write a portable AI instruction layer for the **host project**, and put the **harness** in place first so agents have plugins, skills, and always-on tool routing before they rely on `AGENTS.md`. Also gap-fill the host’s human `README.md` (create if missing) without fighting a more correct existing structure. When-to-load for helpers is **Pointers** in `AGENTS.md` (works in any AGENTS.md-compatible harness). Do not write globbed project Cursor `.mdc` rules.
 
 Do not invent a stack or a design system the code does not use. Fill silence with named golden defaults (`references/golden-rules.md`). Project standards win when they are more correct or specific. Do not commit unless asked.
 
@@ -58,14 +58,14 @@ Marketplace plugins have **no CLI**. After merging `.cursor/settings.json`, chec
 2. Discover stack, commands, seams, UI/theming, tests, git conventions, secrets/generated dirs, and the GitHub-visible README. Cite paths. Surface conflicts; do not silently pick docs over code.
 3. Merge with golden rules: for each applicable domain, keep the project standard if it is more correct or specific; gap-fill silence with `golden:`; keep safety/a11y floors out of Canonical-from-habit. Skip domains the stack cannot hit (no UI → no theming).
 4. Draft the file tree. Skip helpers with no evidence **and** no applicable golden default.
-5. Write on-demand helpers first (`docs/agents/` unless the host already uses `.agents/` or `.claude/references/`), then compress into root `AGENTS.md`, then thin shims, then gap-fill or create the host README (`templates/README.md` only when missing).
+5. Write on-demand helpers first (`docs/agents/` unless the host already uses `.agents/` or `.claude/references/`), then compress into root `AGENTS.md` (including a when-to-load **Pointers** table), then thin shims only for tools that cannot read `AGENTS.md`, then gap-fill or create the host README (`templates/README.md` only when missing). Do **not** write globbed project Cursor `.mdc` rules.
 6. Prune every line that would not cause a mistake if removed. Drop inapplicable golden rules.
 7. Run the quality checklist in `references/writing-rules.md`. Smoke-check that listed commands exist in scripts/CI.
 8. Report using `templates/report.md`. Do not commit.
 
 ### After both steps — copied kit folder
 
-The kit is an **installer**, not runtime. Durable host files: `.cursor/`, `skills-lock.json`, `.gitignore` skills block, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `AGENTS.md`, host `README.md`, helpers, shims.
+The kit is an **installer**, not runtime. Durable host files: `.cursor/` (harness only — native rules + settings, not globbed project rules), `skills-lock.json`, `.gitignore` skills block, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `AGENTS.md`, host `README.md`, helpers, shims for tools that cannot read `AGENTS.md`.
 
 If you **fetched** `kit/` from GitHub in this run:
 
@@ -80,9 +80,10 @@ Do **not** offer to delete `kit/` if this git remote is `tm-modulasoft/AI_Coding
 - Filename is exactly `AGENTS.md` (uppercase, plural). Plain Markdown. No required headings.
 - `AI_CODING_README.md` is the human cheat sheet (copied from `harness-defaults/`). `AI_CODING_LEARN.md` is intros and tutorials. Do not fork either into `AGENTS.md`.
 - Host `README.md` is for humans (what / why / how to run). Gap-fill golden jobs; do not force Standard Readme titles onto a file that already covers them. Do not copy this kit repo’s paste-prompt README onto a host.
-- Closest nested `AGENTS.md` wins; do not copy the root stack into every package.
-- Cursor `.mdc` rules are globbed pointers, not a second copy of `AGENTS.md` — **except** `.cursor/rules/ai-coding-native-rules.mdc` (`alwaysApply: true`) from step 1.
-- `CLAUDE.md` is `@AGENTS.md`, not a fork.
+- Closest nested `AGENTS.md` wins; do not copy the root stack into every package. Nested files are for real monorepo packages, not for language/glob scoping.
+- When-to-load lives in `AGENTS.md` **Pointers** (when-editing → helper path). Do not write globbed project `.cursor/rules/*.mdc` or Claude `.claude/rules/` path-scoped copies of helpers. Exception: step 1 `.cursor/rules/ai-coding-native-rules.mdc` (`alwaysApply: true`).
+- Do not `@import` helpers from `AGENTS.md` (Claude inlines `@path` at launch). Point with backtick paths and tell the agent to Read.
+- `CLAUDE.md` is `@AGENTS.md`, not a fork. Copilot gets a thin pointer. Skip other vendor files unless that tool is already in the host.
 - Working principles cannot be derived from code — ask once, or mark `elicited: default`.
 - Agents must Read skill files from disk. Opening `START_HERE.html` via `file://` cannot fetch sibling markdown.
 - Do not copy `golden-rules.md` into the host. Do not fight Prettier/gofmt/token files with a golden taste rule.
@@ -103,6 +104,5 @@ Do **not** offer to delete `kit/` if this git remote is `tm-modulasoft/AI_Coding
 - `templates/conventions.md` — naming, imports, errors, seams
 - `templates/ui-ux.md` — kit, states, WCAG floor
 - `templates/theming.md` — tokens, layers, no one-off values
-- `templates/cursor-rule.mdc` — globbed Cursor rule stub
 - `templates/report.md` — end-of-run report
 - Kit `harness-defaults/` — skills lock, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `ai-coding-native-rules.md`, `cursor-settings.json`, `cli.json`

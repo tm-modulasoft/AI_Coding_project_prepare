@@ -206,9 +206,11 @@ npx skills experimental_install --yes</pre
             <code>alwaysApply: true</code> on every chat — project-level
             pre-prompt. The kit copies
             <code>harness-defaults/ai-coding-native-rules.md</code> into
-            <code>ai-coding-native-rules.mdc</code>. Optional: paste the same
-            body into Customize → Rules → User Rules if you want it on every
-            repo on this machine.
+            <code>ai-coding-native-rules.mdc</code> only. Step 2 does not add
+            globbed project <code>.mdc</code> files; when-to-load lives in
+            <code>AGENTS.md</code> Pointers so non-Cursor harnesses see it.
+            Optional: paste the same body into Customize → Rules → User Rules if
+            you want the house workflow on every repo on this machine.
           </p>
           <p>
             If a tool cannot load that rule file, step 2 still writes a short
@@ -235,7 +237,10 @@ npx skills experimental_install --yes</pre
             <h2 id="next-step-heading">Next step</h2>
             <p>
               When the harness files are in place, write the project rules
-              (<code>AGENTS.md</code>, helpers, shims, host README gap-fill).
+              (<code>AGENTS.md</code> with Pointers, helpers, shims only for
+              tools that cannot read <code>AGENTS.md</code>, host README
+              gap-fill). Do not add globbed project
+              <code>.cursor/rules/*.mdc</code>.
             </p>
             <a class="btn" href="prepare-project.html"
               >Go to step 2 · Prepare project rules</a

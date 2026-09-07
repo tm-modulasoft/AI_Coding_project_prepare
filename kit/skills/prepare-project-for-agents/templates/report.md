@@ -28,7 +28,7 @@
 
 ## On-demand
 
-- helper → when to load
+- helper → when to load (AGENTS.md Pointers row)
 
 ## Golden fills vs repo
 
@@ -36,15 +36,16 @@
 - `overridden:` golden rules the host rejected (why the project is more correct)
 - safety/a11y floors kept despite a local habit (Gotchas)
 
-## Vendor shims
+## Compatibility shims
 
--
+- `CLAUDE.md` / Copilot / nested `AGENTS.md` / Aider or Gemini config (only if that tool is already in the host)
+- Globbed project `.cursor/rules/*.mdc`: none written (step 1 native-rules only)
 
 ## Copied kit folder
 
 - Kit root:
 - Fetched from GitHub in this run? yes / no
-- If yes: **recommend deleting** that folder now. It is the installer. Keep `.cursor/`, `skills-lock.json`, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `AGENTS.md`, host `README.md`, helpers, shims. Ask before deleting.
+- If yes: **recommend deleting** that folder now. It is the installer. Keep `.cursor/` (harness: native-rules + settings), `skills-lock.json`, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `AGENTS.md`, host `README.md`, helpers, shims for tools that cannot read `AGENTS.md`. Ask before deleting.
 
 ## Conflicts / guesses
 
