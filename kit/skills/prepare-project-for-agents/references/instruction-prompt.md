@@ -12,12 +12,13 @@ Produce a portable, lean, living agent context pack:
 2. **Helper files** for detail that should not sit always-on.
 3. **Thin compatibility shims** so vendor tools load the same truth without duplicating it.
 4. Nested `AGENTS.md` only if this is a real monorepo with meaningfully different packages.
+5. Host **README** that covers the golden human jobs (or already does, under this project's own headings).
 
-Success = an agent that has never seen the setup conversation can clone the host, read `AGENTS.md`, follow pointers, run the real commands, place new code in the right seams, match UI/theming, and know what is forbidden.
+Success = an agent that has never seen the setup conversation can clone the host, read `AGENTS.md`, follow pointers, run the real commands, place new code in the right seams, match UI/theming, and know what is forbidden. A human can open the README and learn what the project is, how to run it, and where agent notes live.
 
 ## Non-goals
 
-- Do not rewrite the product README into an agent bible.
+- Do not rewrite the product README into an agent bible, a Standard Readme clone, or a second `AGENTS.md`.
 - Do not dump the PRD, changelog, full architecture doc, or `golden-rules.md` into `AGENTS.md`.
 - Do not add generic slogans ("write clean code", "follow SOLID", "be helpful").
 - Do not add dependencies, CI, or refactors "to help agents" unless a file cannot be accurate without it.
@@ -108,15 +109,27 @@ Do **not** revive `.cursorrules` if `.cursor/rules/` or `AGENTS.md` exists.
 
 Do **not** rewrite step 1’s `.cursor/rules/ai-coding-native-rules.mdc` here. Globbed `.mdc` shims stay `alwaysApply: false`.
 
-### 4. README touch (minimal)
+### 4. Host README (gap-fill)
 
-If README has no pointer, add one or two lines under Contributing/Development:
+Human-facing. Follow `references/golden-rules.md` → **README (human)**. Create-from-nothing scaffold: `templates/README.md`.
 
-`Coding agents: read AGENTS.md.`
+**Locate** the GitHub-visible README: `.github/README.md`, else root `README.md`, else `docs/README.md`.
 
-`Humans: AI_CODING_README.md (cmds). Intros: AI_CODING_LEARN.md.`
+**If none exists:** create root `README.md` from the template. Fill only from discovery (name, package/`pyproject` description, real install/dev/test commands, license pointer iff a license file exists). Drop jobs that do not apply.
 
-Do not otherwise rewrite README.
+**If one exists:** copy it to `README.md.bak` in the same directory, then merge — do not confront a structure that already covers the jobs:
+
+1. Inventory headings against the golden jobs. Synonyms count (Getting started = Install = Quick start).
+2. Keep heading names, order, extra sections, and tone.
+3. Fill missing **applicable** jobs with short prose or a small table. Insert next to a related section; if the file already ends with License, keep License last.
+4. Correct install/commands that contradict scripts or CI (must match `AGENTS.md`).
+5. If there is no agent pointer yet, add under Contributing, Development, or at the end (before License if License is last):
+
+   `Coding agents: AGENTS.md.`
+
+   `Humans (AI workflow): AI_CODING_README.md. Intros: AI_CODING_LEARN.md.`
+6. Special-purpose README (paste-prompt landing, generated-only, legal-only): keep the structure; add only those pointer lines if missing; report `overridden: README structure`.
+7. Do not rename sections to match Standard Readme. Do not reorder a coherent README. Do not invent a license, badges, screenshots, roadmap, or maintainers. Do not copy this kit repo’s GitHub paste-prompt README onto a host.
 
 If step 1 was skipped (`--instructions-only`) and the host is missing `AI_CODING_README.md` or `AI_CODING_LEARN.md`, copy the missing files from `harness-defaults/`.
 

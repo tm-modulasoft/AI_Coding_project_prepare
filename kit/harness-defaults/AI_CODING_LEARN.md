@@ -6,6 +6,8 @@
 
 House workflow skills: [github.com/coleam00/skills](https://github.com/coleam00/skills) — read that README, then the `SKILL.md` of each skill you actually run (local copies: `.agents/skills/<name>/SKILL.md`). These videos are orientation, not a second process.
 
+Selected [Addy Osmani](https://github.com/addyosmani/agent-skills) skills are the **how-well** handbook used inside that loop (UI, API, security, perf, ship). Why both catalogs: `AI_CODING_README.md` → Why Cole and Addy.
+
 ## Base tutorials — intros / concepts
 
 Start here. Software fundamentals first, then agent habits.

@@ -19,6 +19,7 @@
 
 ## Created / updated (step 2)
 
+- Host README: created / gap-filled / structure kept (`overridden:`) / skipped (why)
 - `path` — why
 
 ## Always-on (AGENTS.md)
@@ -43,7 +44,7 @@
 
 - Kit root:
 - Fetched from GitHub in this run? yes / no
-- If yes: **recommend deleting** that folder now. It is the installer. Keep `.cursor/`, `skills-lock.json`, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `AGENTS.md`, helpers, shims. Ask before deleting.
+- If yes: **recommend deleting** that folder now. It is the installer. Keep `.cursor/`, `skills-lock.json`, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `AGENTS.md`, host `README.md`, helpers, shims. Ask before deleting.
 
 ## Conflicts / guesses
 

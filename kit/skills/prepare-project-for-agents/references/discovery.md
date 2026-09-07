@@ -15,6 +15,14 @@ Look for and read:
 
 If replacing, copy to `*.bak` in the same directory.
 
+## Human README
+
+Find the GitHub-visible README (first match wins for edits): `.github/README.md`, then root `README.md`, then `docs/README.md`.
+
+Also read if present: `LICENSE` / `LICENSE.md` / `COPYING`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md`, `.env.example`, package/`pyproject` `description`.
+
+Inventory which golden README **jobs** already have a heading (see `golden-rules.md` → README). Do not plan a heading rename. If docs and code disagree on commands, code/scripts/CI win — the README gap-fill must match them.
+
 ## Existing harness (merge, do not wipe)
 
 Look for and read:
@@ -69,6 +77,6 @@ List packages that need their own nested `AGENTS.md` (different commands, seams,
 
 ## Conflicts
 
-If docs and code disagree, encode **code** as current truth and list the conflict under Gotchas. Do not silently prefer the README.
+If docs and code disagree, encode **code** as current truth in `AGENTS.md` and list the conflict under Gotchas. Do not silently prefer the README as agent truth. When gap-filling the README, correct commands that contradict scripts/CI so the two files match.
 
 If code disagrees with a **safety / a11y floor**, keep the floor in Boundaries; list the code habit under Gotchas. Do not Canonical-ize the defect.

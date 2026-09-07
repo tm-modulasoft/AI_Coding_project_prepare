@@ -24,11 +24,11 @@
          harness-defaults/ai-coding-native-rules.md → alwaysApply ai-coding-native-rules.mdc.
          Human: /add-plugin … only if those plugins are not already installed (no CLI).
        Step 2 Project rules: SKILL.md then references/instruction-prompt.md and golden-rules.md
-         AGENTS.md, helpers, vendor shims.
+         AGENTS.md, helpers, vendor shims, host README gap-fill (create if missing; keep existing structure when it already covers the jobs).
     4. Next file (mandatory): skills/prepare-project-for-agents/SKILL.md
     5. Host project = git toplevel. If this kit sits in a subfolder, write into the host, not the kit.
     6. After both steps: if you fetched this folder from GitHub in this run, ask to delete it
-       (recommended: yes). Keep .cursor/, skills-lock.json, AI_CODING_README.md, AI_CODING_LEARN.md, AGENTS.md, helpers, shims.
+       (recommended: yes). Keep .cursor/, skills-lock.json, AI_CODING_README.md, AI_CODING_LEARN.md, AGENTS.md, host README.md, helpers, shims.
        Do not delete kit/ if git remote is tm-modulasoft/AI_Coding_project_prepare.
     7. Humans use the visible page. Step detail: pages/harness.html and pages/prepare-project.html.
     8. Do not ask the user to paste SKILL.md. Do not commit unless asked.
@@ -95,8 +95,9 @@
             <strong>Then delete this fetched folder</strong> from the host
             (recommended). It is the installer. Keep <code>.cursor/</code>,
             <code>skills-lock.json</code>, <code>AI_CODING_README.md</code>,
-            <code>AI_CODING_LEARN.md</code>, <code>AGENTS.md</code>, helpers,
-            and shims. Do not delete <code>kit/</code> inside this GitHub repo.
+            <code>AI_CODING_LEARN.md</code>, <code>AGENTS.md</code>, the project
+            <code>README.md</code>, helpers, and shims. Do not delete
+            <code>kit/</code> inside this GitHub repo.
           </li>
         </ol>
       </section>
@@ -121,10 +122,10 @@
             <span class="tile-num" aria-hidden="true">2</span>
             <h2>Prepare project rules</h2>
             <p>
-              Lean <code>AGENTS.md</code>, on-demand helpers, vendor shims.
-              Project standards win; golden defaults fill silence. Includes a
-              short Tools stanza (Context7, Sonatype) for agents that do not
-              load Cursor native rules.
+              Lean <code>AGENTS.md</code>, on-demand helpers, vendor shims, and
+              a gap-fill of the host <code>README.md</code> (create if missing;
+              keep existing structure when it already covers the jobs). Project
+              standards win; golden defaults fill silence.
             </p>
             <span class="more">Open step details</span>
           </a>
@@ -148,8 +149,8 @@ Prepare this project for AI agentic coding.
 2. Read `kit/START_HERE.html`, then execute `kit/skills/prepare-project-for-agents/SKILL.md`. Two steps, in order — do not skip the harness.
 3. Host = this repo's git root. Write harness files and `AGENTS.md` into the host, not into `kit/`.
 4. Harness: copy `kit/harness-defaults/skills-lock.json` to the host if missing. You MUST restore skills from that lock (GitHub sources) with `npx skills experimental_install --yes` at the host root. Marketplace plugins have no CLI — after writing `.cursor/settings.json`, tell me to paste `/add-plugin …` for any plugin not already installed on this machine, then reload.
-5. Then write AGENTS.md / helpers / shims from `instruction-prompt.md` + `golden-rules.md`. Do not invent conventions. Project standards win when more correct or specific. Do not commit unless asked.
-6. After both steps: if you fetched `kit/` in this run, ask before deleting it (recommended: yes — installer). Keep harness files + AGENTS.md. Do not delete `kit/` if this git remote is `tm-modulasoft/AI_Coding_project_prepare`.
+5. Then write AGENTS.md / helpers / shims, and gap-fill the host README (create if missing; do not fight a more correct existing structure), from `instruction-prompt.md` + `golden-rules.md`. Do not invent conventions. Project standards win when more correct or specific. Do not commit unless asked.
+6. After both steps: if you fetched `kit/` in this run, ask before deleting it (recommended: yes — installer). Keep harness files + AGENTS.md + host README. Do not delete `kit/` if this git remote is `tm-modulasoft/AI_Coding_project_prepare`.
 
 Do not ask me to paste the skill. Load it from disk and run it.</pre
         >

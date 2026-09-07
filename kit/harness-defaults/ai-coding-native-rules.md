@@ -1,12 +1,12 @@
 # Workflow owner
 
-Coding work follows coleam00 skills. Do not invent a parallel process.
+Coding work follows coleam00 skills. Do not invent a parallel process. Cole decides when and in what order. Selected Addy Osmani skills decide how well (UI / API / security / perf / ship). They sit side by side.
 
 - Feature / ticket: prime-codebase (or prime-frontend / prime-backend) → piv-plan-implementation → piv-implement → piv-validate → piv-review-changes. Commit/PR only via piv-commit / piv-create-pr when that loop is running, or when I ask.
 - Product intent: plan-create-prd. Approach/stack: plan-architecture. Tickets: plan-create-stories.
 - Bug with an issue: piv-investigate-issue then piv-implement-issue.
 - Tiny/mechanical (typo, rename, obvious one-file fix): skip the PIV loop.
-- During implement: do the asked work with surgical diffs (karpathy-guidelines). Don't shrink or refuse the request.
+- During implement: do the asked work with surgical diffs (karpathy-guidelines). Load the matching Addy skill when the slice is UI, API, security, performance, or ship. Don't shrink or refuse the request.
 
 # Tools (always)
 

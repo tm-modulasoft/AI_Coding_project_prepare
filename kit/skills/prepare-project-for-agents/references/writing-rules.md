@@ -17,20 +17,22 @@ Golden rules are a **default floor**, not a ceiling and not a second style guide
 
 ## Destinations
 
-| Destination                | What belongs                                                                                                               | Test                                                                                             |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| Root `AGENTS.md`           | Map, stack one-liner, **Precedence**, exact commands, **Tools**, seams, three-tier boundaries, git/PR one-liners, pointers | Would removing this line cause a mistake on _most_ tasks?                                        |
-| Root `AI_CODING_README.md` | Human cheat sheet: workflow, skill restore/add/check cmds, plugins. Copy from kit `harness-defaults/AI_CODING_README.md`   | Would a developer joining the prepared repo miss how to restore skills or which workflow to use? |
-| Root `AI_CODING_LEARN.md`  | Mandatory intros and tutorials. Copy from kit `harness-defaults/AI_CODING_LEARN.md`                                        | Would a developer miss the starting videos?                                                      |
-| Helper file                | Recurring but task-type-specific: language, UI/UX, theming, testing, security, Excluded/Canonical                          | Recurs when that area is touched, not every task                                                 |
-| Nested `AGENTS.md`         | Package-specific commands, boundaries, seams                                                                               | Root file would mislead work inside that package                                                 |
-| Vendor shim                | One-line import / glob pointer                                                                                             | Tool cannot see `AGENTS.md` otherwise                                                            |
-| Native rule                | House workflow + default tools from kit `harness-defaults/ai-coding-native-rules.md`                                       | `.cursor/rules/ai-coding-native-rules.mdc` with `alwaysApply: true` — not a copy of `AGENTS.md`  |
-| Delete                     | Slogans, restated linter rules, aspirational "we should", duplicated README, inapplicable golden rules                     | Would not change agent behavior                                                                  |
+| Destination                | What belongs                                                                                                                                   | Test                                                                                             |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Root `AGENTS.md`           | Map, stack one-liner, **Precedence**, exact commands, **Tools**, seams, three-tier boundaries, git/PR one-liners, pointers                     | Would removing this line cause a mistake on _most_ tasks?                                        |
+| Host `README.md`           | Human project README (GitHub-visible). Golden **jobs**, not forced heading names. Gap-fill or create; keep structure that already covers a job | Would a stranger miss what this is, how to run it, or where `AGENTS.md` lives?                   |
+| Root `AI_CODING_README.md` | Human cheat sheet: workflow, why Cole/Addy, skill restore/add/check cmds, plugins. Copy from kit `harness-defaults/AI_CODING_README.md`        | Would a developer joining the prepared repo miss how to restore skills or which workflow to use? |
+| Root `AI_CODING_LEARN.md`  | Mandatory intros and tutorials. Copy from kit `harness-defaults/AI_CODING_LEARN.md`                                                            | Would a developer miss the starting videos?                                                      |
+| Helper file                | Recurring but task-type-specific: language, UI/UX, theming, testing, security, Excluded/Canonical                                              | Recurs when that area is touched, not every task                                                 |
+| Nested `AGENTS.md`         | Package-specific commands, boundaries, seams                                                                                                   | Root file would mislead work inside that package                                                 |
+| Vendor shim                | One-line import / glob pointer                                                                                                                 | Tool cannot see `AGENTS.md` otherwise                                                            |
+| Native rule                | House workflow + default tools from kit `harness-defaults/ai-coding-native-rules.md`                                                           | `.cursor/rules/ai-coding-native-rules.mdc` with `alwaysApply: true` — not a copy of `AGENTS.md`  |
+| Delete                     | Slogans, restated linter rules, aspirational "we should", duplicated README, inapplicable golden rules                                         | Would not change agent behavior                                                                  |
 
 ## Size
 
 - Root `AGENTS.md`: aim <250 lines, hard cap ~400
+- Host `README.md`: scannable human jobs; not an API dump or second `AGENTS.md`
 - Root `AI_CODING_README.md`: keep short (cheat sheet, not a second spine)
 - Root `AI_CODING_LEARN.md`: curated intros/tutorials; not a second cheat sheet or skill encyclopedia
 - Each helper: aim <120 lines, one concern
@@ -53,12 +55,13 @@ Golden rules are a **default floor**, not a ceiling and not a second style guide
 - Filename `AGENTS.md` (uppercase, plural)
 - Plain Markdown; no required headings. Optional YAML `description` / `tags` for indexing only
 - Closest `AGENTS.md` to the edited file wins; user chat overrides files
-- README stays human-facing. Agent ops live in `AGENTS.md` + helpers
+- README stays human-facing. Agent ops live in `AGENTS.md` + helpers. Gap-fill README **jobs**; do not fight a more correct existing structure
 - Spec: https://agents.md (AAIF / Linux Foundation)
 
 ## Quality checklist
 
 - [ ] `AGENTS.md` at host root, uppercase plural
+- [ ] Host README (GitHub-visible) created or gap-filled; structure kept when it already covers the jobs; commands match `AGENTS.md`; agent pointer lines present
 - [ ] `AI_CODING_README.md` at host root (copied from kit `harness-defaults/`, not a second `AGENTS.md`)
 - [ ] `AI_CODING_LEARN.md` at host root (intros and tutorials)
 - [ ] Precedence section present (chat > repo > golden > floors)

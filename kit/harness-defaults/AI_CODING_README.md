@@ -8,6 +8,16 @@ Short notes for people working in this repo after it was prepared for agentic co
 
 House workflow skills: [github.com/coleam00/skills](https://github.com/coleam00/skills). Installed copies: `.agents/skills/<name>/SKILL.md`.
 
+## Why Cole and Addy
+
+Two catalogs, two jobs. They sit side by side — not as a second process.
+
+**Cole** ([coleam00/skills](https://github.com/coleam00/skills)) is the operating system. It decides **when** work happens and **in what order**: product intent (`plan-create-prd`), approach (`plan-architecture`), tickets (`plan-create-stories`), then the PIV loop (prime → plan → implement → validate → review → commit → PR).
+
+**Addy** ([addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)) is the senior-engineer handbook. It decides **how well** a slice is done in a specialty — UI, API, security, performance, simplification, source-of-truth docs, browser verification, shipping, and the rest of the selected pack. Load the matching `SKILL.md` while implementing.
+
+Cole’s PRD skill even defers engineering choices (library and version, data model, security boundaries, testing architecture, project structure) to an “Osmani list” that belongs in architecture/spec, not in the PRD. That is the intended split: Cole sequences the work; Addy raises the bar inside each step.
+
 The workflow section below is a working default. Tighten it later if the team wants a different process.
 
 ## First clone (or empty `.agents/skills/`)
@@ -45,7 +55,7 @@ That maps to coleam00 skills (do not invent a parallel process). Names only — 
 | Bug with an issue | `piv-investigate-issue` → `piv-implement-issue`                                                                                                |
 | Commit / PR       | `piv-commit` / `piv-create-pr` only inside that loop, or when you ask                                                                          |
 
-Skip the PIV loop for tiny/mechanical work. During implement: surgical diffs (`karpathy-guidelines`). Project commands (dev, test, lint, build) live in `AGENTS.md`.
+Skip the PIV loop for tiny/mechanical work. During implement: surgical diffs (`karpathy-guidelines`) and the matching Addy skill when the slice is UI, API, security, performance, or ship. Project commands (dev, test, lint, build) live in `AGENTS.md`.
 
 ## Skills
 

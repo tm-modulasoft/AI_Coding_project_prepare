@@ -47,6 +47,34 @@ Source: [AGENTS.md](https://agents.md) (AAIF / Linux Foundation), [Claude Code m
 - README = humans. Agent ops = `AGENTS.md` + helpers. If both list a command, they must match.
 - Keep the spine lean; link out. Do not dump PRDs or this catalog.
 
+## README (human)
+
+There is no ISO README format. The globally accepted **jobs** (not required heading strings) come from [GitHub About READMEs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) (what / why / how to start / where to get help / who maintains), [Make a README](https://www.makeareadme.com/), and [Open Source Guides](https://opensource.guide/starting-a-project/#writing-a-readme). [Standard Readme](https://github.com/RichardLitt/standard-readme/blob/main/spec.md) is a useful **library** section order — do **not** force its titles or sequence onto a brownfield file that already covers the jobs.
+
+The README stays human-facing. Do not copy this catalog or `AGENTS.md` into it.
+
+| Job | Common headings (synonyms count) | Skip when |
+| --- | -------------------------------- | --------- |
+| What | Title + short description | Never when creating; keep an existing title |
+| Why | Description, Features, Background | Already obvious from What; do not invent marketing |
+| Start | Quick start, Install, Getting started, Setup | Docs-only / not runnable |
+| Use | Usage, Commands, Examples | No public usage surface |
+| Help | Support, FAQ, Issues, Docs link | No real help channel — omit rather than invent |
+| Contribute | Contributing — link `CONTRIBUTING.md` if present | No contributing path; do not invent an OSS policy |
+| License | License — SPDX name + link to `LICENSE` | No license file; **never invent a license** |
+| Agents (kit) | Pointer to `AGENTS.md` / `AI_CODING_README.md` / `AI_CODING_LEARN.md` | Never skip on a prepared host |
+
+**Precedence (do not confront structure):**
+
+Same rank as the rest of this catalog. Existing heading names, order, extra sections, and intentional special-purpose READMEs win when they already cover a job or would break if reshaped.
+
+1. An existing heading covers a job → keep the heading and its place. Fix only facts that contradict manifests, scripts, or CI.
+2. Host silent on an applicable job → add a short section (or a few lines under the closest existing heading). Report `golden: README <job>`.
+3. Extra sections (badges, screenshots, architecture, roadmap) → keep. Do not add badges, screenshots, roadmaps, or maintainer lists you cannot prove from the repo.
+4. Special-purpose README (paste-prompt landing, generated-only, legal-only) that a “standard” reshape would break → keep structure; add only the agent pointer lines if missing; report `overridden: README structure`.
+5. GitHub-visible file: existing `.github/README.md`, else root `README.md`, else `docs/README.md`. If none, create **root** `README.md`. Do not add a second README that would hide the one GitHub already shows.
+6. Commands in the README must match `AGENTS.md`. Prefer relative links. Link out instead of inlining license text, API reference, or contributing guides. GitHub truncates past 500 KiB — keep the file scannable.
+
 ## Language
 
 When the host is silent, consult the **official** guide for the detected language/framework (verify current docs; do not invent a second dialect). Overlay the project's formatter/linter — that overlay is rank 2.
