@@ -27,7 +27,7 @@ Golden rules are a **default floor**, not a ceiling and not a second style guide
 | Nested `AGENTS.md`         | Package-specific commands, boundaries, seams                                                                                                                         | Root file would mislead work inside that package                                                                           |
 | Compatibility shim         | One-line import / short pointer for a tool that **cannot** read `AGENTS.md` (`CLAUDE.md`, Copilot)                                                                   | That tool would otherwise miss the spine                                                                                   |
 | Native rule                | House workflow + default tools from kit `harness-defaults/ai-coding-native-rules.md`                                                                                 | `.cursor/rules/ai-coding-native-rules.mdc` with `alwaysApply: true` — not a copy of `AGENTS.md`; not globbed project rules |
-| Delete                     | Slogans, restated linter rules, aspirational "we should", duplicated README, inapplicable golden rules, globbed project `.mdc` / `.claude/rules/` copies of Pointers | Would not change agent behavior on a non-Cursor harness                                                                    |
+| Delete                     | Slogans, restated linter rules, aspirational "we should", duplicated README, inapplicable golden rules                                 | Would not change agent behavior on a non-Cursor harness                                                                    |
 
 ## Size
 
@@ -79,4 +79,4 @@ Golden rules are a **default floor**, not a ceiling and not a second style guide
 - [ ] `AGENTS.md` has a short Tools stanza (Context7, Sonatype, `gh`) even if native-rules exist
 - [ ] Host `.gitignore` ignores `.agents/skills/` and `skills-lock.json` is committed if present
 - [ ] `CLAUDE.md` is an import, not a second bible
-- [ ] Existing human rules were merged, not clobbered
+- [ ] Kit-owned files copied from defaults; host README gap-filled in place

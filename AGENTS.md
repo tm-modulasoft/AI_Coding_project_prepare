@@ -45,6 +45,7 @@ kit/                                    Payload the agent fetches onto a host
 - Host-project output: project standards (`repo:`) win when more correct or specific; named golden defaults fill silence; do not copy `references/golden-rules.md` into a host.
 - Host README: gap-fill golden human jobs; keep existing structure when it already covers them. Do not copy this repo’s paste-prompt README onto a host.
 - Two-step prepare: harness (`references/harness.md`) then instruction layer (`references/instruction-prompt.md`). When-to-load is Pointers in host `AGENTS.md`, not globbed project `.cursor/rules/*.mdc`.
+- First-time prepare only: a host has never been prepared by this kit. Do not add runbook steps that migrate older prepare outputs (globbed project `.mdc`, renamed native-rules, `*.bak` merge of kit files). Write kit-owned files from kit defaults. Gap-fill the host README; merge host `.cursor/settings.json` / existing `skills-lock.json` extras only.
 - Copied `kit/` on a host is an installer. After a successful prepare, recommend deleting it (ask first). Do not delete `kit/` in _this_ repo.
 
 ## Boundaries

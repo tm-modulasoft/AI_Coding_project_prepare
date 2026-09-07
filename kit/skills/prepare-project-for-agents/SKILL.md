@@ -31,7 +31,7 @@ Then continue.
 2. **Host project** — git toplevel of the workspace being prepared.
    - Kit root is the git root → host is this repo.
    - Kit root is a subdirectory → host is the parent git root. Write agent files into the host, not into the kit.
-3. If `AGENTS.md` / `CLAUDE.md` / `AI_CODING_README.md` / `AI_CODING_LEARN.md` / the GitHub-visible `README.md` / `.cursor/rules/ai-coding-native-rules.mdc` already exist, copy to `*.bak` first, then merge (keep human steering that is still true; replace anything the code or kit defaults contradict). For README: keep existing structure when it already covers the golden jobs; see `golden-rules.md` → README.
+3. **First-time prepare.** This host has not been prepared by this kit. Write kit-owned files from kit defaults. Gap-fill an existing host README (keep structure when it already covers the golden jobs; see `golden-rules.md` → README). Merge extras in `.cursor/settings.json` and keep a richer `skills-lock.json` if present.
 
 ## Mandatory reads
 
@@ -88,6 +88,7 @@ Do **not** offer to delete `kit/` if this git remote is `tm-modulasoft/AI_Coding
 - Agents must Read skill files from disk. Opening `START_HERE.html` via `file://` cannot fetch sibling markdown.
 - Do not copy `golden-rules.md` into the host. Do not fight Prettier/gofmt/token files with a golden taste rule.
 - Never commit plugin API keys. `"key": true` in settings means “connect in the UI.”
+- This runbook is first-time prepare only. Do not add leftover-migration steps.
 
 ## Resources
 

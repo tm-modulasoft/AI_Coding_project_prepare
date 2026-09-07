@@ -23,7 +23,6 @@ Success = an agent that has never seen the setup conversation can clone the host
 - Do not dump the PRD, changelog, full architecture doc, or `golden-rules.md` into `AGENTS.md`.
 - Do not add generic slogans ("write clean code", "follow SOLID", "be helpful").
 - Do not add dependencies, CI, or refactors "to help agents" unless a file cannot be accurate without it.
-- Do not overwrite existing agent files without backing them up first.
 - Do not commit unless the user asks.
 - Do not invent a stack, a design system, or dark mode the host does not have.
 - Do not write globbed project Cursor `.mdc` rules or Claude `.claude/rules/` copies of helpers. When-to-load is Pointers in `AGENTS.md`.
@@ -36,7 +35,7 @@ Success = an agent that has never seen the setup conversation can clone the host
 | **Greenfield**      | Empty/scaffold                      | _What should be_ — only from an architecture spec the user provides, or ask. Never guess a stack.                           |
 | **Golden gap-fill** | Host silent on an applicable domain | Checkable default from `references/golden-rules.md`, tagged `golden:`. Skip if the stack cannot hit that domain.            |
 
-If both an existing `AGENTS.md`/`CLAUDE.md` and the codebase exist, **merge**: keep human-written steering that is still true; replace anything the code contradicts.
+If the host already has `AGENTS.md` or `CLAUDE.md`, keep human-written steering that is still true; replace anything the code contradicts.
 
 **Precedence** (do not average): user chat > host project standard when it is more correct/specific (including stricter) > golden default for silence > safety/a11y floors that are never Canonical-ized from a bad habit. Full test: `references/golden-rules.md`.
 
@@ -115,7 +114,7 @@ Optional, **only** if that tool is already in the host ([agents.md](https://agen
 - Aider: `.aider.conf.yml` with `read: AGENTS.md`
 - Gemini CLI: `.gemini/settings.json` with `"context": { "fileName": "AGENTS.md" }`
 
-Do **not** revive `.cursorrules` if `.cursor/rules/` or `AGENTS.md` exists.
+Do **not** write `.cursorrules`.
 
 Do **not** rewrite step 1’s `.cursor/rules/ai-coding-native-rules.mdc` here.
 
@@ -123,8 +122,6 @@ Do **not** write globbed project rules as when-to-load:
 
 - No `.cursor/rules/*.mdc` with `alwaysApply: false` / `globs:` that point at helpers
 - No `.claude/rules/` path-scoped copies of the same content
-
-If discovery finds leftover globbed project `.mdc` or `.claude/rules/` from an older prepare: fold unique must-dos into helpers and Pointers; do not recreate those files; **ask before deleting** leftovers.
 
 ### 4. Host README (gap-fill)
 
@@ -134,7 +131,7 @@ Human-facing. Follow `references/golden-rules.md` → **README (human)**. Create
 
 **If none exists:** create root `README.md` from the template. Fill only from discovery (name, package/`pyproject` description, real install/dev/test commands, license pointer iff a license file exists). Drop jobs that do not apply.
 
-**If one exists:** copy it to `README.md.bak` in the same directory, then merge — do not confront a structure that already covers the jobs:
+**If one exists:** gap-fill in place — do not confront a structure that already covers the jobs:
 
 1. Inventory headings against the golden jobs. Synonyms count (Getting started = Install = Quick start).
 2. Keep heading names, order, extra sections, and tone.

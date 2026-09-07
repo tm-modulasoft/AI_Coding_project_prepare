@@ -4,16 +4,9 @@ Inspect the **host project** (git toplevel). Cite paths. Do not guess scripts or
 
 After this pass, merge with `references/golden-rules.md`: project standard if more correct/specific; golden default if silent; safety floors never Canonical-ized from a bad habit.
 
-## Existing AI layer (backup before replace)
+## Existing agent notes
 
-Look for and read:
-
-- `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `AGENT.md`, `AI_CODING_README.md`, `AI_CODING_LEARN.md`
-- `.cursorrules`, `.cursor/rules/**` (fold globbed _project_ rules into helpers + Pointers; do not recreate them. Leave step 1 `ai-coding-native-rules.mdc` to harness merge)
-- `.github/copilot-instructions.md`, `.github/instructions/**`
-- `.claude/`, `.claude/rules/`, `.agents/`, `.windsurfrules`
-
-If replacing, copy to `*.bak` in the same directory.
+If `AGENTS.md` or `CLAUDE.md` exists, read it for `repo:` facts. Keep human steering that is still true.
 
 ## Human README
 
@@ -23,17 +16,14 @@ Also read if present: `LICENSE` / `LICENSE.md` / `COPYING`, `CONTRIBUTING.md`, `
 
 Inventory which golden README **jobs** already have a heading (see `golden-rules.md` → README). Do not plan a heading rename. If docs and code disagree on commands, code/scripts/CI win — the README gap-fill must match them.
 
-## Existing harness (merge, do not wipe)
+## Existing harness (merge host config, do not wipe)
 
 Look for and read:
 
 - `.cursor/settings.json` (especially `plugins`)
 - `.cursor/cli.json`
 - `skills-lock.json`
-- `AI_CODING_README.md`
-- `AI_CODING_LEARN.md`
 - `.gitignore` (whether `.agents/skills/` is ignored)
-- `.cursor/rules/ai-coding-native-rules.mdc`
 
 If the host already has a richer plugin list or lockfile, keep extras. Step 1 is `references/harness.md`.
 

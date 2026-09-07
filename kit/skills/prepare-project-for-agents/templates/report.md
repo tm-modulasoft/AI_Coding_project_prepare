@@ -12,9 +12,9 @@
 
 ## Harness (step 1)
 
-- Files created / merged:
-- `AI_CODING_README.md`: created / merged / skipped (why)
-- `AI_CODING_LEARN.md`: created / merged / skipped (why)
+- Files created / merged (settings.json extras kept):
+- `AI_CODING_README.md`: created
+- `AI_CODING_LEARN.md`: created
 - `npx skills experimental_install --yes`: ran / failed / skipped (why)
 
 ## Created / updated (step 2)
