@@ -6,12 +6,12 @@
     <title>Step 2 · Prepare project rules</title>
     <meta
       name="description"
-      content="Step 2: lean AGENTS.md with Pointers, helpers, shims only for tools that cannot read AGENTS.md, host README gap-fill, golden defaults only where the project is silent."
+      content="Step 2 (first-time only): lean AGENTS.md with Pointers, helpers, shims only for tools that cannot read AGENTS.md, host README gap-fill. Skip when joining a prepared clone."
     />
     <!--
     CODING AGENT — step 2 detail page (humans). Execute from disk:
     Kit root = parent of this pages/ folder.
-    Finish step 1 (references/harness.md) first.
+    Finish step 1 (references/harness.md) first. Skip this page on join.
     Then SKILL.md, instruction-prompt.md, golden-rules.md.
     Pointers in AGENTS.md = when-to-load. Do not write globbed project .mdc.
     Host README: gap-fill or create; keep existing structure when it already covers the jobs.
@@ -45,11 +45,12 @@
           <code>AGENTS.md</code> spine (including when-to-load Pointers),
           on-demand helpers, thin shims only for tools that cannot read
           <code>AGENTS.md</code>, and a gap-fill of this project's human
-          <code>README.md</code> (creates it if missing). It does not invent a
-          stack. Golden defaults apply only where this project is silent; the
-          project's own standards win when they are more correct or specific —
-          including an existing README structure that already covers the usual
-          jobs.
+          <code>README.md</code> (creates it if missing). Skip this step when
+          joining a clone that is already prepared — those files are the team’s
+          committed workflow. It does not invent a stack. Golden defaults apply
+          only where this project is silent; the project's own standards win
+          when they are more correct or specific — including an existing README
+          structure that already covers the usual jobs.
         </p>
       </section>
 
@@ -62,6 +63,11 @@
           >
             <p class="section-label">What you do</p>
             <h2 id="humans-how-heading">Your checklist</h2>
+            <p>
+              Joining a prepared repo? Stop. Use
+              <a href="harness.html#join">step 1 · Joining</a> (or
+              <code>AI_CODING_README.md</code>). Do not re-run this step.
+            </p>
             <ol class="steps">
               <li>
                 <strong>Port the kit</strong> if it is not already in the target
@@ -298,7 +304,10 @@
         <h2>For coding agents</h2>
         <ol>
           <li>Kit root is the parent of <code>pages/</code>.</li>
-          <li>Harness first unless <code>--instructions-only</code>.</li>
+          <li>
+            Harness first unless <code>--instructions-only</code>. Skip this
+            whole step on join (already prepared).
+          </li>
           <li>
             Read <code>instruction-prompt.md</code> and
             <code>golden-rules.md</code> before writing <code>AGENTS.md</code>

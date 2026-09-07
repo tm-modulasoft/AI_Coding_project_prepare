@@ -1,24 +1,49 @@
 # Harness (step 1)
 
-Do this **before** writing `AGENTS.md`. The harness is the runtime: IDE + CLI defaults, plugins/MCPs, project skills, and always-on native rules. Step 2 (`instruction-prompt.md`) is the project instruction layer.
+Do this **before** writing `AGENTS.md` (first-time). The harness is the runtime: IDE + CLI defaults, plugins/MCPs, project skills, and always-on native rules. Step 2 (`instruction-prompt.md`) is the project instruction layer — skip it on **join**.
 
 Kit root contains `START_HERE.html` and `harness-defaults/`. Write into the **host** git toplevel, not into the kit folder when the kit is nested.
 
 Do not commit. Do not write API keys, tokens, or plugin secrets.
 
-## Goal
+## Join (already prepared — this machine only)
 
-A teammate who clones the host can:
+When discovery classified **join**, committed prepare files are the team’s workflow. Do **not** recopy kit defaults over them. Do **not** run step 2.
 
-1. Restore skills from GitHub via `skills-lock.json` (`npx skills experimental_install --yes` — agent already ran this once during prepare).
+A clone is missing only machine-local pieces: gitignored `.agents/skills/`, this person’s Cursor marketplace plugins, and plugin keys.
+
+### Do
+
+1. From the **host git root**, run `npx skills experimental_install --yes` (needs network). Same command and retry rules as §3 below.
+2. Detect install state under `~/.cursor/plugins/` (Windows: `%USERPROFILE%\.cursor\plugins\`, including `cache/`). Put **missing** `/add-plugin …` lines at the top of your next message. Skip nags for plugins already on this machine.
+3. Remind the human: connect Context7 and Sonatype keys in Customize; never commit keys; read `AI_CODING_README.md` and `AI_CODING_LEARN.md`.
+4. If `kit/` is on disk and a kit-owned harness file from the table below is **absent**, copy that file only.
+5. Report with `templates/report.md` (join section). Stop.
+
+### Do not
+
+- Fetch `kit/` (join does not need the installer). If this run already fetched it, do not copy defaults onto existing files; ask to delete the fetched folder.
+- Overwrite `AGENTS.md`, helpers, host README, shims, `skills-lock.json`, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `.cursor/settings.json`, `.cursor/cli.json`, `.cursor/rules/ai-coding-native-rules.mdc`, or `.gitignore`.
+- Merge kit `harness-defaults/` into committed files (that would reset team edits).
+- Read or execute `instruction-prompt.md` / `writing-rules.md` / `golden-rules.md`.
+
+Optional human (same as first-time): paste native-rules into Cursor User Rules for all repos on this machine.
+
+The rest of this file is **first-time** (write/merge harness files, then continue to step 2 unless `--harness-only` or join).
+
+## Goal (first-time)
+
+A teammate who clones the host later can:
+
+1. Restore skills from GitHub via `skills-lock.json` (`npx skills experimental_install --yes` — agent already ran this once during prepare; each new machine runs it again on join).
 2. Install the default Cursor plugins (`/add-plugin …`) if this machine does not already have them.
 3. Get house workflow + tool defaults injected every chat (native rule).
 4. Read `AI_CODING_README.md` for human notes (workflow, skill cmds, plugins). Intros and tutorials: `AI_CODING_LEARN.md`.
-5. Then run step 2.
+5. Then run step 2 (first-time only).
 
 ## Non-goals
 
-- Do not overwrite a richer host `skills-lock.json` or a host `.cursor/settings.json` plugin list the user already tuned — merge, keep extras.
+- Do not overwrite a richer host `skills-lock.json` or a host `.cursor/settings.json` plugin list the user already tuned — merge, keep extras. Join: do not merge at all.
 - Do not write global `~/.cursor/cli-config.json` or Cursor User Rules unless the user asked. Those are machine-personal.
 - Do not duplicate `harness-defaults/ai-coding-native-rules.md` into `AGENTS.md`. Step 2 writes a **short** portable Tools stanza so non-Cursor agents still prefer Context7 and Sonatype.
 
@@ -66,7 +91,7 @@ Same names as Customize → Marketplace. Reload the window after install.
 
 **Detect before nagging.** Look under the user's Cursor plugins directory, for example `~/.cursor/plugins/` (Windows: `%USERPROFILE%\.cursor\plugins\`, including `cache/`). If all four plugins already appear installed on this machine, say so and ask for a reload if they are not active in this project. Do not tell the human to re-run `/add-plugin` for plugins that are already there.
 
-If any of the four are missing, list only the missing `/add-plugin` lines. Continue to step 2 unless `--harness-only` — writing `AGENTS.md` does not need the plugins, but the repo is not "ready" until the human has installed the missing ones and reloaded.
+If any of the four are missing, list only the missing `/add-plugin` lines. Continue to step 2 unless `--harness-only` or **join** — writing `AGENTS.md` does not need the plugins, but the repo is not "ready" until the human has installed the missing ones and reloaded.
 
 ### 2. `.cursor/cli.json` (CLI client, project layer)
 
@@ -140,4 +165,4 @@ Optional human: paste `harness-defaults/ai-coding-native-rules.md` into Cursor C
 
 ## After harness files
 
-List in the report: created/merged paths (including `AI_CODING_README.md` and `AI_CODING_LEARN.md`), whether `experimental_install` succeeded, missing `/add-plugin` lines (or “already installed”), and plugin keys to connect. Then continue to step 2 unless the user asked for harness only.
+List in the report: created/merged paths (including `AI_CODING_README.md` and `AI_CODING_LEARN.md`), whether `experimental_install` succeeded, missing `/add-plugin` lines (or “already installed”), and plugin keys to connect. Then continue to step 2 unless the user asked for harness only or this run is **join**.

@@ -2,6 +2,8 @@
 
 Always-on context is expensive. Split ruthlessly.
 
+**Join:** do not write or rewrite host instruction files. Skip the quality checklist. Report with `templates/report.md` (join section).
+
 ## Precedence (host files)
 
 When a golden default and a project standard disagree, **do not average**. See `references/golden-rules.md`.
@@ -60,6 +62,8 @@ Golden rules are a **default floor**, not a ceiling and not a second style guide
 - Spec: https://agents.md (AAIF / Linux Foundation)
 
 ## Quality checklist
+
+Skip on join.
 
 - [ ] `AGENTS.md` at host root, uppercase plural
 - [ ] Host README (GitHub-visible) created or gap-filled; structure kept when it already covers the jobs; commands match `AGENTS.md`; agent pointer lines present

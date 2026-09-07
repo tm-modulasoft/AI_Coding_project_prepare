@@ -1,5 +1,8 @@
 Prepare this project for AI agentic coding.
 
+0. Classify the host git root **before fetching anything**:
+   - **Join** if it already has `AGENTS.md`, `skills-lock.json`, and `AI_CODING_README.md`. Those files are the team's committed workflow. Do not fetch `kit/`. Do not rewrite them or other committed prepare files (helpers, README, native rules, settings, lockfile). Only set up this machine: run `npx skills experimental_install --yes` at the host root; check `~/.cursor/plugins/` and tell me to paste `/add-plugin …` only for plugins missing here; remind me to connect Context7 and Sonatype keys in Customize. Point me at `AI_CODING_README.md` and `AI_CODING_LEARN.md`. Stop. Do not commit.
+   - **First-time** if those files are missing. Continue below. (If I explicitly ask to regenerate `AGENTS.md`, that is first-time step 2 even when the files exist.)
 1. If this workspace has no `kit/skills/prepare-project-for-agents/SKILL.md`, fetch `kit/` from https://github.com/tm-modulasoft/AI_Coding_project_prepare into this repo as `kit/`. Shallow-clone into a temp dir (`gh repo clone tm-modulasoft/AI_Coding_project_prepare .ai-coding-kit-src -- --depth 1` or `git clone --depth 1 https://github.com/tm-modulasoft/AI_Coding_project_prepare.git .ai-coding-kit-src`), copy only `.ai-coding-kit-src/kit` → `kit/`, delete the temp dir. Do not copy the kit repo's README, AGENTS.md, or .git.
 2. Read `kit/START_HERE.html`, then execute `kit/skills/prepare-project-for-agents/SKILL.md`. Two steps, in order — do not skip the harness.
 3. Host = this repo's git root. Write harness files and `AGENTS.md` into the host, not into `kit/`.

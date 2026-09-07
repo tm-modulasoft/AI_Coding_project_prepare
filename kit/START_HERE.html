@@ -6,15 +6,20 @@
     <title>Prepare this project for AI agentic coding</title>
     <meta
       name="description"
-      content="Portable kit: paste the GitHub README prompt into an agent on a local project. The agent fetches kit/, restores skills from GitHub, then writes AGENTS.md."
+      content="Portable kit: paste the GitHub README prompt into an agent. First-time: fetch kit/, write AGENTS.md. Join: restore this machine only."
     />
     <!--
     CODING AGENT — this HTML is the entry hint, not the runbook.
+    0. Classify host git root BEFORE fetching kit.
+       Join if AGENTS.md + skills-lock.json + AI_CODING_README.md exist.
+       Join = machine-local harness only (npx skills experimental_install --yes,
+       missing /add-plugin, plugin keys). Do not fetch kit. Do not rewrite team files.
+       First-time otherwise. User asked to regenerate AGENTS.md → step 2 even if files exist.
     1. Kit root = directory that contains this file (fetched `kit/` folder).
-    2. If this file is missing from the host workspace: fetch `kit/` from
+    2. If this file is missing AND the host is first-time: fetch `kit/` from
        https://github.com/tm-modulasoft/AI_Coding_project_prepare (see README prompt).
-    3. Two steps, in order. Do not skip step 1.
-       Step 1 Harness: skills/prepare-project-for-agents/references/harness.md
+    3. First-time: two steps, in order. Do not skip step 1. Join: stop after harness restore.
+       Step 1 Harness: skills/prepare-project-for-agents/references/harness.md (see Join).
          IDE/CLI defaults, .cursor/settings.json plugins,
          harness-defaults/skills-lock.json → skills-lock.json,
          YOU run npx skills experimental_install --yes from the host root
@@ -23,7 +28,7 @@
          harness-defaults/AI_CODING_LEARN.md → host AI_CODING_LEARN.md,
          harness-defaults/ai-coding-native-rules.md → alwaysApply ai-coding-native-rules.mdc.
          Human: /add-plugin … only if those plugins are not already installed (no CLI).
-       Step 2 Project rules: SKILL.md then references/instruction-prompt.md and golden-rules.md
+       Step 2 Project rules (first-time only): SKILL.md then references/instruction-prompt.md and golden-rules.md
          AGENTS.md (with Pointers), helpers, shims only for tools that cannot read AGENTS.md,
          host README gap-fill (create if missing; keep existing structure when it already covers the jobs).
          Do not write globbed project .cursor/rules/*.mdc.
@@ -59,8 +64,10 @@
         <h1>Prepare this project for AI agentic coding</h1>
         <p class="lede">
           Open this repo on GitHub. Paste the README prompt into an agent on
-          your <strong>local project</strong>. The agent fetches this
-          <code>kit/</code> folder and restores skills from GitHub. You only run
+          your <strong>local project</strong>. The same prompt covers first-time
+          prepare and a teammate joining a repo that is already prepared. On
+          join, the agent only restores this machine (skills + missing plugins)
+          and does not rewrite team rules. You only run
           <code>/add-plugin</code> if those Cursor plugins are not already on
           your machine.
         </p>
@@ -77,6 +84,14 @@
       >
         <p class="section-label">First thing</p>
         <h2 id="get-started-heading">Use on another project</h2>
+        <p>
+          Already have <code>AGENTS.md</code>, <code>skills-lock.json</code>,
+          and <code>AI_CODING_README.md</code> in git? That clone is
+          <strong>already prepared</strong>. Paste the same prompt; the agent
+          only sets up <em>this machine</em> (restore skills, missing plugins,
+          keys). It must not rewrite the team’s rules. You can also follow
+          <code>AI_CODING_README.md</code> without the prompt.
+        </p>
         <ol class="steps">
           <li>Open the local project in your coding agent.</li>
           <li>
@@ -84,9 +99,9 @@
             <a href="https://github.com/tm-modulasoft/AI_Coding_project_prepare"
               >GitHub README</a
             >
-            (same text as <a href="#bootstrap">below</a>). The agent fetches
-            <code>kit/</code> from GitHub and restores skills from the lockfile
-            (GitHub sources).
+            (same text as <a href="#bootstrap">below</a>). First-time: the agent
+            fetches <code>kit/</code> and writes the harness +
+            <code>AGENTS.md</code>. Join: no fetch, no rewrite.
           </li>
           <li>
             When the agent asks: paste any missing
@@ -94,13 +109,14 @@
             Context7 and Sonatype keys in Customize. Never commit keys.
           </li>
           <li>
-            <strong>Then delete this fetched folder</strong> from the host
+            First-time only:
+            <strong>then delete this fetched folder</strong> from the host
             (recommended). It is the installer. Keep <code>.cursor/</code>,
             <code>skills-lock.json</code>, <code>AI_CODING_README.md</code>,
             <code>AI_CODING_LEARN.md</code>, <code>AGENTS.md</code>, the project
             <code>README.md</code>, helpers, and shims for tools that cannot
             read <code>AGENTS.md</code>. Do not delete <code>kit/</code> inside
-            this GitHub repo.
+            this GitHub repo. Join should not have fetched <code>kit/</code>.
           </li>
         </ol>
       </section>
@@ -115,7 +131,9 @@
               IDE and CLI defaults, Cursor plugins/MCPs, project skills from
               <code>harness-defaults/skills-lock.json</code>, gitignore for
               <code>.agents/skills/</code>, and always-on native rules from
-              <code>harness-defaults/ai-coding-native-rules.md</code>.
+              <code>harness-defaults/ai-coding-native-rules.md</code>. On a
+              prepared clone, only restore this machine (skills + missing
+              plugins).
             </p>
             <span class="more">Open step details</span>
           </a>
@@ -125,11 +143,13 @@
             <span class="tile-num" aria-hidden="true">2</span>
             <h2>Prepare project rules</h2>
             <p>
-              Lean <code>AGENTS.md</code> with Pointers, on-demand helpers,
-              shims only for tools that cannot read <code>AGENTS.md</code>, and
-              a gap-fill of the host <code>README.md</code> (create if missing;
-              keep existing structure when it already covers the jobs). Project
-              standards win; golden defaults fill silence.
+              First-time only. Lean <code>AGENTS.md</code> with Pointers,
+              on-demand helpers, shims only for tools that cannot read
+              <code>AGENTS.md</code>, and a gap-fill of the host
+              <code>README.md</code> (create if missing; keep existing structure
+              when it already covers the jobs). Skip this when joining a
+              prepared repo. Project standards win; golden defaults fill
+              silence.
             </p>
             <span class="more">Open step details</span>
           </a>
@@ -137,10 +157,10 @@
       </ul>
 
       <h2 id="bootstrap">Bootstrap prompt</h2>
-      <p>
-        Paste this as the first message to the agent on the project you want
-        prepared.
-      </p>
+        <p>
+          Paste this as the first message to the agent on the project you want
+          prepared, or on a clone that is already prepared (join).
+        </p>
       <div class="slip">
         <div class="slip-head">
           <p>Copy into the coding agent</p>
@@ -149,6 +169,9 @@
         <pre id="bootstrap-prompt">
 Prepare this project for AI agentic coding.
 
+0. Classify the host git root **before fetching anything**:
+   - **Join** if it already has `AGENTS.md`, `skills-lock.json`, and `AI_CODING_README.md`. Those files are the team's committed workflow. Do not fetch `kit/`. Do not rewrite them or other committed prepare files (helpers, README, native rules, settings, lockfile). Only set up this machine: run `npx skills experimental_install --yes` at the host root; check `~/.cursor/plugins/` and tell me to paste `/add-plugin …` only for plugins missing here; remind me to connect Context7 and Sonatype keys in Customize. Point me at `AI_CODING_README.md` and `AI_CODING_LEARN.md`. Stop. Do not commit.
+   - **First-time** if those files are missing. Continue below. (If I explicitly ask to regenerate `AGENTS.md`, that is first-time step 2 even when the files exist.)
 1. If this workspace has no `kit/skills/prepare-project-for-agents/SKILL.md`, fetch `kit/` from https://github.com/tm-modulasoft/AI_Coding_project_prepare into this repo as `kit/`. Shallow-clone into a temp dir (`gh repo clone tm-modulasoft/AI_Coding_project_prepare .ai-coding-kit-src -- --depth 1` or `git clone --depth 1 https://github.com/tm-modulasoft/AI_Coding_project_prepare.git .ai-coding-kit-src`), copy only `.ai-coding-kit-src/kit` → `kit/`, delete the temp dir. Do not copy the kit repo's README, AGENTS.md, or .git.
 2. Read `kit/START_HERE.html`, then execute `kit/skills/prepare-project-for-agents/SKILL.md`. Two steps, in order — do not skip the harness.
 3. Host = this repo's git root. Write harness files and `AGENTS.md` into the host, not into `kit/`.
@@ -178,11 +201,18 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre
         </p>
         <ol>
           <li>
-            <strong>Kit root</strong> is the directory that contains this HTML
-            file.
+            <strong>Classify first</strong> (host git root). Join if
+            <code>AGENTS.md</code>, <code>skills-lock.json</code>, and
+            <code>AI_CODING_README.md</code> exist — machine-local harness
+            only; do not fetch <code>kit/</code>; do not rewrite team files.
           </li>
           <li>
-            If this workspace has no kit, fetch <code>kit/</code> from
+            <strong>Kit root</strong> is the directory that contains this HTML
+            file (first-time fetch only).
+          </li>
+          <li>
+            If this workspace has no kit <em>and the host is first-time</em>,
+            fetch <code>kit/</code> from
             <a href="https://github.com/tm-modulasoft/AI_Coding_project_prepare"
               >GitHub</a
             >
@@ -192,19 +222,20 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre
             Read
             <a href="skills/prepare-project-for-agents/SKILL.md"
               ><code>skills/prepare-project-for-agents/SKILL.md</code></a
-            >. Mandatory.
+            >. Mandatory on first-time (and when kit is already on disk).
           </li>
           <li>
             <strong>Step 1 — harness first.</strong> Read and execute
             <a href="skills/prepare-project-for-agents/references/harness.md"
               ><code>references/harness.md</code></a
-            >. You run
+            >
+            (Join section when already prepared). You run
             <code>npx skills experimental_install --yes</code> (GitHub sources
             in the lockfile). Surface <code>/add-plugin</code> only for plugins
             missing on this machine.
           </li>
           <li>
-            <strong>Step 2 — project rules.</strong> Then
+            <strong>Step 2 — project rules</strong> (first-time only). Then
             <a
               href="skills/prepare-project-for-agents/references/instruction-prompt.md"
               ><code>instruction-prompt.md</code></a
@@ -223,8 +254,9 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre
             Do not invent conventions. Do not commit unless asked. Finish with
             <a href="skills/prepare-project-for-agents/templates/report.md"
               ><code>templates/report.md</code></a
-            >. If you fetched this folder from GitHub in this run, ask before
-            deleting it (recommended: yes).
+            >
+            (join section when joining). If you fetched this folder from GitHub
+            in this run, ask before deleting it (recommended: yes).
           </li>
         </ol>
         <p>
@@ -236,7 +268,8 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre
       </section>
 
       <footer>
-        The agent fetches this <code>kit/</code> folder from GitHub. Spec:
+        The agent fetches this <code>kit/</code> folder from GitHub on
+        first-time prepare (not on join). Spec:
         <a href="https://agents.md">https://agents.md</a>. This page has no
         build step and must work when opened as a local file.
       </footer>

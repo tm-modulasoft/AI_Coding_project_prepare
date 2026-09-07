@@ -1,6 +1,6 @@
 ---
 name: prepare-project-for-agents
-description: Prepares a repository for AI agentic coding in two steps — (1) harness first (IDE/CLI defaults, Cursor plugins/MCPs, skills-lock + npx skills experimental_install from GitHub sources, always-on native rules), then (2) a lean AGENTS.md spine with when-to-load Pointers, on-demand helpers, thin shims only for tools that cannot read AGENTS.md, and a gap-fill of the host README (create if missing; keep existing structure when it already covers the jobs). Defaults to globally accepted golden rules only where the host is silent; project standards win when they are more correct or specific. Use when the user wants to prepare a project for AI agents, add AGENTS.md, bootstrap agent context, set up the agent harness, follow START_HERE.html, fetch the kit from GitHub onto another project, or invokes /prepare-project-for-agents.
+description: Prepares a repository for AI agentic coding. Classify first — if the host is already prepared (committed AGENTS.md + skills-lock.json + AI_CODING_README.md), only restore this machine's harness (skills install, missing Cursor plugins, plugin keys) and do not rewrite team rules. Otherwise two steps — (1) harness first (IDE/CLI defaults, Cursor plugins/MCPs, skills-lock + npx skills experimental_install from GitHub sources, always-on native rules), then (2) a lean AGENTS.md spine with when-to-load Pointers, on-demand helpers, thin shims only for tools that cannot read AGENTS.md, and a gap-fill of the host README (create if missing; keep existing structure when it already covers the jobs). Defaults to globally accepted golden rules only where the host is silent; project standards win when they are more correct or specific. Use when the user wants to prepare a project for AI agents, join an already-prepared repo, add AGENTS.md, bootstrap agent context, set up the agent harness, follow START_HERE.html, fetch the kit from GitHub onto another project, or invokes /prepare-project-for-agents.
 argument-hint: "[target-git-root] [--brownfield|--greenfield] [--harness-only|--instructions-only]"
 disable-model-invocation: true
 ---
@@ -9,9 +9,13 @@ disable-model-invocation: true
 
 Write a portable AI instruction layer for the **host project**, and put the **harness** in place first so agents have plugins, skills, and always-on tool routing before they rely on `AGENTS.md`. Also gap-fill the host’s human `README.md` (create if missing) without fighting a more correct existing structure. When-to-load for helpers is **Pointers** in `AGENTS.md` (works in any AGENTS.md-compatible harness). Do not write globbed project Cursor `.mdc` rules.
 
+If this host was **already prepared** by this kit and those files are in git, a new developer only needs this **machine’s** harness (restore gitignored skills, install missing marketplace plugins, connect keys). Do not regenerate the team’s `AGENTS.md`, helpers, or committed harness files.
+
 Do not invent a stack or a design system the code does not use. Fill silence with named golden defaults (`references/golden-rules.md`). Project standards win when they are more correct or specific. Do not commit unless asked.
 
 ## Port the kit (if missing)
+
+Host git root = `git rev-parse --show-toplevel` (or the workspace git toplevel). **Join** if that root already has `AGENTS.md`, `skills-lock.json`, and `AI_CODING_README.md`. Skip this section on join. Do not fetch `kit/` only to restore a teammate’s machine.
 
 The copyable unit is the **`kit/` folder**. Source: https://github.com/tm-modulasoft/AI_Coding_project_prepare (`kit/` on the default branch).
 
@@ -31,20 +35,33 @@ Then continue.
 2. **Host project** — git toplevel of the workspace being prepared.
    - Kit root is the git root → host is this repo.
    - Kit root is a subdirectory → host is the parent git root. Write agent files into the host, not into the kit.
-3. **First-time prepare.** This host has not been prepared by this kit. Write kit-owned files from kit defaults. Gap-fill an existing host README (keep structure when it already covers the golden jobs; see `golden-rules.md` → README). Merge extras in `.cursor/settings.json` and keep a richer `skills-lock.json` if present.
+3. **Classify** (before fetching `kit/` or writing files). **Join** if the host git root already has all of: `AGENTS.md`, `skills-lock.json`, `AI_CODING_README.md`. Those are the team’s committed workflow. **First-time** otherwise. User override: “regenerate / refresh `AGENTS.md`” → first-time step 2 even when those files exist; “just set up my machine” → join even if the set is incomplete.
 
 ## Mandatory reads
 
-Before scanning the host, read `references/discovery.md`.
-Before writing **harness** files, read `references/harness.md`.
-Before writing **instruction** files, read `references/instruction-prompt.md`, `references/writing-rules.md`, and `references/golden-rules.md`.
+Before scanning the host, read `references/discovery.md` (starts with Classify).
+If **join:** read only `references/harness.md` → Join. Do not read `instruction-prompt.md`, `writing-rules.md`, or `golden-rules.md`.
+If **first-time:** before writing **harness** files, read `references/harness.md`. Before writing **instruction** files, read `references/instruction-prompt.md`, `references/writing-rules.md`, and `references/golden-rules.md`.
 When producing output, follow the matching file under `templates/` (and kit `harness-defaults/` for skills lock, native-rules body, IDE plugin settings, CLI permissions).
 
 ## Workflow
 
-Two steps. Do not skip the harness unless the user passed `--instructions-only`. Stop after the harness if they passed `--harness-only`.
+**Join** (already prepared): machine-local harness only. Skip step 2. Do not overwrite committed prepare files. Details: `references/harness.md` → Join.
 
-### 1. Harness first
+**First-time:** two steps. Write kit-owned files from kit defaults. Gap-fill an existing host README (keep structure when it already covers the golden jobs; see `golden-rules.md` → README). Merge extras in `.cursor/settings.json` and keep a richer `skills-lock.json` if present. Do not skip the harness unless the user passed `--instructions-only`. Stop after the harness if they passed `--harness-only`. On a join host, `--harness-only` is already the path; `--instructions-only` still skips unless the user asked to regenerate the instruction layer.
+
+### Join — already prepared (this machine only)
+
+Committed files are the team’s source of truth (`AGENTS.md`, helpers, README, lockfile, native rules, `AI_CODING_*`, `.cursor/` harness). A clone does not include gitignored `.agents/skills/` or this person’s Cursor marketplace plugins and keys.
+
+1. Do **not** fetch `kit/` (if you already did this run, do not copy defaults onto the host; ask to delete the fetched folder).
+2. From the host git root, run `npx skills experimental_install --yes`.
+3. Detect plugins on this machine; put missing `/add-plugin …` lines at the top of your next message.
+4. Remind: connect Context7 and Sonatype keys in Customize; read `AI_CODING_README.md` and `AI_CODING_LEARN.md`.
+5. If `kit/` is on disk and a kit-owned harness file is **missing**, copy that file only. Never overwrite an existing one.
+6. Report with `templates/report.md` (join section). Stop. Do not commit. Do not run step 2.
+
+### 1. Harness first (first-time only)
 
 IDE/CLI defaults, plugin enablement, `skills-lock.json`, `.agents/skills/` gitignore, `AI_CODING_README.md` + `AI_CODING_LEARN.md`, always-on native rules.
 
@@ -52,7 +69,7 @@ IDE/CLI defaults, plugin enablement, `skills-lock.json`, `.agents/skills/` gitig
 
 Marketplace plugins have **no CLI**. After merging `.cursor/settings.json`, check whether the default plugins are already installed on this machine. If any are missing, put the `/add-plugin …` block at the top of your next message (human, in Cursor chat). Details: `references/harness.md`.
 
-### 2. Project instruction layer
+### 2. Project instruction layer (first-time only)
 
 1. Classify **brownfield** (derive _what is_ from the codebase) vs **greenfield** (derive _what should be_ from an architecture spec; ask if none).
 2. Discover stack, commands, seams, UI/theming, tests, git conventions, secrets/generated dirs, and the GitHub-visible README. Cite paths. Surface conflicts; do not silently pick docs over code.
@@ -88,15 +105,15 @@ Do **not** offer to delete `kit/` if this git remote is `tm-modulasoft/AI_Coding
 - Agents must Read skill files from disk. Opening `START_HERE.html` via `file://` cannot fetch sibling markdown.
 - Do not copy `golden-rules.md` into the host. Do not fight Prettier/gofmt/token files with a golden taste rule.
 - Never commit plugin API keys. `"key": true` in settings means “connect in the UI.”
-- This runbook is first-time prepare only. Do not add leftover-migration steps.
+- Classify before writes. Join = do not rewrite the committed instruction layer. First-time = this host has never been prepared by this kit; do not add leftover-migration steps (globbed project `.mdc`, renamed native-rules, `*.bak` merge of kit files).
 
 ## Resources
 
-- `references/harness.md` — step 1 runbook (mandatory before harness writes)
-- `references/instruction-prompt.md` — step 2 runbook (mandatory before instruction writes)
-- `references/discovery.md` — what to inspect in the host
-- `references/writing-rules.md` — lean vs on-demand split and quality bar
-- `references/golden-rules.md` — globally accepted defaults and precedence (mandatory before writing)
+- `references/harness.md` — step 1 runbook (mandatory before harness writes; includes Join)
+- `references/discovery.md` — classify join vs first-time, then what to inspect
+- `references/instruction-prompt.md` — step 2 runbook (mandatory before instruction writes; skip on join)
+- `references/writing-rules.md` — lean vs on-demand split and quality bar (skip on join)
+- `references/golden-rules.md` — globally accepted defaults and precedence (mandatory before writing; skip on join)
 - `templates/AGENTS.md` — suggested spine
 - `templates/README.md` — host README scaffold when none exists (gap-fill uses jobs, not this file’s headings)
 - `templates/CLAUDE.md` — Claude Code shim

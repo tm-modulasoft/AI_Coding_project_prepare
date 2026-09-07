@@ -4,7 +4,7 @@
 
 ## Project
 
-Field manual + skill for preparing any host repo for AI agentic coding: harness first (plugins, skills, native rules), then `AGENTS.md` with Pointers + helpers + shims only for tools that cannot read `AGENTS.md` + host README gap-fill.
+Field manual + skill for preparing any host repo for AI agentic coding: classify join vs first-time, then harness first (plugins, skills, native rules) or machine-local restore only, then (first-time) `AGENTS.md` with Pointers + helpers + shims only for tools that cannot read `AGENTS.md` + host README gap-fill.
 
 **Stack:** static HTML, Markdown skill files. No build, no runtime dependencies.
 
@@ -45,8 +45,8 @@ kit/                                    Payload the agent fetches onto a host
 - Host-project output: project standards (`repo:`) win when more correct or specific; named golden defaults fill silence; do not copy `references/golden-rules.md` into a host.
 - Host README: gap-fill golden human jobs; keep existing structure when it already covers them. Do not copy this repo’s paste-prompt README onto a host.
 - Two-step prepare: harness (`references/harness.md`) then instruction layer (`references/instruction-prompt.md`). When-to-load is Pointers in host `AGENTS.md`, not globbed project `.cursor/rules/*.mdc`.
-- First-time prepare only: a host has never been prepared by this kit. Do not add runbook steps that migrate older prepare outputs (globbed project `.mdc`, renamed native-rules, `*.bak` merge of kit files). Write kit-owned files from kit defaults. Gap-fill the host README; merge host `.cursor/settings.json` / existing `skills-lock.json` extras only.
-- Copied `kit/` on a host is an installer. After a successful prepare, recommend deleting it (ask first). Do not delete `kit/` in _this_ repo.
+- Classify before writes: **join** if the host already has `AGENTS.md` + `skills-lock.json` + `AI_CODING_README.md` (machine-local harness only — restore skills, missing plugins, keys; do not rewrite team files). **First-time** otherwise: a host has never been prepared by this kit. Do not add runbook steps that migrate older prepare outputs (globbed project `.mdc`, renamed native-rules, `*.bak` merge of kit files). Write kit-owned files from kit defaults. Gap-fill the host README; merge host `.cursor/settings.json` / existing `skills-lock.json` extras only.
+- Copied `kit/` on a host is an installer. After a successful first-time prepare, recommend deleting it (ask first). Do not fetch `kit/` for join. Do not delete `kit/` in _this_ repo.
 
 ## Boundaries
 
@@ -57,8 +57,8 @@ kit/                                    Payload the agent fetches onto a host
 ## Pointers
 
 - Skill spine — `kit/skills/prepare-project-for-agents/SKILL.md`
-- Harness (step 1) — `kit/skills/prepare-project-for-agents/references/harness.md`
-- Full instruction runbook (step 2) — `kit/skills/prepare-project-for-agents/references/instruction-prompt.md`
+- Harness (step 1, including join) — `kit/skills/prepare-project-for-agents/references/harness.md`
+- Full instruction runbook (step 2, skip on join) — `kit/skills/prepare-project-for-agents/references/instruction-prompt.md`
 - Writing rules (lean vs on-demand, Pointers not globs) — `kit/skills/prepare-project-for-agents/references/writing-rules.md`
 - Golden defaults — `kit/skills/prepare-project-for-agents/references/golden-rules.md`
 - Host README scaffold (only if the host has none) — `kit/skills/prepare-project-for-agents/templates/README.md`

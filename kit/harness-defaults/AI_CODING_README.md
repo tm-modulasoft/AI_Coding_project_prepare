@@ -20,15 +20,23 @@ Cole’s PRD skill even defers engineering choices (library and version, data mo
 
 The workflow section below is a working default. Tighten it later if the team wants a different process.
 
-## First clone (or empty `.agents/skills/`)
+## Joining this prepared repo (new machine / new teammate)
 
-From the repo root, restore skills (they are gitignored; `skills-lock.json` is committed):
+Committed files (`AGENTS.md`, helpers, `skills-lock.json`, native rules, this cheat sheet) are the team’s workflow. Do not regenerate them. This machine still needs:
+
+1. Restore skills (they are gitignored; `skills-lock.json` is committed):
 
 ```bash
 npx skills experimental_install --yes
 ```
 
-Needs network. Then open the project in Cursor, install any missing marketplace plugins, reload, and connect Context7 / Sonatype keys in Customize. Never commit keys.
+Needs network. From the repo root.
+
+2. Open the project in Cursor. Install any missing marketplace plugins (`/add-plugin …` below), reload, and connect Context7 / Sonatype keys in Customize. Never commit keys.
+
+3. Read this file and `AI_CODING_LEARN.md` before treating the agent as a process you already know.
+
+Same outcome if you paste the kit’s GitHub README prompt: the agent must classify **join** and stop after this machine’s harness. Do not fetch `kit/` only to join.
 
 ## Workflow
 

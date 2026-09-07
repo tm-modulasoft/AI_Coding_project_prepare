@@ -33,7 +33,7 @@
 
 Coding agents: `AGENTS.md`.
 
-Humans (AI workflow): `AI_CODING_README.md`. Intros: `AI_CODING_LEARN.md`.
+Humans (AI workflow): `AI_CODING_README.md`. Intros: `AI_CODING_LEARN.md`. New teammate on a prepared clone: restore skills with `npx skills experimental_install --yes`, then missing Cursor plugins and keys — do not regenerate `AGENTS.md`.
 
 ## License
 

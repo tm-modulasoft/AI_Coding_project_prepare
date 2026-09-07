@@ -2,7 +2,23 @@
 
 Inspect the **host project** (git toplevel). Cite paths. Do not guess scripts or versions.
 
-After this pass, merge with `references/golden-rules.md`: project standard if more correct/specific; golden default if silent; safety floors never Canonical-ized from a bad habit.
+## Classify (do this first)
+
+**Join** when the host git root already has **all** of:
+
+- `AGENTS.md`
+- `skills-lock.json`
+- `AI_CODING_README.md`
+
+That means this kit already prepared the repo and the team committed the workflow. A new developer must not regenerate those files.
+
+If join: confirm the three paths, then stop this file. Go to `references/harness.md` → Join. Do not scan stack, architecture, or README for rewriting.
+
+**First-time** otherwise (including a random pre-existing `AGENTS.md` without this kit’s cheat sheet and lockfile). Continue below.
+
+User override: they asked to regenerate / refresh `AGENTS.md` → first-time step 2 even when the three files exist. They asked only to set up this machine → join even if the set is incomplete.
+
+After a first-time pass, merge with `references/golden-rules.md`: project standard if more correct/specific; golden default if silent; safety floors never Canonical-ized from a bad habit.
 
 ## Existing agent notes
 
@@ -24,8 +40,10 @@ Look for and read:
 - `.cursor/cli.json`
 - `skills-lock.json`
 - `.gitignore` (whether `.agents/skills/` is ignored)
+- `AI_CODING_README.md`, `AI_CODING_LEARN.md`
+- `.cursor/rules/ai-coding-native-rules.mdc`
 
-If the host already has a richer plugin list or lockfile, keep extras. Step 1 is `references/harness.md`.
+If the host already has a richer plugin list or lockfile, keep extras. Step 1 is `references/harness.md`. Join does not merge kit defaults onto those files.
 
 ## Stack (from manifests, with versions)
 

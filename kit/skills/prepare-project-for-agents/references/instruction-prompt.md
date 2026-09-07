@@ -2,6 +2,8 @@
 
 This is **step 2** (project instruction layer). Complete **step 1** first: `references/harness.md`.
 
+**Skip this file on join.** If discovery classified the host as already prepared, do not regenerate `AGENTS.md`, helpers, shims, or the README. Machine-local harness only (`harness.md` → Join).
+
 Execute this runbook against the **host project** after `SKILL.md` path resolution. This is the detailed instruction set; do not duplicate it into `AGENTS.md`.
 
 ## Goal
@@ -35,7 +37,7 @@ Success = an agent that has never seen the setup conversation can clone the host
 | **Greenfield**      | Empty/scaffold                      | _What should be_ — only from an architecture spec the user provides, or ask. Never guess a stack.                           |
 | **Golden gap-fill** | Host silent on an applicable domain | Checkable default from `references/golden-rules.md`, tagged `golden:`. Skip if the stack cannot hit that domain.            |
 
-If the host already has `AGENTS.md` or `CLAUDE.md`, keep human-written steering that is still true; replace anything the code contradicts.
+If the host already has `AGENTS.md` or `CLAUDE.md` **and this is first-time** (not join), keep human-written steering that is still true; replace anything the code contradicts. Join never rewrites those files.
 
 **Precedence** (do not average): user chat > host project standard when it is more correct/specific (including stricter) > golden default for silence > safety/a11y floors that are never Canonical-ized from a bad habit. Full test: `references/golden-rules.md`.
 
@@ -142,6 +144,8 @@ Human-facing. Follow `references/golden-rules.md` → **README (human)**. Create
    `Coding agents: AGENTS.md.`
 
    `Humans (AI workflow): AI_CODING_README.md. Intros: AI_CODING_LEARN.md.`
+
+   New teammate on a prepared clone: restore skills (`npx skills experimental_install --yes`), then missing plugins and keys — do not regenerate `AGENTS.md`.
 
 6. Special-purpose README (paste-prompt landing, generated-only, legal-only): keep the structure; add only those pointer lines if missing; report `overridden: README structure`.
 7. Do not rename sections to match Standard Readme. Do not reorder a coherent README. Do not invent a license, badges, screenshots, roadmap, or maintainers. Do not copy this kit repo’s GitHub paste-prompt README onto a host.
