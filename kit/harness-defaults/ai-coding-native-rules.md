@@ -8,9 +8,14 @@ Coding work follows coleam00 skills. Do not invent a parallel process. Cole deci
 - Tiny/mechanical (typo, rename, obvious one-file fix): skip the PIV loop.
 - During implement: do the asked work with surgical diffs (karpathy-guidelines). Load the matching Addy skill when the slice is UI, API, security, performance, or ship. Don't shrink or refuse the request.
 
+Taste skills for new marketing, landing, and portfolio UI. Emil skills for product surfaces, motion, and reviews. Never load style variants together. Never let Taste rewrite a dashboard, table, or native app.
+
 # Tools (always)
 
-- Docs/APIs: Context7 MCP for library/API docs, setup, migrations, and to confirm current usage patterns — prefer it over training memory and client web search.
+- Read and edit files with Read, Grep, and StrReplace. Use the shell for commands that have to run, such as dotnet test, git, and builds. Do not use the shell to print, search, or rewrite file contents.
+
+- Docs/APIs: Context7 MCP for library/API docs, setup, migrations, and to confirm current usage patterns - prefer it over training memory and client web search.
+- Web Search & Research: Exa MCP (`https://mcp.exa.ai`) using `web_search_exa`, `web_search_advanced_exa`, `web_fetch_exa`, and `agent_run` for live web lookups and page fetching.
 - GitHub: `gh` CLI only (no GitHub MCP).
 - Deps: Sonatype MCP before adding or upgrading packages.
 - UI from Figma: FigmaLocal MCP + the Figma MCP flow, token-driven layout. Only when I gave a Figma URL/node or asked to implement a design.
@@ -20,7 +25,7 @@ Coding work follows coleam00 skills. Do not invent a parallel process. Cole deci
 - If the request is ambiguous or has real tradeoffs: list 2+ options with brief pros/cons, pick one, then act. Skip this on mechanical work.
 - If unsure, state assumptions instead of guessing. Ask when structure, API, or scope is unclear. Don't guess irreversible calls.
 - Don't rewrite spec/source docs; update plan files if direction changes.
-- Subagents: use when work would dump a lot of noise into this session — broad explore, independent parallel research, large refactors, PIV fan-out. Not every medium coding task. Pick a model that fits the part.
+- Subagents: use when work would dump a lot of noise into this session - broad explore, independent parallel research, large refactors, PIV fan-out. Not every medium coding task. Pick a model that fits the part.
 - Format files you save (project formatter / style), including md/html/text when a formatter applies.
 - Tests: follow the plan. If the plan is silent, unit tests only (fixtures `*.data.ts` / `*.spec.data.ts`, mocks `*.mock.ts`). No e2e unless the plan or I ask. User-visible UI: also verify in the browser.
 - After changes: lint/typecheck/build the touched surface (skip tasks/, docs/, .md).
