@@ -79,10 +79,12 @@ Vykdyk iš **repozitorijos šaknies**. Įdiegimai patenka į `.agents/skills/` (
 **Numatytieji šaltiniai** (jau yra `skills-lock.json`). Kasdienis atkūrimas vyksta iš lock failo. `add` naudok tada, kai tose GitHub repozitorijose atsirado skill'ų, kurių šiame lock faile dar nėra:
 
 ```bash
-npx skills add coleam00/skills --yes
+npx skills add vercel-labs/skills --yes --skill find-skills
 npx skills add forrestchang/andrej-karpathy-skills --yes
 npx skills add emilkowalski/skills --yes
-npx skills add mattpocock/skills --skill improve-codebase-architecture research codebase-design --yes
+npx skills add leonxlnx/taste-skill --yes --skill design-taste-frontend redesign-existing-projects
+npx skills add mattpocock/skills --yes --skill improve-codebase-architecture research codebase-design
+npx skills add coleam00/skills --yes
 npx skills add addyosmani/agent-skills --yes \
   -s frontend-ui-engineering \
   -s api-and-interface-design \
@@ -101,9 +103,10 @@ npx skills add addyosmani/agent-skills --yes \
 npx skills add addyosmani/agent-skills --yes \
   -s idea-refine \
   -s code-review-and-quality
+npx skills add addyosmani/web-quality-skills --yes
 ```
 
-Matt Pocock: **tik tie trys** skill'ai, ne visas katalogas. Tada įtrauk į git atnaujintą `skills-lock.json`.
+Ne visi katalogai: Vercel skills — **tik** `find-skills`. Taste — **tik** `design-taste-frontend` ir `redesign-existing-projects`. Matt Pocock — **tik tie trys**. `addyosmani/web-quality-skills` — visas katalogas. Tada įtrauk į git atnaujintą `skills-lock.json`.
 
 Naršyk daugiau: [skills.sh](https://skills.sh/). Paieška: `npx skills find [query]`.
 
@@ -116,18 +119,24 @@ Numatytieji MCP / marketplace papildiniai. Įdiegimo CLI nėra. Jei papildinio n
 /add-plugin context7-plugin
 /add-plugin sonatype-cursor-plugin
 /add-plugin modern-web-guidance
+/add-plugin exa
+/add-plugin devtools-for-agents
 ```
 
 - Cursor Team Kit — `cursor-team-kit`
 - Context7 — `context7-plugin`
 - Sonatype — `sonatype-cursor-plugin`
 - Modern Web Guidance — `modern-web-guidance`
+- Exa — `exa` — https://cursor.com/marketplace/exa
+- Chrome Devtools for Agents — `devtools-for-agents` — https://cursor.com/marketplace/google-chrome/devtools-for-agents
 
 Context7 ir Sonatype prijunk per Customize. `"key": true` nustatymuose reiškia „prijunk per UI“, o ne „įkelk paslaptį į git“.
 
 ## Įrankiai, kuriuos agentas turi naudoti
 
 - Bibliotekų / API dokumentacija: Context7 MCP (ne apmokymo atmintis ir ne bendra paieška internete)
+- Tiesioginė paieška internete ir puslapių nuskaitymas: Exa MCP
+- Naršyklės derinimas ir patikra: Chrome Devtools for Agents
 - Nauji ar atnaujinami paketai: Sonatype MCP prieš versijos fiksavimą
 - GitHub: tik `gh` CLI (jokio GitHub MCP)
 

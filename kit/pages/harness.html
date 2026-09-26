@@ -206,7 +206,9 @@ npx skills experimental_install --yes</pre
 /add-plugin cursor-team-kit
 /add-plugin context7-plugin
 /add-plugin sonatype-cursor-plugin
-/add-plugin modern-web-guidance</pre
+/add-plugin modern-web-guidance
+/add-plugin exa
+/add-plugin devtools-for-agents</pre
             >
             <p
               class="status"
@@ -230,7 +232,9 @@ npx skills experimental_install --yes</pre
     "cursor-team-kit": { "enabled": true },
     "context7-plugin": { "enabled": true, "key": true },
     "sonatype-cursor-plugin": { "enabled": true, "key": true },
-    "modern-web-guidance": { "enabled": true }
+    "modern-web-guidance": { "enabled": true },
+    "exa": { "enabled": true },
+    "devtools-for-agents": { "enabled": true }
   }
 }</pre
           >
@@ -250,8 +254,9 @@ npx skills experimental_install --yes</pre
           <p>
             If a tool cannot load that rule file, step 2 still writes a short
             <strong>Tools</strong> stanza in <code>AGENTS.md</code>: Context7
-            MCP for library docs (not client search), Sonatype for versions and
-            security, <code>gh</code> for GitHub.
+            MCP for library docs (not client search), Exa for live web search,
+            Chrome Devtools for Agents for browser debug and verification,
+            Sonatype for versions and security, <code>gh</code> for GitHub.
           </p>
 
           <h2 id="cli">IDE and CLI defaults</h2>

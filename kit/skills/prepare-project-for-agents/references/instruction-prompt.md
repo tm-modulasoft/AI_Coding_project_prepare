@@ -55,7 +55,7 @@ Suggested sections (drop empties): Project, Precedence, Layout (including **seam
 
 Do not copy `AI_CODING_README.md` or `AI_CODING_LEARN.md` into this file. Those are step 1 (human). Point at them from Layout if useful.
 
-**Tools** (always include a short stanza, even when `.cursor/rules/ai-coding-native-rules.mdc` exists): prefer **Context7 MCP** over client web search / training memory for library and framework docs; prefer **Sonatype MCP** for package version selection and security; GitHub via `gh` CLI only. Do not paste the full native-rules workflow here — that file is step 1 Cursor-only.
+**Tools** (always include a short stanza, even when `.cursor/rules/ai-coding-native-rules.mdc` exists): prefer **Context7 MCP** over client web search / training memory for library and framework docs; **Exa MCP** for live web search and page fetch; **Chrome Devtools for Agents** for browser debug and verification; prefer **Sonatype MCP** for package version selection and security; GitHub via `gh` CLI only. Do not paste the full native-rules workflow here — that file is step 1 Cursor-only.
 
 **Pointers** (required): a table (or short list) of _when you are editing_ → _Read first_. Fill the when-column with **this host's paths** (for example `**/*.cs`, `ClientApp/src/**/*.{ts,html}`), not vendor frontmatter. One row per helper that exists. Instruct the agent to Read the helper before editing that area; do not wait for a Cursor glob or a Claude path-scoped rule.
 

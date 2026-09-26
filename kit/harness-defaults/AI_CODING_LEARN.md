@@ -20,7 +20,7 @@ Start here. Software fundamentals first, then agent habits.
 This kit uses **only three** skills from that catalog (`improve-codebase-architecture`, `research`, `codebase-design`) — not the full set:
 
 ```bash
-npx skills add mattpocock/skills --skill improve-codebase-architecture research codebase-design --yes
+npx skills add mattpocock/skills --yes --skill improve-codebase-architecture research codebase-design
 ```
 
 ### Agent habits

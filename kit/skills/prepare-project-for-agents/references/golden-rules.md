@@ -170,7 +170,9 @@ Never Canonical a vulnerability "because the code does it". Gotchas + Never inst
 
 Portable stanza for host `AGENTS.md` when the host is silent (also encoded in kit native rules for Cursor). Do not copy this catalog; write the short Tools bullets.
 
-- Library / framework docs and API examples: **Context7 MCP** over client web search, Exa, or training memory.
+- Library / framework docs and API examples: **Context7 MCP** over client web search or training memory.
+- Live web search and page fetch: **Exa MCP**.
+- Browser debug and verification: **Chrome Devtools for Agents**.
 - Package version selection and vulnerability/license checks: **Sonatype MCP** before adding or pinning dependencies.
 - GitHub: **`gh` CLI only** — no GitHub MCP.
 

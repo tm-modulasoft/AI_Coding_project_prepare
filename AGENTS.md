@@ -34,6 +34,8 @@ kit/                                    Payload the agent fetches onto a host
 ## Tools
 
 - Docs/APIs: Context7 MCP — prefer over client web search and training memory for library and framework docs.
+- Live web search and page fetch: Exa MCP.
+- Browser debug and verification: Chrome Devtools for Agents.
 - Dependencies: Sonatype MCP — prefer for version selection and security before adding or upgrading packages.
 - GitHub: `gh` CLI only (no GitHub MCP). Fetch this kit with `gh repo clone` or `git clone --depth 1`.
 

@@ -7,6 +7,12 @@
       "skillPath": ".claude/skills/ablate-ai-layer/SKILL.md",
       "computedHash": "b2c91b87ac45d38fd593523234665c875513a3ae1e11b4dbd26a78e8244e5408"
     },
+    "accessibility": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/accessibility/SKILL.md",
+      "computedHash": "88c64dead9bb55925c7b983f5fd95cfecf30bd8c076fd384cdb17019d1becd87"
+    },
     "agent-browser": {
       "source": "coleam00/skills",
       "sourceType": "github",
@@ -55,6 +61,12 @@
       "skillPath": ".claude/skills/ast-grep/SKILL.md",
       "computedHash": "3bca45167617f547e97454ae16d271ba3aeb2550d89e6ef1942057bd122c0061"
     },
+    "best-practices": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/best-practices/SKILL.md",
+      "computedHash": "fc34a8d4aea22d0158e0560457c82432e9d2d0ac74cf3e9aaccb599905f3f711"
+    },
     "browser-testing-with-devtools": {
       "source": "addyosmani/agent-skills",
       "sourceType": "github",
@@ -97,6 +109,12 @@
       "skillPath": "skills/constraint-driven-development/SKILL.md",
       "computedHash": "40df237bb0447cba2b485309e5a9a13b4804dad31413dec186c1e9df73338c64"
     },
+    "core-web-vitals": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/core-web-vitals/SKILL.md",
+      "computedHash": "ceaa3e9c9dfa6209ffe923714c0a093b950d0922213d0cf375c27f3d602cc857"
+    },
     "debugging-and-error-recovery": {
       "source": "addyosmani/agent-skills",
       "sourceType": "github",
@@ -108,6 +126,12 @@
       "sourceType": "github",
       "skillPath": "skills/deprecation-and-migration/SKILL.md",
       "computedHash": "0d7b2002e250c02a260f6bc502d7a798ab8e8ca0c020c54d7b0f16053935c72c"
+    },
+    "design-taste-frontend": {
+      "source": "leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "computedHash": "899b84384f74f540ea5284d9b2e9234e050998b42eacc805410b518d4226c0b3"
     },
     "documentation-and-adrs": {
       "source": "addyosmani/agent-skills",
@@ -126,6 +150,12 @@
       "sourceType": "github",
       "skillPath": "skills/find-animation-opportunities/SKILL.md",
       "computedHash": "c6b1d0f6d03a11f8772b1cef4ca5cc88301ae8641ac2697c85ffa87eb458e40a"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "b146008599c31057cef1c145774cea5d5afb30e8f43fa802e47a4b461419aaaf"
     },
     "frontend-ui-engineering": {
       "source": "addyosmani/agent-skills",
@@ -174,6 +204,12 @@
       "sourceType": "github",
       "skillPath": ".claude/skills/opportunity-scan/SKILL.md",
       "computedHash": "1a5bf04289e82c3d3914988c101bf48c975c4e2815652d3fbe885b72adde5255"
+    },
+    "performance": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/performance/SKILL.md",
+      "computedHash": "25074989a0bbf636fd92e9079270b262a1c63422ed72a854494a8241dea0fcc5"
     },
     "performance-optimization": {
       "source": "addyosmani/agent-skills",
@@ -301,6 +337,12 @@
       "skillPath": "skills/prototype/SKILL.md",
       "computedHash": "b1216a31a08fb02871f5b4ace7f31d0a1e2d9c86ddca74a37ed97d975f7bcaa2"
     },
+    "redesign-existing-projects": {
+      "source": "leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/redesign-skill/SKILL.md",
+      "computedHash": "47eced3e960a2c961d3cbee11fa1216264f589344b586a5cbd03967cd6b9c54b"
+    },
     "research": {
       "source": "mattpocock/skills",
       "sourceType": "github",
@@ -337,6 +379,12 @@
       "skillPath": "skills/security-and-hardening/SKILL.md",
       "computedHash": "22d91d82a47263a9c8966afc475f0bf4cf437b90aadd5f46ffabd8de8a3fcb93"
     },
+    "seo": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo/SKILL.md",
+      "computedHash": "aa081d7ee9f44d1b09ac521051630adac2fca0e595e3d0d0ec881d0b2644676f"
+    },
     "setup-ai-tutor": {
       "source": "coleam00/skills",
       "sourceType": "github",
@@ -372,6 +420,12 @@
       "sourceType": "github",
       "skillPath": ".claude/skills/system-execution-report/SKILL.md",
       "computedHash": "dddf5d8e9a1fb5e64f98185a84482daf110dc73ca5749c073f2af66d1f8eaa60"
+    },
+    "web-quality-audit": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-quality-audit/SKILL.md",
+      "computedHash": "10c0b018ce77d2c6dd17aecf1ab58a64abb2beee945354d83c4ba8883527120a"
     },
     "worktree-create": {
       "source": "coleam00/skills",

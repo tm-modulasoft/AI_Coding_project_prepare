@@ -80,7 +80,7 @@ Skip on join.
 - [ ] UI/theming helpers exist **iff** a UI exists
 - [ ] No globbed project `.cursor/rules/*.mdc` or `.claude/rules/` copies of helpers. Only harness `ai-coding-native-rules.mdc` (`alwaysApply: true`)
 - [ ] Helper paths in `AGENTS.md` are backtick-quoted, not `@import`
-- [ ] `AGENTS.md` has a short Tools stanza (Context7, Sonatype, `gh`) even if native-rules exist
+- [ ] `AGENTS.md` has a short Tools stanza (Context7, Exa, Chrome Devtools, Sonatype, `gh`) even if native-rules exist
 - [ ] Host `.gitignore` ignores `.agents/skills/` and `skills-lock.json` is committed if present
 - [ ] `CLAUDE.md` is an import, not a second bible
 - [ ] Kit-owned files copied from defaults; host README gap-filled in place

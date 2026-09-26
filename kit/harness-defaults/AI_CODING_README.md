@@ -79,10 +79,12 @@ Run from the **repo root**. Installs land in `.agents/skills/` (gitignored). Com
 **Default sources** (already in `skills-lock.json`). Day-to-day restore is the lockfile. Use `add` when those GitHub repos gained skills this lock does not have yet:
 
 ```bash
-npx skills add coleam00/skills --yes
+npx skills add vercel-labs/skills --yes --skill find-skills
 npx skills add forrestchang/andrej-karpathy-skills --yes
 npx skills add emilkowalski/skills --yes
-npx skills add mattpocock/skills --skill improve-codebase-architecture research codebase-design --yes
+npx skills add leonxlnx/taste-skill --yes --skill design-taste-frontend redesign-existing-projects
+npx skills add mattpocock/skills --yes --skill improve-codebase-architecture research codebase-design
+npx skills add coleam00/skills --yes
 npx skills add addyosmani/agent-skills --yes \
   -s frontend-ui-engineering \
   -s api-and-interface-design \
@@ -101,9 +103,10 @@ npx skills add addyosmani/agent-skills --yes \
 npx skills add addyosmani/agent-skills --yes \
   -s idea-refine \
   -s code-review-and-quality
+npx skills add addyosmani/web-quality-skills --yes
 ```
 
-Matt Pocock: **only those three** skills, not the whole catalog. Then commit the updated `skills-lock.json`.
+Subsets, not whole catalogs: Vercel skills is **only** `find-skills`. Taste is **only** `design-taste-frontend` and `redesign-existing-projects`. Matt Pocock is **only those three**. `addyosmani/web-quality-skills` is the whole catalog. Then commit the updated `skills-lock.json`.
 
 Browse more: [skills.sh](https://skills.sh/). Search: `npx skills find [query]`.
 
@@ -116,18 +119,24 @@ Default MCPs / marketplace plugins. No install CLI. If a plugin is missing, past
 /add-plugin context7-plugin
 /add-plugin sonatype-cursor-plugin
 /add-plugin modern-web-guidance
+/add-plugin exa
+/add-plugin devtools-for-agents
 ```
 
 - Cursor Team Kit — `cursor-team-kit`
 - Context7 — `context7-plugin`
 - Sonatype — `sonatype-cursor-plugin`
 - Modern Web Guidance — `modern-web-guidance`
+- Exa — `exa` — https://cursor.com/marketplace/exa
+- Chrome Devtools for Agents — `devtools-for-agents` — https://cursor.com/marketplace/google-chrome/devtools-for-agents
 
 Connect Context7 and Sonatype in Customize. `"key": true` in settings means “connect in the UI,” not “put the secret in git.”
 
 ## Tools the agent should use
 
 - Library / API docs: Context7 MCP (not training memory or generic web search)
+- Live web search and page fetch: Exa MCP
+- Browser debug and verification: Chrome Devtools for Agents
 - New or upgraded packages: Sonatype MCP before pinning
 - GitHub: `gh` CLI only (no GitHub MCP)
 

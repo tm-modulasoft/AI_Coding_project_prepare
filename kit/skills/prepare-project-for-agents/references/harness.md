@@ -45,7 +45,7 @@ A teammate who clones the host later can:
 
 - Do not overwrite a richer host `skills-lock.json` or a host `.cursor/settings.json` plugin list the user already tuned — merge, keep extras. Join: do not merge at all.
 - Do not write global `~/.cursor/cli-config.json` or Cursor User Rules unless the user asked. Those are machine-personal.
-- Do not duplicate `harness-defaults/ai-coding-native-rules.md` into `AGENTS.md`. Step 2 writes a **short** portable Tools stanza so non-Cursor agents still prefer Context7 and Sonatype.
+- Do not duplicate `harness-defaults/ai-coding-native-rules.md` into `AGENTS.md`. Step 2 writes a **short** portable Tools stanza so non-Cursor agents still prefer Context7, Exa, Chrome Devtools, and Sonatype.
 
 ## Source files (kit)
 
@@ -64,7 +64,7 @@ A teammate who clones the host later can:
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Write/merge the files below                                            | Agent                                                                                                                                                                                  |
 | `npx skills experimental_install --yes` at host root                   | **Agent must run** (needs network). Restores **GitHub** skill sources from the lockfile. If it fails after one retry, put the command in chat and in the report — do not silently skip |
-| `/add-plugin cursor-team-kit` (and the other three)                    | Human, in Cursor chat — **no marketplace CLI exists**. Agent must surface this immediately if plugins are missing                                                                      |
+| `/add-plugin cursor-team-kit` (and the other five)                     | Human, in Cursor chat — **no marketplace CLI exists**. Agent must surface this immediately if plugins are missing                                                                      |
 | Connect plugin keys (Context7, Sonatype) in Customize                  | Human — never commit keys                                                                                                                                                              |
 | Paste native-rules into Cursor **User Rules** (optional, all projects) | Human                                                                                                                                                                                  |
 
@@ -85,13 +85,15 @@ After the file exists, detect install state, then either skip the nag or put thi
 /add-plugin context7-plugin
 /add-plugin sonatype-cursor-plugin
 /add-plugin modern-web-guidance
+/add-plugin exa
+/add-plugin devtools-for-agents
 ```
 
 Same names as Customize → Marketplace. Reload the window after install.
 
-**Detect before nagging.** Look under the user's Cursor plugins directory, for example `~/.cursor/plugins/` (Windows: `%USERPROFILE%\.cursor\plugins\`, including `cache/`). If all four plugins already appear installed on this machine, say so and ask for a reload if they are not active in this project. Do not tell the human to re-run `/add-plugin` for plugins that are already there.
+**Detect before nagging.** Look under the user's Cursor plugins directory, for example `~/.cursor/plugins/` (Windows: `%USERPROFILE%\.cursor\plugins\`, including `cache/`). If all six plugins already appear installed on this machine, say so and ask for a reload if they are not active in this project. Do not tell the human to re-run `/add-plugin` for plugins that are already there.
 
-If any of the four are missing, list only the missing `/add-plugin` lines. Continue to step 2 unless `--harness-only` or **join** — writing `AGENTS.md` does not need the plugins, but the repo is not "ready" until the human has installed the missing ones and reloaded.
+If any of the six are missing, list only the missing `/add-plugin` lines. Continue to step 2 unless `--harness-only` or **join** — writing `AGENTS.md` does not need the plugins, but the repo is not "ready" until the human has installed the missing ones and reloaded.
 
 ### 2. `.cursor/cli.json` (CLI client, project layer)
 
@@ -115,7 +117,7 @@ npx skills experimental_install --yes
 
 If the command fails, retry once. If it still fails, do not mark this harness item complete — print the exact command for the human.
 
-The default lock already includes coleam00 (PIV / house loop), Karpathy guidelines, Emil Kowalski, three Matt Pocock skills, and selected Addy Osmani skills. Do not add extra GitHub sources to `skills-lock.json` unless the user asks.
+The default lock already includes coleam00 (PIV / house loop), Karpathy guidelines, Emil Kowalski, Taste (`design-taste-frontend`, `redesign-existing-projects`), `find-skills` from `vercel-labs/skills`, three Matt Pocock skills, selected Addy Osmani `agent-skills`, and Addy Osmani `web-quality-skills`. Do not add extra GitHub sources to `skills-lock.json` unless the user asks.
 
 ### 4. `.gitignore`
 
