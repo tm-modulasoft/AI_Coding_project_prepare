@@ -32,7 +32,7 @@ npx skills experimental_install --yes
 
 Needs network. From the repo root.
 
-2. Open the project in Cursor. Install any missing marketplace plugins (`/add-plugin …` below), reload, and connect Context7 / Sonatype keys in Customize. Never commit keys.
+2. Open the project in Cursor. Install any missing marketplace plugins (`/add-plugin …` below), reload, and connect Context7 / Sonatype / Exa keys in Customize. Never commit keys.
 
 3. Read this file and `AI_CODING_LEARN.md` before treating the agent as a process you already know.
 
@@ -130,7 +130,7 @@ Default MCPs / marketplace plugins. No install CLI. If a plugin is missing, past
 - Exa — `exa` — https://cursor.com/marketplace/exa
 - Chrome Devtools for Agents — `devtools-for-agents` — https://cursor.com/marketplace/google-chrome/devtools-for-agents
 
-Connect Context7 and Sonatype in Customize. `"key": true` in settings means “connect in the UI,” not “put the secret in git.”
+Connect Context7, Sonatype, and Exa in Customize. `"key": true` in settings means “connect in the UI,” not “put the secret in git.”
 
 ## Tools the agent should use
 

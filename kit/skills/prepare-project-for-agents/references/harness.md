@@ -16,7 +16,7 @@ A clone is missing only machine-local pieces: gitignored `.agents/skills/`, this
 
 1. From the **host git root**, run `npx skills experimental_install --yes` (needs network). Same command and retry rules as §3 below.
 2. Detect install state under `~/.cursor/plugins/` (Windows: `%USERPROFILE%\.cursor\plugins\`, including `cache/`). Put **missing** `/add-plugin …` lines at the top of your next message. Skip nags for plugins already on this machine.
-3. Remind the human: connect Context7 and Sonatype keys in Customize; never commit keys; read `AI_CODING_README.md` and `AI_CODING_LEARN.md`.
+3. Remind the human: connect Context7, Sonatype, and Exa keys in Customize; never commit keys; read `AI_CODING_README.md` and `AI_CODING_LEARN.md`.
 4. If `kit/` is on disk and a kit-owned harness file from the table below is **absent**, copy that file only.
 5. Report with `templates/report.md` (join section). Stop.
 
@@ -65,7 +65,7 @@ A teammate who clones the host later can:
 | Write/merge the files below                                            | Agent                                                                                                                                                                                  |
 | `npx skills experimental_install --yes` at host root                   | **Agent must run** (needs network). Restores **GitHub** skill sources from the lockfile. If it fails after one retry, put the command in chat and in the report — do not silently skip |
 | `/add-plugin cursor-team-kit` (and the other five)                     | Human, in Cursor chat — **no marketplace CLI exists**. Agent must surface this immediately if plugins are missing                                                                      |
-| Connect plugin keys (Context7, Sonatype) in Customize                  | Human — never commit keys                                                                                                                                                              |
+| Connect plugin keys (Context7, Sonatype, Exa) in Customize             | Human — never commit keys                                                                                                                                                              |
 | Paste native-rules into Cursor **User Rules** (optional, all projects) | Human                                                                                                                                                                                  |
 
 There is no supported shell/CLI to install Cursor Marketplace plugins. Do not invent `cursor --install-plugin` or similar. `/add-plugin` is a chat slash command. Settings `enabled: true` only applies once the plugin is installed.

@@ -176,7 +176,7 @@ Portable stanza for host `AGENTS.md` when the host is silent (also encoded in ki
 - Package version selection and vulnerability/license checks: **Sonatype MCP** before adding or pinning dependencies.
 - GitHub: **`gh` CLI only** — no GitHub MCP.
 
-If Context7 or Sonatype is not installed yet, say so in the prepare report; still write the preference so the next session uses them once plugins are connected.
+If Context7, Sonatype, or Exa is not installed yet, say so in the prepare report; still write the preference so the next session uses them once plugins are connected.
 
 ## Git / services
 

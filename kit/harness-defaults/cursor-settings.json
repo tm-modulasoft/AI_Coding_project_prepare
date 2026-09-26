@@ -15,7 +15,8 @@
       "enabled": true
     },
     "exa": {
-      "enabled": true
+      "enabled": true,
+      "key": true
     },
     "devtools-for-agents": {
       "enabled": true

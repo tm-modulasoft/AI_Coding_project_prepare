@@ -57,7 +57,7 @@ Committed files are the team’s source of truth (`AGENTS.md`, helpers, README, 
 1. Do **not** fetch `kit/` (if you already did this run, do not copy defaults onto the host; ask to delete the fetched folder).
 2. From the host git root, run `npx skills experimental_install --yes`.
 3. Detect plugins on this machine; put missing `/add-plugin …` lines at the top of your next message.
-4. Remind: connect Context7 and Sonatype keys in Customize; read `AI_CODING_README.md` and `AI_CODING_LEARN.md`.
+4. Remind: connect Context7, Sonatype, and Exa keys in Customize; read `AI_CODING_README.md` and `AI_CODING_LEARN.md`.
 5. If `kit/` is on disk and a kit-owned harness file is **missing**, copy that file only. Never overwrite an existing one.
 6. Report with `templates/report.md` (join section). Stop. Do not commit. Do not run step 2.
 

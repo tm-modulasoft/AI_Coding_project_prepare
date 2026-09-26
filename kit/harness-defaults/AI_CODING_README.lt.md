@@ -32,7 +32,7 @@ npx skills experimental_install --yes
 
 Reikia interneto. Vykdyk iš repozitorijos šaknies.
 
-2. Atidaryk projektą Cursor. Įdiek trūkstamus marketplace papildinius (`/add-plugin …` žemiau), perkrauk ir prijunk Context7 / Sonatype raktus per Customize. Niekada nekelk raktų į git.
+2. Atidaryk projektą Cursor. Įdiek trūkstamus marketplace papildinius (`/add-plugin …` žemiau), perkrauk ir prijunk Context7 / Sonatype / Exa raktus per Customize. Niekada nekelk raktų į git.
 
 3. Perskaityk šį failą ir `AI_CODING_LEARN.md`, prieš laikydamas agentą jau pažįstamu procesu.
 
@@ -130,7 +130,7 @@ Numatytieji MCP / marketplace papildiniai. Įdiegimo CLI nėra. Jei papildinio n
 - Exa — `exa` — https://cursor.com/marketplace/exa
 - Chrome Devtools for Agents — `devtools-for-agents` — https://cursor.com/marketplace/google-chrome/devtools-for-agents
 
-Context7 ir Sonatype prijunk per Customize. `"key": true` nustatymuose reiškia „prijunk per UI“, o ne „įkelk paslaptį į git“.
+Context7, Sonatype ir Exa prijunk per Customize. `"key": true` nustatymuose reiškia „prijunk per UI“, o ne „įkelk paslaptį į git“.
 
 ## Įrankiai, kuriuos agentas turi naudoti
 

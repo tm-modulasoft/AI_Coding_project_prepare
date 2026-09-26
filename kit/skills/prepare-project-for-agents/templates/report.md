@@ -18,7 +18,7 @@ This clone already has the committed workflow (`AGENTS.md`, `skills-lock.json`, 
   - `/add-plugin exa`
   - `/add-plugin devtools-for-agents`
 - Then reload the window.
-- Plugin keys to connect in Customize (do not commit): Context7, Sonatype
+- Plugin keys to connect in Customize (do not commit): Context7, Sonatype, Exa
 - Read `AI_CODING_README.md` (workflow, skill cmds). Intros: `AI_CODING_LEARN.md`.
 
 ## This machine
@@ -50,7 +50,7 @@ This clone already has the committed workflow (`AGENTS.md`, `skills-lock.json`, 
   - `/add-plugin exa`
   - `/add-plugin devtools-for-agents`
 - Then reload the window.
-- Plugin keys to connect in Customize (do not commit): Context7, Sonatype
+- Plugin keys to connect in Customize (do not commit): Context7, Sonatype, Exa
 
 ## Harness (step 1)
 
