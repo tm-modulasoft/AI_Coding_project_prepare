@@ -1,24 +1,19 @@
 # AI layer ready
 
-Use **Join** when this host was already prepared. Use the rest for first-time.
+Use **Join** when this host was already prepared and the user did not ask to catch up. Use **Catch-up** only when they asked. Use the rest for first-time.
 
 ---
 
 # Join — this machine (do not rewrite team files)
 
-This clone already has the committed workflow (`AGENTS.md`, `skills-lock.json`, `AI_CODING_README.md`). Step 2 was skipped.
+This clone already has the committed workflow (`AGENTS.md`, `skills-lock.json`, `AI_CODING_README.md`). Step 2 was skipped. Kit plugin ids that this repo's settings do not list were not added.
 
 ## Do these now (human)
 
-- Missing `/add-plugin` (skip any already installed on this machine):
-  - `/add-plugin cursor-team-kit`
-  - `/add-plugin context7-plugin`
-  - `/add-plugin sonatype-cursor-plugin`
-  - `/add-plugin modern-web-guidance`
-  - `/add-plugin exa`
-  - `/add-plugin devtools-for-agents`
+- Missing `/add-plugin` (ids in this repo's `.cursor/settings.json` `plugins` that are not installed on this machine):
+  - `/add-plugin …`
 - Then reload the window.
-- Plugin keys to connect in Customize (do not commit): Context7, Sonatype, Exa
+- Plugin keys to connect in Customize: entries in that file with `"key": true` (do not commit)
 - Read `AI_CODING_README.md` (workflow, skill cmds). Intros: `AI_CODING_LEARN.md`.
 
 ## This machine
@@ -34,6 +29,41 @@ This clone already has the committed workflow (`AGENTS.md`, `skills-lock.json`, 
 ## Copied kit folder
 
 - Fetched from GitHub in this run? yes / no (join should be no)
+- If yes: **recommend deleting** that folder. Ask before deleting.
+
+---
+
+# Catch-up — missing kit plugins and skills
+
+The user asked to bring this prepared repo up to the current kit harness. Existing plugin objects and lock entries were kept.
+
+## Added
+
+- Plugin ids added to `.cursor/settings.json`:
+- Skill names added to `skills-lock.json`:
+- Same skill name kept because the host entry differs (name: host source → kit source): none / list
+- `.gitignore` `.agents/skills/` block: already present / appended
+
+## Do these now (human)
+
+- Missing `/add-plugin` (ids in `.cursor/settings.json` `plugins` after the edit that are not installed on this machine):
+  - `/add-plugin …`
+- Then reload the window.
+- Plugin keys to connect for objects that set `"key": true` (do not commit):
+- Review the lock and settings diff and commit if the team should share it. Do not commit secrets.
+
+## This machine
+
+- `npx skills experimental_install --yes`: ran / failed / skipped (why)
+
+## Left untouched
+
+- `AGENTS.md`, helpers, host README, native rules, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, existing plugin objects, existing lock entries
+- Those notes and native rules can be older than the lock. They were not rewritten.
+
+## Copied kit folder
+
+- Fetched from GitHub in this run? yes / no
 - If yes: **recommend deleting** that folder. Ask before deleting.
 
 ---

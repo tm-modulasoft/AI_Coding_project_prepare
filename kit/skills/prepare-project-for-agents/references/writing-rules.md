@@ -2,7 +2,7 @@
 
 Always-on context is expensive. Split ruthlessly.
 
-**Join:** do not write or rewrite host instruction files. Skip the quality checklist. Report with `templates/report.md` (join section).
+**Join and catch-up:** do not write or rewrite host instruction files. Skip the quality checklist. Report with `templates/report.md` (join section, or catch-up section).
 
 ## Precedence (host files)
 

@@ -15,8 +15,8 @@ A clone is missing only machine-local pieces: gitignored `.agents/skills/`, this
 ### Do
 
 1. From the **host git root**, run `npx skills experimental_install --yes` (needs network). Same command and retry rules as §3 below.
-2. Detect install state under `~/.cursor/plugins/` (Windows: `%USERPROFILE%\.cursor\plugins\`, including `cache/`). Put **missing** `/add-plugin …` lines at the top of your next message. Skip nags for plugins already on this machine.
-3. Remind the human: connect Context7, Sonatype, and Exa keys in Customize; never commit keys; read `AI_CODING_README.md` and `AI_CODING_LEARN.md`.
+2. Detect install state under `~/.cursor/plugins/` (Windows: `%USERPROFILE%\.cursor\plugins\`, including `cache/`). The ids to check are the keys of `plugins` in the host `.cursor/settings.json`. Do not nag for a current-kit plugin that file does not list — that belongs to Catch-up. Put **missing** `/add-plugin <id>` lines at the top of your next message. Skip nags for plugins already on this machine.
+3. Remind the human to connect keys in Customize for plugin objects in that file that set `"key": true`. Never commit keys. Kit defaults that use a key are Context7, Sonatype, and Exa — name one only when that id is in the host file. Point them at `AI_CODING_README.md` and `AI_CODING_LEARN.md`.
 4. If `kit/` is on disk and a kit-owned harness file from the table below is **absent**, copy that file only.
 5. Report with `templates/report.md` (join section). Stop.
 
@@ -29,7 +29,57 @@ A clone is missing only machine-local pieces: gitignored `.agents/skills/`, this
 
 Optional human (same as first-time): paste native-rules into Cursor User Rules for all repos on this machine.
 
-The rest of this file is **first-time** (write/merge harness files, then continue to step 2 unless `--harness-only` or join).
+## Catch-up (already prepared — missing kit plugins and skills only)
+
+Run this **only** when the user explicitly asked to bring this already-prepared repo up to the current kit harness (or passed `--catch-up`). A plain join does not catch up.
+
+The host must already have `AGENTS.md`, `skills-lock.json`, and `AI_CODING_README.md`. If any of those is missing, this is **first-time**, not catch-up. Stop and say so.
+
+This section overrides Join's do-not-fetch rule and Join's do-not-merge rule, and only for the two edits below. Every other Join do-not still applies. Do not run step 2. "Regenerate / refresh `AGENTS.md`" is still step 2, not this section. If they asked for both, do catch-up first, then step 2.
+
+Catch-up needs the current kit on disk (`harness-defaults/cursor-settings.json` and `harness-defaults/skills-lock.json`). If `kit/` is missing, fetch it the same way `SKILL.md` → Port the kit does. This is the one already-prepared case that fetches the kit.
+
+### Plugins
+
+Read the host `.cursor/settings.json` and the kit `harness-defaults/cursor-settings.json`.
+
+- If the host file is missing, copy the kit file.
+- If it exists:
+  - Preserve every key that is not `plugins`.
+  - Preserve every existing `plugins.<id>` object unchanged (`enabled`, `key`, and anything else).
+  - If there is no `plugins` key, set it to the kit `plugins` object.
+  - For each id in the kit `plugins` object that is absent from the host `plugins` object, add that id with the kit value.
+
+Do not add `"key": true` onto a plugin the host already has. Do not flip `enabled`.
+
+### Skills lock
+
+Read the host `skills-lock.json` and the kit `harness-defaults/skills-lock.json`.
+
+The host file must have `version` and a `skills` object. If it does not, stop and report. Do not replace the file.
+
+For each skill name in the kit `skills` object:
+
+- Absent on the host: add the kit entry verbatim (`source`, `sourceType`, `skillPath`, `computedHash`). Insert names in alphabetical order. Do not rewrite unchanged entries.
+- Present on the host: keep the host entry. Do not update `computedHash`, `source`, or `skillPath`.
+
+Do not delete host skill names the kit does not have. Do not run `npx skills update` unless the user asked — hash bumps are a different job.
+
+Then from the **host git root** run `npx skills experimental_install --yes` (same retry rules as §3).
+
+If `.gitignore` lacks the `.agents/skills/` block from §4, append that block only.
+
+### Do not
+
+- Rewrite `AGENTS.md`, helpers, shims, the host README, `AI_CODING_README.md`, `AI_CODING_LEARN.md`, `.cursor/rules/ai-coding-native-rules.mdc`, or `.cursor/cli.json`.
+- Migrate older prepare outputs (globbed project `.mdc`, renamed native-rules, `*.bak` merges).
+- Commit.
+
+### Report
+
+Use `templates/report.md` (catch-up section). List plugin ids added, skill names added, and any same skill name you kept because the host entry differs (name plus host source vs kit source). If an existing entry matches the kit, do not list it. Then the missing `/add-plugin` lines for ids in the host settings **after** the edit that are not installed on this machine, and keys to connect for objects that set `"key": true`. Say the notes and native rules were left as committed, so they can be older than the lock. Ask before deleting a fetched `kit/`.
+
+The rest of this file is **first-time** (write/merge harness files, then continue to step 2 unless `--harness-only` or join). Catch-up does not use it.
 
 ## Goal (first-time)
 
@@ -43,7 +93,7 @@ A teammate who clones the host later can:
 
 ## Non-goals
 
-- Do not overwrite a richer host `skills-lock.json` or a host `.cursor/settings.json` plugin list the user already tuned — merge, keep extras. Join: do not merge at all.
+- Do not overwrite a richer host `skills-lock.json` or a host `.cursor/settings.json` plugin list the user already tuned — merge, keep extras. Join: do not merge at all. Catch-up (only when the user asked) adds missing kit plugin ids and missing lock skill names; it still keeps every existing entry.
 - Do not write global `~/.cursor/cli-config.json` or Cursor User Rules unless the user asked. Those are machine-personal.
 - Do not duplicate `harness-defaults/ai-coding-native-rules.md` into `AGENTS.md`. Step 2 writes a **short** portable Tools stanza so non-Cursor agents still prefer Context7, Exa, Chrome Devtools, and Sonatype.
 
@@ -105,7 +155,7 @@ If the host has no `.cursor/cli.json`, copy `harness-defaults/cli.json`. If it a
 
 If the host has no `skills-lock.json`, copy `harness-defaults/skills-lock.json` verbatim.
 
-If the host already has one, keep it. Report that the kit default was skipped.
+If the host already has one, keep it. Report that the kit default was skipped. Adding kit skill names onto an existing lock is **Catch-up**, not this step.
 
 Then from the **host git root** (not the kit folder), **run**:
 

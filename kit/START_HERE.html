@@ -13,13 +13,17 @@
     0. Classify host git root BEFORE fetching kit.
        Join if AGENTS.md + skills-lock.json + AI_CODING_README.md exist.
        Join = machine-local harness only (npx skills experimental_install --yes,
-       missing /add-plugin, plugin keys). Do not fetch kit. Do not rewrite team files.
+       /add-plugin for ids in the host .cursor/settings.json, plugin keys).
+       Do not fetch kit. Do not rewrite team files. Do not catch up unless asked.
+       Catch-up (explicit ask only): fetch kit if missing; add absent plugin ids
+       and absent lock skill names; keep existing entries; do not rewrite
+       AGENTS.md, helpers, README, native rules, or AI_CODING_* files.
        First-time otherwise. User asked to regenerate AGENTS.md → step 2 even if files exist.
     1. Kit root = directory that contains this file (fetched `kit/` folder).
     2. If this file is missing AND the host is first-time: fetch `kit/` from
        https://github.com/tm-modulasoft/AI_Coding_project_prepare (see README prompt).
     3. First-time: two steps, in order. Do not skip step 1. Join: stop after harness restore.
-       Step 1 Harness: skills/prepare-project-for-agents/references/harness.md (see Join).
+       Step 1 Harness: skills/prepare-project-for-agents/references/harness.md (Join, or Catch-up when asked).
          IDE/CLI defaults, .cursor/settings.json plugins,
          harness-defaults/skills-lock.json → skills-lock.json,
          YOU run npx skills experimental_install --yes from the host root
@@ -66,8 +70,10 @@
           Open this repo on GitHub. Paste the README prompt into an agent on
           your <strong>local project</strong>. The same prompt covers first-time
           prepare and a teammate joining a repo that is already prepared. On
-          join, the agent only restores this machine (skills + missing plugins)
-          and does not rewrite team rules. You only run
+          join, the agent only restores this machine (skills + plugins that
+          repo already lists) and does not rewrite team rules. Catch-up, which
+          adds missing kit plugins and skills, runs only if you ask. You only
+          run
           <code>/add-plugin</code> if those Cursor plugins are not already on
           your machine.
         </p>
@@ -88,8 +94,10 @@
           Already have <code>AGENTS.md</code>, <code>skills-lock.json</code>,
           and <code>AI_CODING_README.md</code> in git? That clone is
           <strong>already prepared</strong>. Paste the same prompt; the agent
-          only sets up <em>this machine</em> (restore skills, missing plugins,
-          keys). It must not rewrite the team’s rules. You can also follow
+          only sets up <em>this machine</em> (restore skills, plugins this repo
+          already lists, keys). It must not rewrite the team’s rules. To add
+          kit plugins and skills the lock and settings do not have yet, ask
+          the agent to catch the repo up to the current kit. You can also follow
           <code>AI_CODING_README.md</code> without the prompt.
         </p>
         <ol class="steps">
@@ -101,12 +109,14 @@
             >
             (same text as <a href="#bootstrap">below</a>). First-time: the agent
             fetches <code>kit/</code> and writes the harness +
-            <code>AGENTS.md</code>. Join: no fetch, no rewrite.
+            <code>AGENTS.md</code>. Join: no fetch, no rewrite. Catch-up: only
+            if you ask; it fetches <code>kit/</code> and adds missing plugin
+            ids and lock skills.
           </li>
           <li>
             When the agent asks: paste any missing
             <code>/add-plugin …</code> lines in Cursor chat, reload, connect
-            Context7, Sonatype, and Exa keys in Customize. Never commit keys.
+            the plugin keys the agent lists. Never commit keys.
           </li>
           <li>
             First-time only:
@@ -117,6 +127,7 @@
             <code>README.md</code>, helpers, and shims for tools that cannot
             read <code>AGENTS.md</code>. Do not delete <code>kit/</code> inside
             this GitHub repo. Join should not have fetched <code>kit/</code>.
+            Catch-up may have fetched it; delete that copy only if you agree.
           </li>
         </ol>
       </section>
@@ -132,8 +143,9 @@
               <code>harness-defaults/skills-lock.json</code>, gitignore for
               <code>.agents/skills/</code>, and always-on native rules from
               <code>harness-defaults/ai-coding-native-rules.md</code>. On a
-              prepared clone, only restore this machine (skills + missing
-              plugins).
+              prepared clone, only restore this machine (skills + plugins the
+              repo already lists). Catch-up adds missing kit plugins and skills
+              only if you ask.
             </p>
             <span class="more">Open step details</span>
           </a>
@@ -170,7 +182,8 @@
 Prepare this project for AI agentic coding.
 
 0. Classify the host git root **before fetching anything**:
-   - **Join** if it already has `AGENTS.md`, `skills-lock.json`, and `AI_CODING_README.md`. Those files are the team's committed workflow. Do not fetch `kit/`. Do not rewrite them or other committed prepare files (helpers, README, native rules, settings, lockfile). Only set up this machine: run `npx skills experimental_install --yes` at the host root; check `~/.cursor/plugins/` and tell me to paste `/add-plugin …` only for plugins missing here; remind me to connect Context7, Sonatype, and Exa keys in Customize. Point me at `AI_CODING_README.md` and `AI_CODING_LEARN.md`. Stop. Do not commit.
+   - **Join** if it already has `AGENTS.md`, `skills-lock.json`, and `AI_CODING_README.md`. Those files are the team's committed workflow. Do not fetch `kit/`. Do not rewrite them or other committed prepare files (helpers, README, native rules, settings, lockfile). Only set up this machine: run `npx skills experimental_install --yes` at the host root; check `~/.cursor/plugins/` and tell me to paste `/add-plugin …` only for plugins this repo's `.cursor/settings.json` lists that are missing here; remind me to connect keys for plugins in that file that set `"key": true`. Point me at `AI_CODING_README.md` and `AI_CODING_LEARN.md`. Stop. Do not commit. Do not catch up unless I ask.
+   - **Catch-up** only if I explicitly ask to bring this already-prepared repo up to the current kit harness. Do not catch up on a plain join. Fetch `kit/` if it is not on disk. Add plugin ids missing from `.cursor/settings.json` and skill names missing from `skills-lock.json`. Keep every existing plugin object and lock entry. Do not rewrite `AGENTS.md`, helpers, README, native rules, or `AI_CODING_*` files. Restore skills. Tell me missing `/add-plugin` lines. Do not commit. Stop.
    - **First-time** if those files are missing. Continue below. (If I explicitly ask to regenerate `AGENTS.md`, that is first-time step 2 even when the files exist.)
 1. If this workspace has no `kit/skills/prepare-project-for-agents/SKILL.md`, fetch `kit/` from https://github.com/tm-modulasoft/AI_Coding_project_prepare into this repo as `kit/`. Shallow-clone into a temp dir (`gh repo clone tm-modulasoft/AI_Coding_project_prepare .ai-coding-kit-src -- --depth 1` or `git clone --depth 1 https://github.com/tm-modulasoft/AI_Coding_project_prepare.git .ai-coding-kit-src`), copy only `.ai-coding-kit-src/kit` → `kit/`, delete the temp dir. Do not copy the kit repo's README, AGENTS.md, or .git.
 2. Read `kit/START_HERE.html`, then execute `kit/skills/prepare-project-for-agents/SKILL.md`. Two steps, in order — do not skip the harness.
@@ -205,13 +218,15 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre
             <code>AGENTS.md</code>, <code>skills-lock.json</code>, and
             <code>AI_CODING_README.md</code> exist — machine-local harness
             only; do not fetch <code>kit/</code>; do not rewrite team files.
+            Catch-up only when the user explicitly asks (see
+            <code>references/harness.md</code>).
           </li>
           <li>
             <strong>Kit root</strong> is the directory that contains this HTML
-            file (first-time fetch only).
+            file (first-time or catch-up fetch).
           </li>
           <li>
-            If this workspace has no kit <em>and the host is first-time</em>,
+            If this workspace has no kit <em>and the host is first-time or catch-up</em>,
             fetch <code>kit/</code> from
             <a href="https://github.com/tm-modulasoft/AI_Coding_project_prepare"
               >GitHub</a
@@ -229,7 +244,8 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre
             <a href="skills/prepare-project-for-agents/references/harness.md"
               ><code>references/harness.md</code></a
             >
-            (Join section when already prepared). You run
+            (Join section when already prepared; Catch-up section when they
+            asked to update the harness). You run
             <code>npx skills experimental_install --yes</code> (GitHub sources
             in the lockfile). Surface <code>/add-plugin</code> only for plugins
             missing on this machine.
@@ -255,7 +271,7 @@ Do not ask me to paste the skill. Load it from disk and run it.</pre
             <a href="skills/prepare-project-for-agents/templates/report.md"
               ><code>templates/report.md</code></a
             >
-            (join section when joining). If you fetched this folder from GitHub
+            (join section when joining, catch-up section when catching up). If you fetched this folder from GitHub
             in this run, ask before deleting it (recommended: yes).
           </li>
         </ol>

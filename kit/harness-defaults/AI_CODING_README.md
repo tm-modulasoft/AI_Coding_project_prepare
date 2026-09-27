@@ -38,6 +38,12 @@ Needs network. From the repo root.
 
 Same outcome if you paste the kit’s GitHub README prompt: the agent must classify **join** and stop after this machine’s harness. Do not fetch `kit/` only to join.
 
+## Catch the harness up (ask for this)
+
+Join does not change the committed lock or plugin list. When this repo was prepared by an older kit and you want the current kit plugins and skills, ask the agent to catch this prepared repo up to the current kit harness.
+
+It adds plugin ids missing from `.cursor/settings.json` and skill names missing from `skills-lock.json`. It keeps every existing entry (it does not change hashes, `enabled`, or `"key"` on plugins already listed). It does not rewrite `AGENTS.md`, native rules, or these notes. Review the diff and commit if the team should share it.
+
 ## Workflow
 
 **prime → plan → implement → validate → review → commit → PR**

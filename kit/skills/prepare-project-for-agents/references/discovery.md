@@ -12,11 +12,13 @@ Inspect the **host project** (git toplevel). Cite paths. Do not guess scripts or
 
 That means this kit already prepared the repo and the team committed the workflow. A new developer must not regenerate those files.
 
-If join: confirm the three paths, then stop this file. Go to `references/harness.md` → Join. Do not scan stack, architecture, or README for rewriting.
+If join and the user did **not** ask to catch up: confirm the three paths, then stop this file. Go to `references/harness.md` → Join. Do not scan stack, architecture, or README for rewriting.
+
+If the three files exist **and** the user explicitly asked to bring the repo up to the current kit harness (or passed `--catch-up`): stop this file. Go to `references/harness.md` → Catch-up. Do not scan stack, architecture, or README for rewriting. If any of the three is missing, say this is first-time, not catch-up.
 
 **First-time** otherwise (including a random pre-existing `AGENTS.md` without this kit’s cheat sheet and lockfile). Continue below.
 
-User override: they asked to regenerate / refresh `AGENTS.md` → first-time step 2 even when the three files exist. They asked only to set up this machine → join even if the set is incomplete.
+User override: they asked to regenerate / refresh `AGENTS.md` → first-time step 2 even when the three files exist (that is not catch-up). They asked only to set up this machine → join even if the set is incomplete (that is not catch-up).
 
 After a first-time pass, merge with `references/golden-rules.md`: project standard if more correct/specific; golden default if silent; safety floors never Canonical-ized from a bad habit.
 
@@ -43,7 +45,7 @@ Look for and read:
 - `AI_CODING_README.md`, `AI_CODING_LEARN.md`
 - `.cursor/rules/ai-coding-native-rules.mdc`
 
-If the host already has a richer plugin list or lockfile, keep extras. Step 1 is `references/harness.md`. Join does not merge kit defaults onto those files.
+If the host already has a richer plugin list or lockfile, keep extras. Step 1 is `references/harness.md`. Join does not merge kit defaults onto those files. Catch-up adds only plugin ids and skill names the host does not already have.
 
 ## Stack (from manifests, with versions)
 

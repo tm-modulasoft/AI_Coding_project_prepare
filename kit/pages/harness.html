@@ -6,12 +6,13 @@
     <title>Step 1 · Prepare the harness</title>
     <meta
       name="description"
-      content="Harness first: first-time writes plugins/skills/native rules; join restores this machine only."
+      content="Harness first: first-time writes plugins/skills/native rules; join restores this machine only; catch-up adds missing kit plugins and skills when asked."
     />
     <!--
     CODING AGENT — step 1 detail page (humans). Execute from disk:
     Kit root = parent of this pages/ folder.
     Classify join vs first-time first (discovery.md). Join = machine-local only.
+    Catch-up only when the user explicitly asks (harness.md → Catch-up).
     Read ../skills/prepare-project-for-agents/SKILL.md then references/harness.md.
     Run npx skills experimental_install --yes from the host root. Do not skip this step.
     Host = git toplevel. Do not commit unless asked. Do not rewrite team files on join.
@@ -77,8 +78,10 @@
               machine, then reload.
             </li>
             <li>
-              Connect Context7, Sonatype, and Exa keys in Customize. Never commit
-              keys.
+              Connect keys for plugins this repo marks with
+              <code>"key": true</code>. Never commit keys. Kit defaults that
+              use a key are Context7, Sonatype, and Exa, when those ids are in
+              this repo's settings.
             </li>
             <li>
               Read <code>AI_CODING_README.md</code> and
@@ -89,6 +92,19 @@
             Do not fetch <code>kit/</code> for join. Do not recopy harness
             defaults over existing <code>.cursor/</code>,
             <code>skills-lock.json</code>, or <code>AI_CODING_*</code> files.
+          </p>
+
+          <h2 id="catch-up">Catch the harness up</h2>
+          <p>
+            This is not join. Ask for it when the repo was prepared by an older
+            kit and you want the current kit plugins and skills. The agent adds
+            plugin ids missing from <code>.cursor/settings.json</code> and
+            skill names missing from <code>skills-lock.json</code>. It keeps
+            every existing entry. It does not change hashes,
+            <code>enabled</code>, or <code>"key"</code> on plugins already
+            listed, and it does not rewrite <code>AGENTS.md</code>, native
+            rules, or <code>AI_CODING_*</code> notes. Review the diff and commit
+            if the team should share it.
           </p>
 
           <h2 id="what">What this step writes (first-time)</h2>
@@ -347,13 +363,15 @@ npx skills experimental_install --yes</pre
         <ol>
           <li>Kit root is the parent of <code>pages/</code>.</li>
           <li>
-            Classify join vs first-time. Join: restore skills, missing plugins,
-            keys; do not overwrite committed files; skip step 2.
+            Classify join vs first-time. Join: restore skills and plugins this
+            repo already lists; do not overwrite committed files; skip step 2.
+            Catch-up only when the user asked: add missing kit plugin ids and
+            lock skills; keep existing entries; skip step 2.
           </li>
           <li>
             Read <code>skills/prepare-project-for-agents/SKILL.md</code>, then
-            <code>references/harness.md</code> (Join section when already
-            prepared).
+            <code>references/harness.md</code> (Join when already prepared;
+            Catch-up when they asked to update the harness).
           </li>
           <li>
             First-time: write host files. You <strong>must</strong> run
@@ -363,7 +381,7 @@ npx skills experimental_install --yes</pre
           <li>
             Check <code>~/.cursor/plugins/</code> before nagging. Put missing
             <code>/add-plugin</code> lines at the top of your next message. Then
-            step 2 unless <code>--harness-only</code> or join.
+            step 2 unless <code>--harness-only</code>, join, or catch-up.
           </li>
         </ol>
       </section>

@@ -2,7 +2,7 @@
 
 This is **step 2** (project instruction layer). Complete **step 1** first: `references/harness.md`.
 
-**Skip this file on join.** If discovery classified the host as already prepared, do not regenerate `AGENTS.md`, helpers, shims, or the README. Machine-local harness only (`harness.md` → Join).
+**Skip this file on join and on catch-up.** If discovery classified the host as already prepared, do not regenerate `AGENTS.md`, helpers, shims, or the README. Join is machine-local harness only (`harness.md` → Join). Catch-up only adds missing plugin ids and lock skills (`harness.md` → Catch-up).
 
 Execute this runbook against the **host project** after `SKILL.md` path resolution. This is the detailed instruction set; do not duplicate it into `AGENTS.md`.
 

@@ -38,6 +38,12 @@ Reikia interneto. Vykdyk iš repozitorijos šaknies.
 
 Rezultatas toks pat, jei įklijuoji rinkinio GitHub README promptą: agentas privalo klasifikuoti tai kaip **prisijungimą** (`join`) ir sustoti po šios mašinos paruošimo (`harness`). Neatsisiųsk `kit/` vien dėl prisijungimo.
 
+## Harness atnaujinimas (tik jei paprašai)
+
+Prisijungimas nekeičia į git įtraukto lock failo ir papildinių sąrašo. Kai ši repozitorija buvo paruošta senesniu rinkiniu ir nori dabartinių rinkinio papildinių bei skill'ų, paprašyk agento atnaujinti šią paruoštą repozitoriją iki dabartinio rinkinio harness.
+
+Jis prideda papildinių id, kurių nėra `.cursor/settings.json`, ir skill'ų vardus, kurių nėra `skills-lock.json`. Esamus įrašus palieka (nekeičia hash'ų, `enabled` ir `"key"` jau išvardytiems papildiniams). Neperrašo `AGENTS.md`, native taisyklių ir šių užrašų. Peržiūrėk pakeitimus ir įtrauk į git, jei komanda turi tai dalintis.
+
 ## Darbo eiga
 
 **prime → plan → implement → validate → review → commit → PR**
